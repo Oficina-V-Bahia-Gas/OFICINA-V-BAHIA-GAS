@@ -9,7 +9,6 @@ Desenvolvimento de um protótipo de jogo digital sobre gás natural.
 - @Bunniebell
 - @Bruno
 - @victor
-- @gabriel
 
 ## Orientadores
 - Jocelma
