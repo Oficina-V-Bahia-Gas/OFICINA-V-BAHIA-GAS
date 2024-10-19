@@ -13,6 +13,7 @@ public class ChangeSceneButton : MonoBehaviour
     void Start()
     {
         _button.onClick.AddListener(OnButtonClick);
+        
     }
 
     // Update is called once per frame
