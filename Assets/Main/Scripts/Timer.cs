@@ -32,10 +32,15 @@ public class Timer : MonoBehaviour
     {
         float minutes;
         float seconds;
-
+        if (_remainingTime < 0)
+            _remainingTime = 0;
         minutes = Mathf.FloorToInt(_remainingTime / 60);
         seconds = _remainingTime % 60;
 
         _timerText.text = $"{minutes:00} : {seconds:00}";
+    }
+    public float GetRemainingTime()
+    {
+        return _remainingTime;
     }
 }
