@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Interactable : MonoBehaviour
+public class InteractableTrigger : MonoBehaviour
 {
     private bool interact = false;
     [SerializeField] private GameObject interactable_object;
