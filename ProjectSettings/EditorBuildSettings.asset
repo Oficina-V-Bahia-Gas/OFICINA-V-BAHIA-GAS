@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Victor/TestScenes/CenaDerrota.unity
+    guid: 8290e00b9cb6b48419f68f61d86e35d6
+  - enabled: 1
+    path: Assets/Victor/TestScenes/cenaTeste.unity
+    guid: ac69c6c7f1a9ea34093d4f05e50ad1e9
   m_configObjects: {}
