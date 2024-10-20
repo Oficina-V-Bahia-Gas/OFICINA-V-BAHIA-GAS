@@ -5,7 +5,20 @@ using UnityEngine;
 public class InteractableTrigger : MonoBehaviour
 {
     private bool interact = false;
-    [SerializeField] private GameObject interactable_object;
+    [SerializeField] private InteractableClass interactable_object;
+
+    private void Start()
+    {
+        if(GetComponentInParent<InteractableClass>())
+        {
+            interactable_object = GetComponentInParent<InteractableClass>();
+        }
+        else
+        {
+            Debug.LogWarning("Parent Object (" + transform.parent + ") of " + this + " must contain InteractableClass or other interactables. Interaction on this trigger is disabled...");
+            Destroy(gameObject);
+        }
+    }
 
     private void Update()
     {
@@ -19,8 +32,7 @@ public class InteractableTrigger : MonoBehaviour
     {
         if (interact)
         {
-            Debug.Log("Interaction");
-            //interactable_object.
+            interactable_object.Interact();
         }
     }
 
