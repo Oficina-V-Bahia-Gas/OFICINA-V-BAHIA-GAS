@@ -1,50 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using static Machines;
 
 public class InteractableTrigger : MonoBehaviour
 {
-    private bool interact = false;
-    [SerializeField] private InteractableClass interactable_object;
+    IMachine interactableMachine;
+    [SerializeField] MachineAction actionToPerform = MachineAction.Repair;
 
-    private void Start()
+    public void OnButtonClick()
     {
-        if(GetComponentInParent<InteractableClass>())
-        {
-            interactable_object = GetComponentInParent<InteractableClass>();
-        }
-        else
-        {
-            Debug.LogWarning("Parent Object (" + transform.parent + ") of " + this + " must contain InteractableClass or other interactables. Interaction on this trigger is disabled...");
-            Destroy(gameObject);
-        }
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown("e"))
-        {
-            Interaction();
-        }
+        Interaction();
     }
 
     void Interaction()
     {
-        if (interact)
+        if (interactableMachine != null)
         {
-            interactable_object.Interact();
+            interactableMachine.PerformAction(actionToPerform);
+            Debug.Log("Performing action: " + actionToPerform);
+        }
+        else
+        {
+            Debug.LogWarning("No interactable machine available.");
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void SetInteractableMachine(IMachine _machine)
     {
-        interact = true;
+        interactableMachine = _machine;
     }
 
-    private void OnTriggerExit(Collider other)
+    public void ClearInteractableMachine()
     {
-        interact = false;
+        interactableMachine = null;
     }
-
-    
 }
