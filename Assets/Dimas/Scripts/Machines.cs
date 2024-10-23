@@ -13,5 +13,6 @@ public class Machines : MonoBehaviour
     public interface IMachine
     {
         void PerformAction(MachineAction action);
+        bool CanPerformAction(MachineAction action);
     }
 }

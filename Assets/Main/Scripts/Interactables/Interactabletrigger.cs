@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using static MachineDetrition;
 using static Machines;
 
 public class InteractableTrigger : MonoBehaviour
@@ -25,12 +26,19 @@ public class InteractableTrigger : MonoBehaviour
     {
         if (interactableMachine != null)
         {
-            interactableMachine.PerformAction(actionToPerform);
-            Debug.Log("Performing action: " + actionToPerform);
-
-            if (repairProgressSlider != null && actionToPerform == MachineAction.Repair)
+            if (actionToPerform == MachineAction.Repair && interactableMachine.CanPerformAction(actionToPerform))
             {
-                repairProgressSlider.gameObject.SetActive(true);
+                interactableMachine.PerformAction(actionToPerform);
+                Debug.Log("Performing action: " + actionToPerform);
+
+                if (repairProgressSlider != null)
+                {
+                    repairProgressSlider.gameObject.SetActive(true);
+                }
+            }
+            else
+            {
+                Debug.LogWarning("Cannot interact: Machine is not in a state to perform this action.");
             }
         }
         else
@@ -39,13 +47,13 @@ public class InteractableTrigger : MonoBehaviour
         }
     }
 
-    public void UpdateRepairProgress(float progress)
+    public void UpdateRepairProgress(float _progress)
     {
         if (repairProgressSlider != null)
         {
-            repairProgressSlider.value = progress;
+            repairProgressSlider.value = _progress;
 
-            if (progress >= 1f)
+            if (_progress >= 1f)
             {
                 repairProgressSlider.gameObject.SetActive(false);
             }
