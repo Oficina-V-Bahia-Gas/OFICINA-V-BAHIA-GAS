@@ -12,6 +12,7 @@ public class MachineDetrition : MonoBehaviour, IMachine
     [SerializeField] float repairTime = 10f;
     [SerializeField] float repairCooldown = 30f;
     [SerializeField] PlayerInteractionController interactionController;
+    [SerializeField] InteractableTrigger interactableTrigger;
     float currentTime = 0f;
     Color initialColor = Color.green;
     Color purpleColor = new Color(0.5f, 0f, 0.5f);
@@ -83,6 +84,8 @@ public class MachineDetrition : MonoBehaviour, IMachine
 
             currentTime = Mathf.Lerp(_initialRepairTime, 0f, _t);
 
+            interactableTrigger?.UpdateRepairProgress(_t);
+
             yield return null;
         }
 
@@ -94,6 +97,8 @@ public class MachineDetrition : MonoBehaviour, IMachine
         Debug.Log("Repair complete. Machine has returned to its initial state.");
 
         StartCoroutine(StartCooldown());
+
+        interactableTrigger?.UpdateRepairProgress(1f);
     }
 
     IEnumerator StartCooldown()
