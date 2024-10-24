@@ -4,10 +4,12 @@ using static Machines;
 public class CharacterInfo : MonoBehaviour
 {
     [SerializeField] private float _walkSpeed = 10;
-    [SerializeField] float interactionDistance = 5f;
+    [SerializeField] float interactionDistance = 4f;
     [SerializeField] LayerMask interactionLayer;
 
+    [SerializeField] ParticleSystem sparkParticles;
     InteractableTrigger interactableTrigger;
+
     IMachine currentInteractableMachine;
 
     void Start()
@@ -17,6 +19,11 @@ public class CharacterInfo : MonoBehaviour
         if (interactableTrigger == null)
         {
             Debug.LogWarning("No InteractableTrigger found in the scene.");
+        }
+
+        if (sparkParticles != null)
+        {
+            sparkParticles.Stop();
         }
     }
 
@@ -52,6 +59,24 @@ public class CharacterInfo : MonoBehaviour
         {
             currentInteractableMachine = null;
             interactableTrigger.ClearInteractableMachine();
+        }
+    }
+
+    public void StartRepairEffect()
+    {
+        if (sparkParticles != null && !sparkParticles.isPlaying)
+        {
+            sparkParticles.Play();
+            Debug.Log("Spark particles started.");
+        }
+    }
+
+    public void StopRepairEffect()
+    {
+        if (sparkParticles != null && sparkParticles.isPlaying)
+        {
+            sparkParticles.Stop();
+            Debug.Log("Spark particles stopped.");
         }
     }
 }

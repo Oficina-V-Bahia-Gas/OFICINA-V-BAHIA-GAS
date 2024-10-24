@@ -9,7 +9,7 @@ public class MachineDetrition : MonoBehaviour, IMachine
 
     MeshRenderer machineRenderer;
 
-    [SerializeField] ParticleSystem smokeParticles, sparkParticles;
+    [SerializeField] ParticleSystem smokeParticles;
 
     [SerializeField] float wearDuration;
     [SerializeField] float repairTime = 10f;
@@ -25,6 +25,7 @@ public class MachineDetrition : MonoBehaviour, IMachine
     Color redColor = Color.red;
 
     [SerializeField] PlayerInteractionController interactionController;
+    [SerializeField] CharacterInfo characterInfo;
     [SerializeField] InteractableTrigger interactableTrigger;
 
     void Start()
@@ -44,19 +45,27 @@ public class MachineDetrition : MonoBehaviour, IMachine
         {
             ApplyWear();
             ApplyTremor();
+            AdjustSmokeIntensity();
 
-            if (currentTime >= wearDuration / 3f && currentTime < 2f * (wearDuration / 3f) && !smokeParticles.isPlaying)
+            if (currentTime >= wearDuration / 3f && !smokeParticles.isPlaying)
             {
                 smokeParticles.Play();
                 Debug.Log("Smoke particles started.");
             }
-            else if ((currentTime < wearDuration / 3f || currentTime >= 2f * (wearDuration / 3f)) && smokeParticles.isPlaying)
-            {
-                smokeParticles.Stop();
-                Debug.Log("Smoke particles stopped.");
-            }
         }
-        else
+
+        if (currentState == MachineState.Repair && !smokeParticles.isPlaying)
+        {
+            smokeParticles.Play();
+        }
+
+        if (currentState == MachineState.Cooldown && smokeParticles.isPlaying)
+        {
+            smokeParticles.Stop();
+            Debug.Log("Smoke particles stopped.");
+        }
+
+        if (currentState != MachineState.Wear)
         {
             transform.position = initialPosition;
         }
@@ -92,6 +101,16 @@ public class MachineDetrition : MonoBehaviour, IMachine
         }
     }
 
+    void AdjustSmokeIntensity()
+    {
+        if (smokeParticles != null)
+        {
+            var _emission = smokeParticles.emission;
+            float _intensity = Mathf.Lerp(0.1f, 1.0f, currentTime / wearDuration);
+            _emission.rateOverTime = new ParticleSystem.MinMaxCurve(10f * _intensity, 30f * _intensity);
+        }
+    }
+
     void ApplyTremor()
     {
         if (tremorIntensity > 0f)
@@ -106,7 +125,27 @@ public class MachineDetrition : MonoBehaviour, IMachine
 
     void ApplyRepair()
     {
+        repairTime = CalculateRepairTime();
+        characterInfo?.StartRepairEffect();
         StartCoroutine(RepairCoroutine());
+    }
+
+    float CalculateRepairTime()
+    {
+        float _wearPercentage = currentTime / wearDuration;
+
+        if (_wearPercentage <= 1f / 3f)
+        {
+            return repairTime * 0.5f;
+        }
+        else if (_wearPercentage <= 2f / 3f)
+        {
+            return repairTime * 0.75f;
+        }
+        else
+        {
+            return repairTime;
+        }
     }
 
     IEnumerator RepairCoroutine()
@@ -114,8 +153,6 @@ public class MachineDetrition : MonoBehaviour, IMachine
         float _initialRepairTime = currentTime;
         float _repairElapsedTime = 0f;
         Color _startColor = machineRenderer.material.color;
-
-        sparkParticles.Play();
 
         while (_repairElapsedTime < repairTime)
         {
@@ -131,7 +168,7 @@ public class MachineDetrition : MonoBehaviour, IMachine
             yield return null;
         }
 
-        sparkParticles.Stop();
+        characterInfo?.StopRepairEffect();
 
         machineRenderer.material.color = initialColor;
         currentTime = 0f;
