@@ -966,7 +966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _walkSpeed: 300
-  interactionDistance: 5
+  interactionDistance: 4
   interactionLayer:
     serializedVersion: 2
     m_Bits: 64
