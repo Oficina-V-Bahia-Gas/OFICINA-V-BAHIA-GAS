@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2270953058019775134}
+  - component: {fileID: 2186331457962911108}
   m_Layer: 0
   m_Name: Cano Reto
   m_TagString: Untagged
@@ -25,13 +26,34 @@ Transform:
   m_GameObject: {fileID: 4233816536313824097}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.03, y: -27.642452, z: -38.839596}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5179970054341879522}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2186331457962911108
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4233816536313824097}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 14.791054, y: 3.2043576, z: 3.0523336}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &4641040971571134729
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54,15 +76,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: a3fd64f109c325b4f8295b31d73ceb97, type: 2}
     - target: {fileID: -8679921383154817045, guid: 3319617e112b68c4583d965f7f7ae723, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.56635
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3319617e112b68c4583d965f7f7ae723, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 27.642452
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3319617e112b68c4583d965f7f7ae723, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 38.839596
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3319617e112b68c4583d965f7f7ae723, type: 3}
       propertyPath: m_LocalRotation.w

@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8801850328078370447}
+  - component: {fileID: 810233749084695569}
+  - component: {fileID: 7749688626828546692}
   m_Layer: 0
   m_Name: Cano curvado curto Tipo 1
   m_TagString: Untagged
@@ -32,6 +34,48 @@ Transform:
   - {fileID: 8729247735856839532}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &810233749084695569
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584416418323712679}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.6835644, y: 2.737436, z: 2.8927941}
+  m_Center: {x: -0.3612491, y: 0.09461272, z: 0}
+--- !u!65 &7749688626828546692
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584416418323712679}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.1869822, y: 1.2580352, z: 2.8919878}
+  m_Center: {x: -1.1611576, y: -1.7804418, z: 0}
 --- !u!1001 &9128301585168620679
 PrefabInstance:
   m_ObjectHideFlags: 0
