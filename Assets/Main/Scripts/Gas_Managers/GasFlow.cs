@@ -16,7 +16,7 @@ public class GasFlow : MonoBehaviour
 
     [Header("Atributos")]
     public float currentFlow = 1f;
-    private float fixValue = 1f;
+    [SerializeField] private float fixValue = 1f;
 
 
 
