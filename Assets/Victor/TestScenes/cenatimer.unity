@@ -969,7 +969,8 @@ MonoBehaviour:
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
+  m_fontSharedMaterials:
+  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
@@ -3772,6 +3773,7 @@ MonoBehaviour:
   _joystick: {fileID: 1481021866}
   _characterInfo: {fileID: 1895971611}
   _rb: {fileID: 1895971609}
+  interactionController: {fileID: 0}
 --- !u!114 &1895971611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3785,6 +3787,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _walkSpeed: 300
+  interactionDistance: 4
+  interactionLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  sparkParticles: {fileID: 0}
 --- !u!1 &1947708671
 GameObject:
   m_ObjectHideFlags: 0
