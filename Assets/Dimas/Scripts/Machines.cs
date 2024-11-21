@@ -43,7 +43,6 @@ public class Machines : MonoBehaviour
         {
             currentDurability -= Time.deltaTime;
             activatedCanvas = false;
-            // Quando a nova durabilidade for setada, colocar o "activatedCanvas = false";
         }
         else 
         {
