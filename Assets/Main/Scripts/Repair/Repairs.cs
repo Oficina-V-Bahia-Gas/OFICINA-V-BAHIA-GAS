@@ -30,7 +30,6 @@ public abstract class Repairs : MonoBehaviour
         }
 
         Debug.Log("Conserto concluído.");
-        ResetRepair();
     }
 
     public virtual void ResetRepair()
