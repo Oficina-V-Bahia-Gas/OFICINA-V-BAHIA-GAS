@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SwipeCameraManager : MonoBehaviour
 {
-    private Transform target;
+    Transform target;
 
     public void SetTargetTransform(Transform newTarget)
     {
@@ -23,5 +23,13 @@ public class SwipeCameraManager : MonoBehaviour
     {
         target = null;
         gameObject.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (target == null && gameObject.activeSelf)
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

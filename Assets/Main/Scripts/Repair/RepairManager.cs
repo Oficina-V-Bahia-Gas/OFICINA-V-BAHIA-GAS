@@ -53,14 +53,21 @@ public class RepairManager : MonoBehaviour
         return repairInProgress;
     }
 
-    public void EndRepair()
+    public void NotifyRepairComplete()
     {
-        if (currentRepairScript != null)
+        if (!repairInProgress)
         {
-            currentRepairScript.FinishRepair();
-            Debug.Log($"Conserto concluído: {currentRepair}");
-            repairInProgress = false;
-            ResetCanvas();
+            Debug.LogWarning("Nenhum conserto em andamento para finalizar.");
+            return;
+        }
+
+        Debug.Log($"Conserto finalizado: {currentRepair}");
+        ResetCanvas();
+        repairInProgress = false;
+
+        if (HudInteraction.instance.currentMachine != null)
+        {
+            HudInteraction.instance.currentMachine.Repair();
         }
     }
 
@@ -78,8 +85,6 @@ public class RepairManager : MonoBehaviour
 
     void ActivateCanvas(int index)
     {
-        if (repairInProgress) return;
-
         for (int i = 0; i < canvasGroupsRepairs.Length; i++)
         {
             if (i == index)
@@ -100,11 +105,11 @@ public class RepairManager : MonoBehaviour
 
     public void ResetCanvas()
     {
-        foreach (var canvasGroup in canvasGroupsRepairs)
+        foreach (var _canvasGroup in canvasGroupsRepairs)
         {
-            canvasGroup.alpha = 0;
-            canvasGroup.interactable = false;
-            canvasGroup.blocksRaycasts = false;
+            _canvasGroup.alpha = 0;
+            _canvasGroup.interactable = false;
+            _canvasGroup.blocksRaycasts = false;
         }
     }
 }

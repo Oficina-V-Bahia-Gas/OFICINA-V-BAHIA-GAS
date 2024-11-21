@@ -2,11 +2,19 @@ using UnityEngine;
 
 public class RepairRotate : Repairs
 {
+    [SerializeField] float rotationsRequired = 360f;
     float rotationProgress = 0f;
-    public float rotationsRequired = 360f;
 
-    Vector2 lastTouchPosition;
+    Vector2 rotationCenter;
+    Vector2 lastTouchDirection;
+
     bool isRotating = false;
+    const float minRotationThreshold = 5f;
+
+    private void Start()
+    {
+        rotationCenter = new Vector2(Screen.width / 2, Screen.height / 2);
+    }
 
     private void Update()
     {
@@ -14,16 +22,16 @@ public class RepairRotate : Repairs
 
         if (Input.touchCount > 0)
         {
-            Touch touch = Input.GetTouch(0);
+            Touch _touch = Input.GetTouch(0);
 
-            switch (touch.phase)
+            switch (_touch.phase)
             {
                 case TouchPhase.Began:
-                    StartRotation(touch.position);
+                    StartRotation(_touch.position);
                     break;
 
                 case TouchPhase.Moved:
-                    UpdateRotation(touch.position);
+                    UpdateRotation(_touch.position);
                     break;
 
                 case TouchPhase.Ended:
@@ -36,7 +44,7 @@ public class RepairRotate : Repairs
 
     void StartRotation(Vector2 touchPosition)
     {
-        lastTouchPosition = touchPosition;
+        lastTouchDirection = (touchPosition - rotationCenter).normalized;
         isRotating = true;
     }
 
@@ -44,16 +52,20 @@ public class RepairRotate : Repairs
     {
         if (!isRotating) return;
 
-        Vector2 delta = touchPosition - lastTouchPosition;
-        float rotationDelta = Mathf.Abs(delta.x) + Mathf.Abs(delta.y);
-        rotationProgress += rotationDelta;
-        lastTouchPosition = touchPosition;
+        Vector2 _currentTouchDirection = (touchPosition - rotationCenter).normalized;
+        float _angleDelta = Vector2.SignedAngle(lastTouchDirection, _currentTouchDirection);
 
-        Debug.Log($"Progresso de rotação: {rotationProgress}/{rotationsRequired}");
-
-        if (rotationProgress >= rotationsRequired)
+        if (Mathf.Abs(_angleDelta) >= minRotationThreshold)
         {
-            FinishRepair();
+            rotationProgress += Mathf.Abs(_angleDelta);
+            Debug.Log($"Progresso de rotação: {rotationProgress}/{rotationsRequired}");
+
+            lastTouchDirection = _currentTouchDirection;
+
+            if (rotationProgress >= rotationsRequired)
+            {
+                FinishRepair();
+            }
         }
     }
 
@@ -67,6 +79,6 @@ public class RepairRotate : Repairs
         base.ResetRepair();
         rotationProgress = 0f;
         isRotating = false;
-        Debug.Log("Resetando conserto: RepairRotate");
+        Debug.Log("Conserto resetado: RepairRotate");
     }
 }

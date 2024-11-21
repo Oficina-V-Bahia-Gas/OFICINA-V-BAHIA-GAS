@@ -13,8 +13,12 @@ public class HudInteraction : MonoBehaviour
     CanvasGroup hudCanvasGroup;
     bool isHudOpen = false;
 
+    public static HudInteraction instance;
+
     private void Start()
     {
+        instance = this;
+
         hudCanvasGroup = GetComponent<CanvasGroup>();
         if (hudCanvasGroup == null)
         {
@@ -30,7 +34,8 @@ public class HudInteraction : MonoBehaviour
 
             if (currentMachine.needsRepair && !currentMachine.repairActive && !repairManager.IsRepairInProgress())
             {
-                SortearConserto();
+                repairManager.RaffleRepair();
+                currentMachine.ActivateRepair();
             }
         }
     }
@@ -110,13 +115,6 @@ public class HudInteraction : MonoBehaviour
         }
     }
 
-    void SortearConserto()
-    {
-        Debug.Log("Sorteando um conserto para a máquina.");
-        repairManager.RaffleRepair();
-        currentMachine.ActivateRepair();
-    }
-
     public void OpenHud()
     {
         if (hudCanvasGroup != null && !isHudOpen)
@@ -137,6 +135,8 @@ public class HudInteraction : MonoBehaviour
             hudCanvasGroup.blocksRaycasts = false;
             isHudOpen = false;
         }
+
+        currentMachine.OnUse = false;
 
         currentMachine = null;
     }

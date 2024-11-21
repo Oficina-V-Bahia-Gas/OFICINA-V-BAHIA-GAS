@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class RepairSwipe : Repairs
 {
-    [SerializeField] private SwipeCameraManager swipeCameraManager;
-    [SerializeField] private float distance = 10f;
+    public SwipeCameraManager swipeCameraManager;
+    public float distance = 50f;
     float swipeProgress = 0f;
-    public float swipesRequired = 5f;
+    public float swipesRequired = 20f;
 
     Machines currentMachine;
 
@@ -13,18 +13,18 @@ public class RepairSwipe : Repairs
     {
         base.StartRepair();
 
-        CharacterInfo characterInfo = FindObjectOfType<CharacterInfo>();
-        if (characterInfo != null)
+        CharacterInfo _characterInfo = FindObjectOfType<CharacterInfo>();
+        if (_characterInfo != null)
         {
-            currentMachine = characterInfo.GetLastInteractedMachine();
+            currentMachine = _characterInfo.GetLastInteractedMachine();
         }
 
         if (swipeCameraManager != null && currentMachine != null)
         {
-            Transform target = GetFirstChild(currentMachine);
-            if (target != null)
+            Transform _target = GetFirstChild(currentMachine);
+            if (_target != null)
             {
-                swipeCameraManager.SetTargetTransform(target);
+                swipeCameraManager.SetTargetTransform(_target);
                 swipeCameraManager.ActivateCamera();
             }
             else
@@ -38,11 +38,11 @@ public class RepairSwipe : Repairs
         }
     }
 
-    Transform GetFirstChild(Machines machine)
+    Transform GetFirstChild(Machines _machine)
     {
-        if (machine.transform.childCount > 0)
+        if (_machine.transform.childCount > 0)
         {
-            return machine.transform.GetChild(0);
+            return _machine.transform.GetChild(0);
         }
         return null;
     }
@@ -53,10 +53,10 @@ public class RepairSwipe : Repairs
 
         if (Input.touchCount > 0)
         {
-            Touch touch = Input.GetTouch(0);
-            float dist = Vector2.Distance(Vector2.zero, touch.deltaPosition);
+            Touch _touch = Input.GetTouch(0);
+            float _distance = Vector2.Distance(Vector2.zero, _touch.deltaPosition);
 
-            if (dist >= distance)
+            if (_distance >= distance)
             {
                 swipeProgress++;
                 Debug.Log($"Swipe registrado: {swipeProgress}/{swipesRequired}");

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Machines : MonoBehaviour
 {
-    public enum MachineType { HydraulicPump, Transmitter, Other }
+    public enum MachineType { BombaHidraulica, Transmissor, Outro }
     public MachineType machineType;
 
     [Header("Durability")]
@@ -22,25 +22,42 @@ public class Machines : MonoBehaviour
     public float maxCooldown = 7f;
     float repairCooldown;
 
+    bool onUse = false;
+
+    public bool OnUse { get { return onUse; }  set { onUse = value; } }
+
+    bool activatedCanvas = false;
+
     public bool repairActive { get; private set; }
 
     private void Start()
     {
-        SetRandomDurability();
+        SetDurability();
         repairCooldown = Random.Range(minCooldown, maxCooldown);
         CheckRepairStatus();
     }
 
     private void Update()
     {
-        if (currentDurability > 0)
+        if (currentDurability > 0 && !onCooldown)
         {
             currentDurability -= Time.deltaTime;
+            activatedCanvas = false;
+            // Quando a nova durabilidade for setada, colocar o "activatedCanvas = false";
         }
-        else if (!needsRepair && !onCooldown)
+        else 
         {
-            needsRepair = true;
-            ActivateRepair();
+            if (!needsRepair && !onCooldown)
+            {
+                needsRepair = true;
+                ActivateRepair();
+            }
+
+            if (OnUse && !activatedCanvas)
+            {
+                CharacterInfo.instance.hudInteraction.repairManager.RaffleRepair();
+                activatedCanvas = true;
+            }
         }
     }
 
@@ -51,7 +68,7 @@ public class Machines : MonoBehaviour
             needsRepair = false;
             DeactivateRepair();
             onCooldown = true;
-            SetRandomDurability();
+            SetDurability();
             StartCoroutine(RepairCooldown());
         }
     }
@@ -68,7 +85,7 @@ public class Machines : MonoBehaviour
         needsRepair = currentDurability <= 0;
     }
 
-    void SetRandomDurability()
+    void SetDurability()
     {
         maxDurability = Random.Range(minDurability, maxDurabilityRange);
         currentDurability = maxDurability;
@@ -77,10 +94,26 @@ public class Machines : MonoBehaviour
     public void ActivateRepair()
     {
         repairActive = true;
+
+        GasFlow _gasFlow = GetComponent<GasFlow>();
+        _gasFlow.ChangeFixValue(0f);
     }
 
     public void DeactivateRepair()
     {
         repairActive = false;
+
+        GasFlow _gasFlow = GetComponent<GasFlow>();
+        _gasFlow.ChangeFixValue(1f);
+    }
+
+    public bool IsCanvasActivated()
+    {
+        return activatedCanvas;
+    }
+
+    public void SetCanvasActivated(bool state)
+    {
+        activatedCanvas = state;
     }
 }

@@ -758,6 +758,7 @@ GameObject:
   - component: {fileID: 96162587}
   - component: {fileID: 96162586}
   - component: {fileID: 96162588}
+  - component: {fileID: 96162589}
   m_Layer: 5
   m_Name: Image (2)
   m_TagString: Untagged
@@ -835,6 +836,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdDuration: 2
+--- !u!114 &96162589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96162583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 96162588}
+          m_TargetAssemblyTypeName: RepairHold, Assembly-CSharp
+          m_MethodName: StartHolding
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 96162588}
+          m_TargetAssemblyTypeName: RepairHold, Assembly-CSharp
+          m_MethodName: StopHolding
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &103391405
 GameObject:
   m_ObjectHideFlags: 0
@@ -1705,8 +1751,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swipeCameraManager: {fileID: 364193377}
-  distance: 10
-  swipesRequired: 5
+  distance: 30
+  swipesRequired: 100
 --- !u!1 &290793322
 GameObject:
   m_ObjectHideFlags: 0
@@ -2199,7 +2245,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 247
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: a3712b43e34f0cf488686949f3c0f4e9, type: 2}
   m_TargetDisplay: 0
@@ -12180,6 +12226,7 @@ GameObject:
   - component: {fileID: 459896953}
   - component: {fileID: 459896952}
   - component: {fileID: 459896954}
+  - component: {fileID: 459896955}
   m_Layer: 5
   m_Name: Image (1)
   m_TagString: Untagged
@@ -12256,7 +12303,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3716a3a2cd60f704c9939517ba1e7708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tapsRequired: 10
+  tapsRequired: 20
+--- !u!114 &459896955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459896949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 459896954}
+          m_TargetAssemblyTypeName: RepairTap, Assembly-CSharp
+          m_MethodName: OnTap
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &460336622
 GameObject:
   m_ObjectHideFlags: 0
@@ -12511,6 +12587,7 @@ GameObject:
   - component: {fileID: 494086653}
   - component: {fileID: 494086652}
   - component: {fileID: 494086655}
+  - component: {fileID: 494086656}
   m_Layer: 6
   m_Name: Maquina3
   m_TagString: Untagged
@@ -12623,8 +12700,25 @@ MonoBehaviour:
   maxDurability: 0
   minDurability: 5
   maxDurabilityRange: 10
-  minCooldown: 5
-  maxCooldown: 7
+  minCooldown: 20
+  maxCooldown: 50
+--- !u!114 &494086656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494086650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 106494c5359d3b64d910c107bb003f5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  origin: 1
+  inputs:
+  - {fileID: 1959562311}
+  currentFlow: 1
+  fixValue: 1
 --- !u!1 &506733206
 GameObject:
   m_ObjectHideFlags: 0
@@ -12779,7 +12873,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 624826536}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: t_CameraMaq5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17882,6 +17976,7 @@ GameObject:
   - component: {fileID: 791307820}
   - component: {fileID: 791307819}
   - component: {fileID: 791307822}
+  - component: {fileID: 791307823}
   m_Layer: 6
   m_Name: Maquina4
   m_TagString: Untagged
@@ -17994,8 +18089,25 @@ MonoBehaviour:
   maxDurability: 0
   minDurability: 5
   maxDurabilityRange: 10
-  minCooldown: 5
-  maxCooldown: 7
+  minCooldown: 20
+  maxCooldown: 50
+--- !u!114 &791307823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791307817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 106494c5359d3b64d910c107bb003f5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  origin: 1
+  inputs:
+  - {fileID: 494086656}
+  currentFlow: 1
+  fixValue: 1
 --- !u!1 &800352910
 GameObject:
   m_ObjectHideFlags: 0
@@ -19737,6 +19849,7 @@ GameObject:
   - component: {fileID: 1332344562}
   - component: {fileID: 1332344561}
   - component: {fileID: 1332344565}
+  - component: {fileID: 1332344566}
   m_Layer: 6
   m_Name: Maquina1
   m_TagString: Untagged
@@ -19849,8 +19962,24 @@ MonoBehaviour:
   maxDurability: 0
   minDurability: 5
   maxDurabilityRange: 10
-  minCooldown: 5
-  maxCooldown: 7
+  minCooldown: 20
+  maxCooldown: 50
+--- !u!114 &1332344566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1332344560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 106494c5359d3b64d910c107bb003f5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  origin: 1
+  inputs: []
+  currentFlow: 1
+  fixValue: 1
 --- !u!1 &1377886368
 GameObject:
   m_ObjectHideFlags: 0
@@ -25537,7 +25666,7 @@ GameObject:
   - component: {fileID: 1550720975}
   - component: {fileID: 1550720977}
   - component: {fileID: 1550720976}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SmokeParticles (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30729,19 +30858,7 @@ MonoBehaviour:
   - eventID: 5
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 274602986}
-          m_TargetAssemblyTypeName: RepairSwipe, Assembly-CSharp
-          m_MethodName: OnSwipe
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
 --- !u!1 &1738036674
 GameObject:
   m_ObjectHideFlags: 0
@@ -30866,7 +30983,8 @@ GameObject:
   - component: {fileID: 1745188825}
   - component: {fileID: 1745188824}
   - component: {fileID: 1745188827}
-  m_Layer: 0
+  - component: {fileID: 1745188828}
+  m_Layer: 6
   m_Name: Maquina5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30978,8 +31096,25 @@ MonoBehaviour:
   maxDurability: 0
   minDurability: 5
   maxDurabilityRange: 10
-  minCooldown: 5
-  maxCooldown: 7
+  minCooldown: 20
+  maxCooldown: 50
+--- !u!114 &1745188828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745188822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 106494c5359d3b64d910c107bb003f5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  origin: 1
+  inputs:
+  - {fileID: 791307823}
+  currentFlow: 1
+  fixValue: 1
 --- !u!1 &1765492251
 GameObject:
   m_ObjectHideFlags: 0
@@ -31576,6 +31711,7 @@ GameObject:
   - component: {fileID: 1959562308}
   - component: {fileID: 1959562307}
   - component: {fileID: 1959562310}
+  - component: {fileID: 1959562311}
   m_Layer: 6
   m_Name: Maquina2
   m_TagString: Untagged
@@ -31688,8 +31824,25 @@ MonoBehaviour:
   maxDurability: 0
   minDurability: 5
   maxDurabilityRange: 10
-  minCooldown: 5
-  maxCooldown: 7
+  minCooldown: 20
+  maxCooldown: 50
+--- !u!114 &1959562311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959562304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 106494c5359d3b64d910c107bb003f5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  origin: 1
+  inputs:
+  - {fileID: 1332344566}
+  currentFlow: 1
+  fixValue: 1
 --- !u!1 &2012718899
 GameObject:
   m_ObjectHideFlags: 0
@@ -37072,7 +37225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

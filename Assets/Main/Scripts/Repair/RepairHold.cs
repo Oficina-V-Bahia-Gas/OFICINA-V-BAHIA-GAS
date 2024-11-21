@@ -4,7 +4,7 @@ public class RepairHold : Repairs
 {
     bool isHolding = false;
     float holdProgress = 0f;
-    public float holdDuration = 2f;
+    public float holdDuration = 5f;
 
     private void Update()
     {
@@ -21,6 +21,10 @@ public class RepairHold : Repairs
 
     public void StartHolding()
     {
+        Debug.Log("Início do Hold.");
+
+        if (!repairInProgress) return;
+
         isHolding = true;
         holdProgress = 0f;
     }
@@ -28,6 +32,7 @@ public class RepairHold : Repairs
     public void StopHolding()
     {
         isHolding = false;
+        Debug.Log("Hold interrompido.");
     }
 
     public override void ResetRepair()
