@@ -77,14 +77,10 @@ public class Machines : MonoBehaviour
     public void ActivateRepair()
     {
         repairActive = true;
-        GasFlow _gasFlow = GetComponent<GasFlow>();
-        _gasFlow.ChangeFixValue(0f);
     }
 
     public void DeactivateRepair()
     {
         repairActive = false;
-        GasFlow _gasFlow = GetComponent<GasFlow>();
-        _gasFlow.ChangeFixValue(1f);
     }
 }
