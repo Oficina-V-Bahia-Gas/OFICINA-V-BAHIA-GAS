@@ -12511,6 +12511,7 @@ GameObject:
   - component: {fileID: 494086653}
   - component: {fileID: 494086652}
   - component: {fileID: 494086655}
+  - component: {fileID: 494086656}
   m_Layer: 6
   m_Name: Maquina3
   m_TagString: Untagged
@@ -12625,6 +12626,23 @@ MonoBehaviour:
   maxDurabilityRange: 10
   minCooldown: 5
   maxCooldown: 7
+--- !u!114 &494086656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494086650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 106494c5359d3b64d910c107bb003f5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  origin: 0
+  inputs:
+  - {fileID: 1959562311}
+  currentFlow: 1
+  fixValue: 1
 --- !u!1 &506733206
 GameObject:
   m_ObjectHideFlags: 0
@@ -17882,6 +17900,7 @@ GameObject:
   - component: {fileID: 791307820}
   - component: {fileID: 791307819}
   - component: {fileID: 791307822}
+  - component: {fileID: 791307823}
   m_Layer: 6
   m_Name: Maquina4
   m_TagString: Untagged
@@ -17996,6 +18015,23 @@ MonoBehaviour:
   maxDurabilityRange: 10
   minCooldown: 5
   maxCooldown: 7
+--- !u!114 &791307823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791307817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 106494c5359d3b64d910c107bb003f5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  origin: 0
+  inputs:
+  - {fileID: 494086656}
+  currentFlow: 1
+  fixValue: 1
 --- !u!1 &800352910
 GameObject:
   m_ObjectHideFlags: 0
@@ -19737,6 +19773,7 @@ GameObject:
   - component: {fileID: 1332344562}
   - component: {fileID: 1332344561}
   - component: {fileID: 1332344565}
+  - component: {fileID: 1332344566}
   m_Layer: 6
   m_Name: Maquina1
   m_TagString: Untagged
@@ -19851,6 +19888,22 @@ MonoBehaviour:
   maxDurabilityRange: 10
   minCooldown: 5
   maxCooldown: 7
+--- !u!114 &1332344566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1332344560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 106494c5359d3b64d910c107bb003f5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  origin: 1
+  inputs: []
+  currentFlow: 1
+  fixValue: 1
 --- !u!1 &1377886368
 GameObject:
   m_ObjectHideFlags: 0
@@ -30866,6 +30919,7 @@ GameObject:
   - component: {fileID: 1745188825}
   - component: {fileID: 1745188824}
   - component: {fileID: 1745188827}
+  - component: {fileID: 1745188828}
   m_Layer: 0
   m_Name: Maquina5
   m_TagString: Untagged
@@ -30980,6 +31034,23 @@ MonoBehaviour:
   maxDurabilityRange: 10
   minCooldown: 5
   maxCooldown: 7
+--- !u!114 &1745188828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745188822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 106494c5359d3b64d910c107bb003f5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  origin: 0
+  inputs:
+  - {fileID: 791307823}
+  currentFlow: 1
+  fixValue: 1
 --- !u!1 &1765492251
 GameObject:
   m_ObjectHideFlags: 0
@@ -31576,6 +31647,7 @@ GameObject:
   - component: {fileID: 1959562308}
   - component: {fileID: 1959562307}
   - component: {fileID: 1959562310}
+  - component: {fileID: 1959562311}
   m_Layer: 6
   m_Name: Maquina2
   m_TagString: Untagged
@@ -31690,6 +31762,23 @@ MonoBehaviour:
   maxDurabilityRange: 10
   minCooldown: 5
   maxCooldown: 7
+--- !u!114 &1959562311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959562304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 106494c5359d3b64d910c107bb003f5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  origin: 0
+  inputs:
+  - {fileID: 1332344566}
+  currentFlow: 1
+  fixValue: 1
 --- !u!1 &2012718899
 GameObject:
   m_ObjectHideFlags: 0
