@@ -31417,6 +31417,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   repairTypes: 00000000010000000200000003000000
+  repairHold: {fileID: 96162588}
+  repairTap: {fileID: 459896954}
+  repairRotate: {fileID: 1256861177}
+  repairSwipe: {fileID: 274602986}
   canvasGroupsRepairs:
   - {fileID: 1765492255}
   - {fileID: 2144750887}

@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class RepairManager : MonoBehaviour
 {
@@ -7,6 +7,11 @@ public class RepairManager : MonoBehaviour
     public List<RepairType> repairTypes = new List<RepairType>();
     RepairType currentRepair;
     Repairs currentRepairScript;
+
+    public RepairHold repairHold;
+    public RepairTap repairTap;
+    public RepairRotate repairRotate;
+    public RepairSwipe repairSwipe;
 
     public CanvasGroup[] canvasGroupsRepairs;
     bool repairInProgress = false;
@@ -63,10 +68,10 @@ public class RepairManager : MonoBehaviour
     {
         switch (type)
         {
-            case RepairType.Type1: return GetComponent<RepairHold>();
-            case RepairType.Type2: return GetComponent<RepairTap>();
-            case RepairType.Type3: return GetComponent<RepairRotate>();
-            case RepairType.Type4: return GetComponent<RepairSwipe>();
+            case RepairType.Type1: return repairHold;
+            case RepairType.Type2: return repairTap;
+            case RepairType.Type3: return repairRotate;
+            case RepairType.Type4: return repairSwipe;
             default: return null;
         }
     }
