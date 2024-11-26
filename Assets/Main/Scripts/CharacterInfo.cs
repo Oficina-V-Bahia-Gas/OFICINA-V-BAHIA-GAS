@@ -1,30 +1,20 @@
 using UnityEngine;
-using static Machines;
 
 public class CharacterInfo : MonoBehaviour
 {
-    [SerializeField] private float _walkSpeed = 10;
+    [SerializeField] float walkSpeed = 10f;
     [SerializeField] float interactionDistance = 4f;
     [SerializeField] LayerMask interactionLayer;
 
-    [SerializeField] ParticleSystem sparkParticles;
-    InteractableTrigger interactableTrigger;
+    public HudInteraction hudInteraction;
 
-    IMachine currentInteractableMachine;
+    Machines currentMachine;
 
-    void Start()
+    public static CharacterInfo instance;
+
+    private void Start()
     {
-        interactableTrigger = FindObjectOfType<InteractableTrigger>();
-
-        if (interactableTrigger == null)
-        {
-            Debug.LogWarning("No InteractableTrigger found in the scene.");
-        }
-
-        if (sparkParticles != null)
-        {
-            sparkParticles.Stop();
-        }
+        instance = this;
     }
 
     void Update()
@@ -34,7 +24,12 @@ public class CharacterInfo : MonoBehaviour
 
     public float GetWalkSpeed()
     {
-        return _walkSpeed;
+        return walkSpeed;
+    }
+
+    public Machines GetLastInteractedMachine()
+    {
+        return currentMachine;
     }
 
     void DetectInteractable()
@@ -46,37 +41,35 @@ public class CharacterInfo : MonoBehaviour
 
         if (Physics.Raycast(_ray, out _hit, interactionDistance, interactionLayer))
         {
-            IMachine machine = _hit.collider.GetComponent<IMachine>();
+            Machines machine = _hit.collider.GetComponent<Machines>();
 
-            if (machine != null)
+            if (machine != null && machine != currentMachine)
             {
-                currentInteractableMachine = machine;
-                interactableTrigger.SetInteractableMachine(currentInteractableMachine);
-                Debug.Log("Player can interact with: " + _hit.collider.name);
+                currentMachine = machine;
             }
         }
         else
         {
-            currentInteractableMachine = null;
-            interactableTrigger.ClearInteractableMachine();
+            currentMachine = null;
         }
     }
 
-    public void StartRepairEffect()
+    public void OpenHud()
     {
-        if (sparkParticles != null && !sparkParticles.isPlaying)
+        if (currentMachine != null && hudInteraction != null)
         {
-            sparkParticles.Play();
-            Debug.Log("Spark particles started.");
-        }
-    }
+            if (hudInteraction.IsHudConfiguredFor(currentMachine))
+            {
+                Debug.Log("HUD já está configurada para esta máquina.");
+                return;
+            }
 
-    public void StopRepairEffect()
-    {
-        if (sparkParticles != null && sparkParticles.isPlaying)
+            hudInteraction.ConfigureHud(currentMachine);
+            currentMachine.OnUse = true;
+        }
+        else
         {
-            sparkParticles.Stop();
-            Debug.Log("Spark particles stopped.");
+            Debug.LogWarning("Nenhuma máquina detectada ou HudInteraction não configurado.");
         }
     }
 }

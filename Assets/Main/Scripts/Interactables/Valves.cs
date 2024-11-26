@@ -2,26 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Valves : InteractableClass
+public class Valves : Machines
 {
-    [SerializeField]
-    protected string valveName = "Default Valve Name";
-    [SerializeField]
-    [Tooltip("Valor decaído por segundo")]
-    protected float decayRate = 0.5f;
-    [SerializeField]
-    [Tooltip("Durabilidade da válvula")]
-    protected float durability = 100f;
+    public bool isOpen;
 
-    public override void Interact()
+    public void AlternarEstado()
     {
-        base.Interact();
-
-        Debug.Log(valveName);
-    }
-
-    protected void Update()
-    {
-        
+        isOpen = !isOpen;
+        Debug.Log(isOpen ? "Válvula aberta!" : "Válvula fechada!");
     }
 }
