@@ -62,8 +62,8 @@ public class HudInteraction : MonoBehaviour
         {
             if (!repairManager.IsRepairInProgress())
             {
-                repairManager.RaffleRepair();
-                currentMachine.ActivateRepair();
+                repairManager.RaffleRepair(); // Remover
+                currentMachine.ActivateRepair(); // Baseado na máquina
                 Debug.Log("Novo conserto sorteado.");
             }
             else

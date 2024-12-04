@@ -12696,6 +12696,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   machineType: 0
+  coreRepairs: []
+  coreRepairsStart: 0.5
+  coreRepairsAmount: 1
+  randomRepairs: []
+  randomRepairsStart: 0.3
+  radomRepairsAmount: 0
+  fullRepairs: []
+  fullRepairsStart: 0
+  fullRepairsAmount: 0
+  currentRepairs: []
   currentDurability: 0
   maxDurability: 0
   minDurability: 5
@@ -18085,6 +18095,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   machineType: 0
+  coreRepairs: []
+  coreRepairsStart: 0.5
+  coreRepairsAmount: 1
+  randomRepairs: []
+  randomRepairsStart: 0.3
+  radomRepairsAmount: 0
+  fullRepairs: []
+  fullRepairsStart: 0
+  fullRepairsAmount: 0
+  currentRepairs: []
   currentDurability: 0
   maxDurability: 0
   minDurability: 5
@@ -19958,6 +19978,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   machineType: 0
+  coreRepairs: []
+  coreRepairsStart: 0.5
+  coreRepairsAmount: 1
+  randomRepairs: []
+  randomRepairsStart: 0.3
+  radomRepairsAmount: 0
+  fullRepairs: []
+  fullRepairsStart: 0
+  fullRepairsAmount: 0
+  currentRepairs: []
   currentDurability: 0
   maxDurability: 0
   minDurability: 5
@@ -31092,6 +31122,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   machineType: 0
+  coreRepairs: []
+  coreRepairsStart: 0.5
+  coreRepairsAmount: 1
+  randomRepairs: []
+  randomRepairsStart: 0.3
+  radomRepairsAmount: 0
+  fullRepairs: []
+  fullRepairsStart: 0
+  fullRepairsAmount: 0
+  currentRepairs: []
   currentDurability: 0
   maxDurability: 0
   minDurability: 5
@@ -31820,6 +31860,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   machineType: 0
+  coreRepairs: []
+  coreRepairsStart: 0.5
+  coreRepairsAmount: 1
+  randomRepairs: []
+  randomRepairsStart: 0.3
+  radomRepairsAmount: 0
+  fullRepairs: []
+  fullRepairsStart: 0
+  fullRepairsAmount: 0
+  currentRepairs: []
   currentDurability: 0
   maxDurability: 0
   minDurability: 5
