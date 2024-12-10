@@ -18,22 +18,23 @@ public class RepairManager : MonoBehaviour
 
     public void RaffleRepair()
     {
+
         if (repairInProgress)
         {
             Debug.Log("Um conserto já está em andamento.");
             return;
         }
 
-        if (repairTypes.Count == 0)
+        if (HudInteraction.instance.currentMachine == null)
         {
-            Debug.LogError("Nenhum tipo de conserto disponível para sortear.");
+            Debug.LogError("Nenhuma máquina selecionada.");
             return;
         }
 
-        int index = Random.Range(0, repairTypes.Count);
-        currentRepair = repairTypes[index];
+        //int index = Random.Range(0, repairTypes.Count);
+        currentRepair = HudInteraction.instance.currentMachine.currentRepairs[0];
 
-        ActivateCanvas(index);
+        ActivateCanvas((int)currentRepair);
 
         currentRepairScript = GetRepairScript(currentRepair);
         if (currentRepairScript != null)
