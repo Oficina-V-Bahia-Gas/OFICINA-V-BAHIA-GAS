@@ -7,20 +7,24 @@ public class Machines : MonoBehaviour
     public enum MachineType { BombaHidraulica, Transmissor, Outro }
     public MachineType machineType;
 
-    [HideInInspector] public enum RepairType { Type1, Type2, Type3, Type4 }
+    //[HideInInspector] public enum RepairType { Type1, Type2, Type3, Type4 }
 
     [Header("Repairs")]
-    public List<RepairType> coreRepairs = new List<RepairType>();
+    public List<RepairManager.RepairType> coreRepairs = new List<RepairManager.RepairType>();
     [Tooltip("Quanto começa a poder reparar a máquina")] [Range(0f, 1f)] public float coreRepairsStart = 0.65f;
     [Tooltip("Quanto consertos precisa inicialmente")] public int coreRepairsAmount = 1;
-    public List<RepairType> randomRepairs = new List<RepairType>();
+    [Space]
+    public List<RepairManager.RepairType> randomRepairs = new List<RepairManager.RepairType>();
     [Tooltip("Quando começa a ter consertos aleatórios")][Range(0f, 1f)] public float randomRepairsStart = 0.3f;
     [Tooltip("Quantos consertos extras são adicionados")] public int randomRepairsAmount = 0;
-    public List<RepairType> fullRepairs = new List<RepairType>();
+    [Tooltip("Passagem de gás quando parcialmente quebrado")] public float randomGasFlow = 0.5f;
+    [Space]
+    public List<RepairManager.RepairType> fullRepairs = new List<RepairManager.RepairType>();
     [Tooltip("Conserto prioritário quando está totalmente quebrado")][Range(0f, 1f)] public float fullRepairsStart = 0f;
     [Tooltip("Quantos consertos extras são adicionados")] public int fullRepairsAmount = 0;
+    [Tooltip("Passagem de gás quando totalmente quebrado")] public float fullGasFlow = 0f;
 
-    [HideInInspector] public List<RepairType> currentRepairs = new List<RepairType>();
+    [HideInInspector] public List<RepairManager.RepairType> currentRepairs = new List<RepairManager.RepairType>();
     private bool coreRoll = false;
     private bool randomRoll = false;
     private bool fullRoll = false;
@@ -66,11 +70,14 @@ public class Machines : MonoBehaviour
 
         if (CheckDurability()) 
         {
+            SetRepairs();
+
             if (!needsRepair && !onCooldown)
             {
                 needsRepair = true;
                 ActivateRepair();
             }
+
 
             if (OnUse && !activatedCanvas)
             {
@@ -80,7 +87,19 @@ public class Machines : MonoBehaviour
         }
         else
         {
+            GetComponent<GasFlow>().ChangeFixValue(1f);
             activatedCanvas = false;
+        }
+
+        // Ajuste de GasFlow
+        if (needsRepair)
+        {
+            float _gasvalue = (CheckDurability(fullRepairsAmount)) ? fullGasFlow : randomGasFlow;
+            GetComponent<GasFlow>().ChangeFixValue(_gasvalue);
+        }
+        else 
+        {
+            GetComponent<GasFlow>().ChangeFixValue(1f);
         }
     }
 
@@ -88,10 +107,18 @@ public class Machines : MonoBehaviour
     {
         if (needsRepair && !onCooldown)
         {
-            needsRepair = false;
-            DeactivateRepair();
-            SetDurability();
-            StartCoroutine(RepairCooldown());
+            currentRepairs.RemoveAt(0);
+            if (currentRepairs.Count == 0)
+            {
+                needsRepair = false;
+                DeactivateRepair();
+                SetDurability();
+                StartCoroutine(RepairCooldown());
+            }
+            else
+            {
+                CharacterInfo.instance.hudInteraction.repairManager.RaffleRepair();
+            }
         }
     }
 
@@ -119,16 +146,16 @@ public class Machines : MonoBehaviour
     {
         repairActive = true;
 
-        GasFlow _gasFlow = GetComponent<GasFlow>();
-        _gasFlow.ChangeFixValue(0f);
+        //GasFlow _gasFlow = GetComponent<GasFlow>();
+        //_gasFlow.ChangeFixValue(0f);
     }
 
     public void DeactivateRepair()
     {
         repairActive = false;
 
-        GasFlow _gasFlow = GetComponent<GasFlow>();
-        _gasFlow.ChangeFixValue(1f);
+        //GasFlow _gasFlow = GetComponent<GasFlow>();
+        //_gasFlow.ChangeFixValue(1f);
     }
 
     public bool IsCanvasActivated()
@@ -148,10 +175,11 @@ public class Machines : MonoBehaviour
             int _index;
 
             // Core
-            if (!coreRoll)
+            if (!coreRoll && coreRepairs.Count > 0)
             {
                 for (int _i = 0; _i < coreRepairsAmount; _i++)
                 {
+
                     _index = Random.Range(0, coreRepairs.Count);
                     currentRepairs.Add(coreRepairs[_index]);
                 }
@@ -160,7 +188,7 @@ public class Machines : MonoBehaviour
             }
 
             // Random
-            if (CheckDurability(randomRepairsStart) && !randomRoll)
+            if (CheckDurability(randomRepairsStart) && !randomRoll && randomRepairs.Count > 0)
             {
                 if(randomRepairsAmount > 0)
                 {
@@ -172,7 +200,7 @@ public class Machines : MonoBehaviour
                 }
                 else 
                 {
-                    currentRepairs.Remove(currentRepairs[currentRepairs.Count]);
+                    currentRepairs.Remove(currentRepairs[currentRepairs.Count - 1]);
                     _index = Random.Range(0, randomRepairs.Count);
                     currentRepairs.Add(randomRepairs[_index]);
                 }
@@ -181,7 +209,7 @@ public class Machines : MonoBehaviour
             }
 
             // Full
-            if (CheckDurability(fullRepairsStart) && !fullRoll)
+            if (CheckDurability(fullRepairsStart) && !fullRoll && fullRepairs.Count > 0)
             {
                 if (fullRepairsAmount > 0)
                 {
@@ -193,7 +221,7 @@ public class Machines : MonoBehaviour
                 }
                 else
                 {
-                    currentRepairs.Remove(currentRepairs[currentRepairs.Count]);
+                    currentRepairs.Remove(currentRepairs[currentRepairs.Count - 1]);
                     _index = Random.Range(0, fullRepairs.Count);
                     currentRepairs.Add(fullRepairs[_index]);
                 }
@@ -209,7 +237,7 @@ public class Machines : MonoBehaviour
             randomRoll = false;
             fullRoll = false;
         }
-        Debug.Log(currentRepairs);
+        //Debug.Log(currentRepairs);
     }
 
     // Checar se durabilidade abaixo do alvo.
