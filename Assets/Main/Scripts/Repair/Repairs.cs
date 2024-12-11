@@ -7,6 +7,7 @@ public abstract class Repairs : MonoBehaviour
 
     public virtual void StartRepair()
     {
+        ResetRepair();
         repairInProgress = true;
         repairCompleted = false;
         Debug.Log("Iniciando conserto.");
@@ -30,6 +31,7 @@ public abstract class Repairs : MonoBehaviour
         }
 
         Debug.Log("Conserto concluído.");
+        //ResetRepair();
     }
 
     public virtual void ResetRepair()
