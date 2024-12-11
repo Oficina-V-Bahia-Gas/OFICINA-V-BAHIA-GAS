@@ -7,6 +7,7 @@ public class HudInteraction : MonoBehaviour
     public TextMeshProUGUI machineNameText;
     public Slider durabilitySlider;
     public Slider gasFlowSlider;
+    public TextMeshProUGUI gasFlowText;
     public TextMeshProUGUI statusMessageText;
     public Machines currentMachine;
     public RepairManager repairManager;
@@ -87,7 +88,18 @@ public class HudInteraction : MonoBehaviour
         if (durabilitySlider != null && currentMachine != null)
         {
             durabilitySlider.value = currentMachine.currentDurability;
-            gasFlowSlider.value = currentMachine.GetComponent<GasFlow>().currentFlow;
+
+            if (currentMachine.GetComponent<GasFlow>() != null)
+            {
+                gasFlowSlider.enabled = true;
+                gasFlowText.text = "Fluxo de Gás:";
+                gasFlowSlider.value = currentMachine.GetComponent<GasFlow>().currentFlow;
+            }
+            else
+            {
+                gasFlowSlider.enabled = false;
+                gasFlowText.text = "Máquina não tem passagem de gás.";
+            }
 
             if (currentMachine.onCooldown)
             {
@@ -111,7 +123,18 @@ public class HudInteraction : MonoBehaviour
         machineNameText.text = currentMachine.machineType.ToString();
         durabilitySlider.maxValue = currentMachine.maxDurability;
         durabilitySlider.value = currentMachine.currentDurability;
-        gasFlowSlider.value = currentMachine.GetComponent<GasFlow>().currentFlow;
+
+        if (currentMachine.GetComponent<GasFlow>() != null)
+        {
+            gasFlowSlider.enabled = true;
+            gasFlowText.text = "Fluxo de Gás:";
+            gasFlowSlider.value = currentMachine.GetComponent<GasFlow>().currentFlow;
+        }
+        else
+        {
+            gasFlowSlider.enabled = false;
+            gasFlowText.text = "Máquina não tem passagem de gás.";
+        }
 
         if (currentMachine.needsRepair)
         {

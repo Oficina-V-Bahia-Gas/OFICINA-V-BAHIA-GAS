@@ -34,12 +34,14 @@ public class Machines : MonoBehaviour
     public float currentDurability;
     public float maxDurability;
 
+
     [Header("Durability Ranges")]
     public float minDurability = 5f;
     public float maxDurabilityRange = 10f;
 
     public bool needsRepair { get; private set; }
     public bool onCooldown;
+
 
     [Header("Repair Cooldown Range")]
     public float minCooldown = 5f;
@@ -53,6 +55,7 @@ public class Machines : MonoBehaviour
     bool activatedCanvas = false;
 
     public bool repairActive { get; private set; }
+
 
     private void Start()
     {
@@ -88,19 +91,28 @@ public class Machines : MonoBehaviour
         }
         else
         {
-            GetComponent<GasFlow>().ChangeFixValue(1f);
+            if (GetComponent<GasFlow>() != null)
+            {
+                GetComponent<GasFlow>().ChangeFixValue(1f);
+            }
             activatedCanvas = false;
         }
 
         // Ajuste de GasFlow
         if (needsRepair)
         {
-            float _gasvalue = (CheckDurability(fullRepairsAmount)) ? fullGasFlow : randomGasFlow;
-            GetComponent<GasFlow>().ChangeFixValue(_gasvalue);
+            if (GetComponent<GasFlow>() != null)
+            {
+                float _gasvalue = (CheckDurability(fullRepairsAmount)) ? fullGasFlow : randomGasFlow;
+                GetComponent<GasFlow>().ChangeFixValue(_gasvalue);
+            }
         }
         else 
         {
-            GetComponent<GasFlow>().ChangeFixValue(1f);
+            if (GetComponent<GasFlow>() != null)
+            {
+                GetComponent<GasFlow>().ChangeFixValue(1f);
+            }
         }
     }
 
