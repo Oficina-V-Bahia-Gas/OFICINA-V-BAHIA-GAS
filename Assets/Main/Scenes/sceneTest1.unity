@@ -12696,14 +12696,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   machineType: 0
-  coreRepairs: 
+  coreRepairs: 00000000
   coreRepairsStart: 0.5
   coreRepairsAmount: 1
-  randomRepairs: 
+  randomRepairs: 01000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 0
   randomGasFlow: 0.5
-  fullRepairs: 
+  fullRepairs: 02000000
   fullRepairsStart: 0
   fullRepairsAmount: 0
   fullGasFlow: 0
@@ -18097,14 +18097,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   machineType: 0
-  coreRepairs: 
+  coreRepairs: 0000000002000000
   coreRepairsStart: 0.5
   coreRepairsAmount: 1
   randomRepairs: 
   randomRepairsStart: 0.3
   randomRepairsAmount: 0
   randomGasFlow: 0.5
-  fullRepairs: 
+  fullRepairs: 0100000003000000
   fullRepairsStart: 0
   fullRepairsAmount: 0
   fullGasFlow: 0
@@ -31128,16 +31128,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   machineType: 0
-  coreRepairs: 
+  coreRepairs: 02000000
   coreRepairsStart: 0.5
   coreRepairsAmount: 1
   randomRepairs: 
   randomRepairsStart: 0.3
   randomRepairsAmount: 0
   randomGasFlow: 0.5
-  fullRepairs: 
+  fullRepairs: 02000000
   fullRepairsStart: 0
-  fullRepairsAmount: 0
+  fullRepairsAmount: 1
   fullGasFlow: 0
   currentRepairs: 
   currentDurability: 0
@@ -31873,11 +31873,11 @@ MonoBehaviour:
   coreRepairsAmount: 2
   randomRepairs: 0200000003000000
   randomRepairsStart: 0.5
-  randomRepairsAmount: 0
+  randomRepairsAmount: 1
   randomGasFlow: 0.5
   fullRepairs: 030000000000000002000000
   fullRepairsStart: 0
-  fullRepairsAmount: 3
+  fullRepairsAmount: 1
   fullGasFlow: 0
   currentRepairs: 
   currentDurability: 0
