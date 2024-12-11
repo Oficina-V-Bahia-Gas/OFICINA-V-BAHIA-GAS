@@ -13,15 +13,18 @@ public class Machines : MonoBehaviour
     public List<RepairManager.RepairType> coreRepairs = new List<RepairManager.RepairType>();
     [Tooltip("Quanto começa a poder reparar a máquina")] [Range(0f, 1f)] public float coreRepairsStart = 0.65f;
     [Tooltip("Quanto consertos precisa inicialmente")] public int coreRepairsAmount = 1;
+    [Tooltip("Ganho de pontuação de reparo inicialmente")] public int coreRepairsScore = 25;
     [Space]
     public List<RepairManager.RepairType> randomRepairs = new List<RepairManager.RepairType>();
     [Tooltip("Quando começa a ter consertos aleatórios")][Range(0f, 1f)] public float randomRepairsStart = 0.3f;
     [Tooltip("Quantos consertos extras são adicionados")] public int randomRepairsAmount = 0;
+    [Tooltip("Ganho de pontuação de reparo quando parcialmente quebrado")] public int randomRepairsScore = 25;
     [Tooltip("Passagem de gás quando parcialmente quebrado")] public float randomGasFlow = 0.5f;
     [Space]
     public List<RepairManager.RepairType> fullRepairs = new List<RepairManager.RepairType>();
     [Tooltip("Conserto prioritário quando está totalmente quebrado")][Range(0f, 1f)] public float fullRepairsStart = 0f;
     [Tooltip("Quantos consertos extras são adicionados")] public int fullRepairsAmount = 0;
+    [Tooltip("Ganho de pontuação de reparo quando totalmente quebrado")] public int fullRepairsScore = 25;
     [Tooltip("Passagem de gás quando totalmente quebrado")] public float fullGasFlow = 0f;
 
     [HideInInspector] public List<RepairManager.RepairType> currentRepairs = new List<RepairManager.RepairType>();
@@ -56,12 +59,15 @@ public class Machines : MonoBehaviour
 
     public bool repairActive { get; private set; }
 
+    private GameManager gameManager;
+
 
     private void Start()
     {
         SetDurability();
         repairCooldown = Random.Range(minCooldown, maxCooldown);
         needsRepair = CheckDurability();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     private void Update()

@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     {
         TimerDecrease();
         TimerVisualization();
-        ScoreGain();
+        ScoreGain(Time.deltaTime * scoreGain); // unfinished
         ScoreVisualization();
     }
 
@@ -58,11 +58,15 @@ public class GameManager : MonoBehaviour
         timerText.text = $"{_minutes:00} : {_seconds:00}";
     }
 
-    void ScoreGain()
+    void ScoreGain(float _gain = -13.7f)
     {
         if (remainingTime > 0)
         {
+            // Default Value
+            if(_gain == -13.7)
+            {
 
+            }
         }
     }
 
