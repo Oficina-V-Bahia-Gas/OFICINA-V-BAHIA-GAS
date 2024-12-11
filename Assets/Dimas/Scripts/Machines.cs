@@ -68,9 +68,10 @@ public class Machines : MonoBehaviour
             currentDurability -= Time.deltaTime;
         }
 
+        SetRepairs();
+
         if (CheckDurability()) 
         {
-            SetRepairs();
 
             if (!needsRepair && !onCooldown)
             {
