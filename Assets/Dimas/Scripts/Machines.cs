@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Machines : MonoBehaviour
 {
-    public enum MachineType { BombaHidraulica, Transmissor, Outro }
+    public enum MachineType { BombaHidraulica, Transmissor, Valvula, Outro }
     public MachineType machineType;
 
     //[HideInInspector] public enum RepairType { Type1, Type2, Type3, Type4 }
