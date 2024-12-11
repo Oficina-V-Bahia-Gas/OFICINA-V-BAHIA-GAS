@@ -12937,9 +12937,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b5dca27be71fa34b96b89376706a404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraManager: {fileID: 2087982916}
-  _target1: {fileID: 2040535183}
-  _target2: {fileID: 657766982}
+  cameraManager: {fileID: 2087982916}
+  targetUR: {fileID: 2040535183}
+  targetDL: {fileID: 657766982}
+  horizontal: 0
 --- !u!65 &624852892
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18162,9 +18163,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b5dca27be71fa34b96b89376706a404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraManager: {fileID: 2087982916}
-  _target1: {fileID: 2040535183}
-  _target2: {fileID: 532269783}
+  cameraManager: {fileID: 2087982916}
+  targetUR: {fileID: 2040535183}
+  targetDL: {fileID: 532269783}
+  horizontal: 1
 --- !u!65 &800352912
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30623,9 +30625,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b5dca27be71fa34b96b89376706a404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraManager: {fileID: 2087982916}
-  _target1: {fileID: 657766982}
-  _target2: {fileID: 1922711678}
+  cameraManager: {fileID: 2087982916}
+  targetUR: {fileID: 657766982}
+  targetDL: {fileID: 1922711678}
+  horizontal: 1
 --- !u!65 &1620478792
 BoxCollider:
   m_ObjectHideFlags: 0
