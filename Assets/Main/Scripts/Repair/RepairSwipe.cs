@@ -2,12 +2,10 @@ using UnityEngine;
 
 public class RepairSwipe : Repairs
 {
-    public SwipeCameraManager swipeCameraManager;
+    public RepairsCameraManager swipeCameraManager;
     public float distance = 50f;
     float swipeProgress = 0f;
     public float swipesRequired = 20f;
-
-    Machines currentMachine;
 
     public override void StartRepair()
     {

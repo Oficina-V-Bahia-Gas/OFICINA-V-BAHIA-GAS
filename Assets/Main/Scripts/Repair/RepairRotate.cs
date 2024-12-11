@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class RepairRotate : Repairs
 {
-    [SerializeField] float rotationsRequired = 360f;
+    float rotationsRequired = 360f;
     float rotationProgress = 0f;
 
     Vector2 rotationCenter;
@@ -11,9 +11,40 @@ public class RepairRotate : Repairs
     bool isRotating = false;
     const float minRotationThreshold = 5f;
 
+    public RepairsCameraManager rotateCameraManager;
+
     private void Start()
     {
         rotationCenter = new Vector2(Screen.width / 2, Screen.height / 2);
+
+        CharacterInfo _characterInfo = FindObjectOfType<CharacterInfo>();
+        if (_characterInfo != null)
+        {
+            currentMachine = _characterInfo.GetLastInteractedMachine();
+        }
+
+        if (rotateCameraManager != null && currentMachine != null)
+        {
+            Transform _target = GetFirstChild(currentMachine);
+            if (_target != null)
+            {
+                rotateCameraManager.SetTargetTransform(_target);
+                rotateCameraManager.ActivateCamera();
+            }
+            else
+            {
+                Debug.LogWarning($"Nenhum filho encontrado na máquina {currentMachine.name}.");
+            }
+        }
+    }
+
+    Transform GetFirstChild(Machines _machine)
+    {
+        if (_machine.transform.childCount > 0)
+        {
+            return _machine.transform.GetChild(0);
+        }
+        return null;
     }
 
     private void Update()
@@ -58,7 +89,6 @@ public class RepairRotate : Repairs
         if (Mathf.Abs(_angleDelta) >= minRotationThreshold)
         {
             rotationProgress += Mathf.Abs(_angleDelta);
-            Debug.Log($"Progresso de rotação: {rotationProgress}/{rotationsRequired}");
 
             lastTouchDirection = _currentTouchDirection;
 
@@ -72,6 +102,15 @@ public class RepairRotate : Repairs
     void StopRotation()
     {
         isRotating = false;
+    }
+
+    public override void FinishRepair()
+    {
+        base.FinishRepair();
+        if (rotateCameraManager != null)
+        {
+            rotateCameraManager.ClearTarget();
+        }
     }
 
     public override void ResetRepair()

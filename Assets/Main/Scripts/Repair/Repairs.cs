@@ -4,6 +4,7 @@ public abstract class Repairs : MonoBehaviour
 {
     protected bool repairInProgress = false;
     protected bool repairCompleted = false;
+    protected Machines currentMachine;
 
     public virtual void StartRepair()
     {
@@ -11,6 +12,16 @@ public abstract class Repairs : MonoBehaviour
         repairInProgress = true;
         repairCompleted = false;
         Debug.Log("Iniciando conserto.");
+
+        CharacterInfo characterInfo = FindObjectOfType<CharacterInfo>();
+        if (characterInfo != null)
+        {
+            currentMachine = characterInfo.GetLastInteractedMachine();
+            if (currentMachine != null)
+            {
+                FaceMachine(characterInfo.gameObject, currentMachine.transform);
+            }
+        }
     }
 
     public virtual void FinishRepair()
@@ -39,5 +50,13 @@ public abstract class Repairs : MonoBehaviour
         repairInProgress = false;
         repairCompleted = false;
         Debug.Log("Conserto resetado.");
+    }
+
+    void FaceMachine(GameObject player, Transform machineTransform)
+    {
+        Vector3 directionToMachine = (machineTransform.position - player.transform.position).normalized;
+        directionToMachine.y = 0;
+        Quaternion targetRotation = Quaternion.LookRotation(directionToMachine);
+        player.transform.rotation = targetRotation;
     }
 }

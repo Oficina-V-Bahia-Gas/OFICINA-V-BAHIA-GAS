@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SwipeCameraManager : MonoBehaviour
+public class RepairsCameraManager : MonoBehaviour
 {
     Transform target;
 
