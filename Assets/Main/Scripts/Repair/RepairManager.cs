@@ -21,8 +21,8 @@ public class RepairManager : MonoBehaviour
 
         if (repairInProgress)
         {
-            Debug.Log("Um conserto já está em andamento.");
-            return;
+            //Debug.Log("Um conserto já está em andamento.");
+            //return;
         }
 
         if (HudInteraction.instance.currentMachine == null)
@@ -70,6 +70,11 @@ public class RepairManager : MonoBehaviour
         {
             HudInteraction.instance.currentMachine.Repair();
         }
+    }
+
+    public void StopRepair()
+    {
+        currentRepairScript.ResetRepair();
     }
 
     Repairs GetRepairScript(RepairType type)

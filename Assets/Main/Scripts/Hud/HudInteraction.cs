@@ -6,6 +6,7 @@ public class HudInteraction : MonoBehaviour
 {
     public TextMeshProUGUI machineNameText;
     public Slider durabilitySlider;
+    public Slider gasFlowSlider;
     public TextMeshProUGUI statusMessageText;
     public Machines currentMachine;
     public RepairManager repairManager;
@@ -62,7 +63,7 @@ public class HudInteraction : MonoBehaviour
         {
             if (!repairManager.IsRepairInProgress())
             {
-                repairManager.RaffleRepair(); // Remover
+                //repairManager.RaffleRepair(); // Remover
                 currentMachine.ActivateRepair(); // Baseado na máquina
                 Debug.Log("Novo conserto sorteado.");
             }
@@ -86,6 +87,12 @@ public class HudInteraction : MonoBehaviour
         if (durabilitySlider != null && currentMachine != null)
         {
             durabilitySlider.value = currentMachine.currentDurability;
+            gasFlowSlider.value = currentMachine.GetComponent<GasFlow>().currentFlow;
+
+            if (currentMachine.onCooldown)
+            {
+                durabilitySlider.value = durabilitySlider.maxValue;
+            }
 
             if (currentMachine.needsRepair)
             {
@@ -104,6 +111,7 @@ public class HudInteraction : MonoBehaviour
         machineNameText.text = currentMachine.machineType.ToString();
         durabilitySlider.maxValue = currentMachine.maxDurability;
         durabilitySlider.value = currentMachine.currentDurability;
+        gasFlowSlider.value = currentMachine.GetComponent<GasFlow>().currentFlow;
 
         if (currentMachine.needsRepair)
         {
@@ -111,7 +119,13 @@ public class HudInteraction : MonoBehaviour
         }
         else
         {
+            durabilitySlider.value = durabilitySlider.maxValue;
             statusMessageText.text = "A máquina está em perfeito estado!";
+        }
+
+        if (currentMachine.onCooldown)
+        {
+            durabilitySlider.value = durabilitySlider.maxValue;
         }
     }
 
@@ -136,7 +150,10 @@ public class HudInteraction : MonoBehaviour
             isHudOpen = false;
         }
 
+        repairManager.StopRepair();
+
         currentMachine.OnUse = false;
+        currentMachine.SetCanvasActivated(false);
 
         currentMachine = null;
     }

@@ -39,7 +39,7 @@ public class Machines : MonoBehaviour
     public float maxDurabilityRange = 10f;
 
     public bool needsRepair { get; private set; }
-    bool onCooldown;
+    public bool onCooldown;
 
     [Header("Repair Cooldown Range")]
     public float minCooldown = 5f;
