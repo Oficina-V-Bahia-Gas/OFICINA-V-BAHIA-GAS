@@ -836,6 +836,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdDuration: 2
+  holdCameraManager: {fileID: 0}
 --- !u!114 &96162589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1176,7 +1177,7 @@ GameObject:
   - component: {fileID: 126719856}
   - component: {fileID: 126719855}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: _____________Canva________________________
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12304,6 +12305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tapsRequired: 20
+  tapCameraManager: {fileID: 0}
 --- !u!114 &459896955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12699,13 +12701,16 @@ MonoBehaviour:
   coreRepairs: 00000000
   coreRepairsStart: 0.5
   coreRepairsAmount: 1
+  coreRepairsScore: 25
   randomRepairs: 01000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 0
+  randomRepairsScore: 25
   randomGasFlow: 0.5
   fullRepairs: 02000000
   fullRepairsStart: 0
   fullRepairsAmount: 0
+  fullRepairsScore: 25
   fullGasFlow: 0
   currentRepairs: 
   currentDurability: 0
@@ -18102,13 +18107,16 @@ MonoBehaviour:
   coreRepairs: 0000000002000000
   coreRepairsStart: 0.5
   coreRepairsAmount: 1
+  coreRepairsScore: 25
   randomRepairs: 
   randomRepairsStart: 0.3
   randomRepairsAmount: 0
+  randomRepairsScore: 25
   randomGasFlow: 0.5
   fullRepairs: 0100000003000000
   fullRepairsStart: 0
   fullRepairsAmount: 0
+  fullRepairsScore: 25
   fullGasFlow: 0
   currentRepairs: 
   currentDurability: 0
@@ -19796,7 +19804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e272387c4ab200745878742d4fe283d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationsRequired: 360
+  rotateCameraManager: {fileID: 0}
 --- !u!1 &1265714009
 GameObject:
   m_ObjectHideFlags: 0
@@ -20017,6 +20025,7 @@ MonoBehaviour:
   machineNameText: {fileID: 460336624}
   durabilitySlider: {fileID: 1738036677}
   gasFlowSlider: {fileID: 1265714010}
+  gasFlowText: {fileID: 1301063027}
   statusMessageText: {fileID: 2142075551}
   currentMachine: {fileID: 0}
   repairManager: {fileID: 1912084865}
@@ -20385,13 +20394,16 @@ MonoBehaviour:
   coreRepairs: 0000000001000000
   coreRepairsStart: 0.5
   coreRepairsAmount: 1
+  coreRepairsScore: 25
   randomRepairs: 
   randomRepairsStart: 0.3
   randomRepairsAmount: 0
+  randomRepairsScore: 25
   randomGasFlow: 0.5
   fullRepairs: 
   fullRepairsStart: 0
   fullRepairsAmount: 0
+  fullRepairsScore: 25
   fullGasFlow: 0
   currentRepairs: 
   currentDurability: 0
@@ -31569,13 +31581,16 @@ MonoBehaviour:
   coreRepairs: 02000000
   coreRepairsStart: 0.5
   coreRepairsAmount: 1
+  coreRepairsScore: 25
   randomRepairs: 
   randomRepairsStart: 0.3
   randomRepairsAmount: 0
+  randomRepairsScore: 25
   randomGasFlow: 0.5
   fullRepairs: 02000000
   fullRepairsStart: 0
   fullRepairsAmount: 1
+  fullRepairsScore: 25
   fullGasFlow: 0
   currentRepairs: 
   currentDurability: 0
@@ -32312,13 +32327,16 @@ MonoBehaviour:
   coreRepairs: 0000000001000000
   coreRepairsStart: 1
   coreRepairsAmount: 2
+  coreRepairsScore: 25
   randomRepairs: 0200000003000000
   randomRepairsStart: 0.5
   randomRepairsAmount: 1
+  randomRepairsScore: 25
   randomGasFlow: 0.5
   fullRepairs: 030000000000000002000000
   fullRepairsStart: 0
   fullRepairsAmount: 1
+  fullRepairsScore: 25
   fullGasFlow: 0
   currentRepairs: 
   currentDurability: 0
