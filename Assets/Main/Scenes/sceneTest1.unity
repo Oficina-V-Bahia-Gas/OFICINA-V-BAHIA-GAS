@@ -1579,9 +1579,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: add4f8e09e4585b49825a38269b69c8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _joystick: {fileID: 29555692}
-  _characterInfo: {fileID: 164039539}
-  _rb: {fileID: 164039536}
+  joystick: {fileID: 29555692}
+  characterInfo: {fileID: 164039539}
+  rb: {fileID: 164039536}
+  rotationSpeed: 10
   interactionController: {fileID: 963260970}
 --- !u!114 &164039539
 MonoBehaviour:
@@ -1595,7 +1596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66984e939f560de43bfdd3c6b6c1ac9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 500
+  walkSpeed: 10
   interactionDistance: 4
   interactionLayer:
     serializedVersion: 2

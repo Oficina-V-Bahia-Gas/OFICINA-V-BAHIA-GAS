@@ -65,6 +65,7 @@ public class Machines : MonoBehaviour
 
     private void Start()
     {
+        gameObject.layer = 6;
         SetDurability();
         repairCooldown = Random.Range(minCooldown, maxCooldown);
         needsRepair = CheckDurability();

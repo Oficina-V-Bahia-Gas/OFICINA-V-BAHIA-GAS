@@ -52,16 +52,27 @@ public class CharacterMovement : MonoBehaviour
 
     private void MoveCharacter()
     {
-        if (movementDirection.sqrMagnitude > 0.01f)
+        if (movementDirection.magnitude > 0.01f)
         {
-            Vector3 moveVector = new Vector3(movementDirection.x, 0f, movementDirection.y) * characterInfo.GetWalkSpeed();
-            rb.MovePosition(rb.position + moveVector * Time.fixedDeltaTime);
+            Vector3 moveVector = new Vector3(
+                movementDirection.x * characterInfo.GetWalkSpeed() * Time.fixedDeltaTime * 100,
+                rb.velocity.y,
+                movementDirection.y * characterInfo.GetWalkSpeed() * Time.fixedDeltaTime * 100);
+
+            //rb.MovePosition(rb.position + moveVector * Time.fixedDeltaTime);
+            rb.velocity = moveVector;
+
+            //Debug.Log(rb.position);
+        }
+        else
+        {
+            new Vector3(0f, rb.velocity.y, 0f);
         }
     }
 
     private void RotateCharacter()
     {
-        if (movementDirection.sqrMagnitude > 0.01f)
+        if (movementDirection.magnitude > 0.01f)
         {
             Vector3 targetDirection = new Vector3(movementDirection.x, 0f, movementDirection.y);
             Quaternion targetRotation = Quaternion.LookRotation(targetDirection, Vector3.up);
@@ -71,7 +82,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void UpdateAnimation()
     {
-        if (movementDirection.sqrMagnitude > 0.01f)
+        if (movementDirection.magnitude > 0.01f)
         {
             SetAnimationState(AnimationState.Walk);
         }

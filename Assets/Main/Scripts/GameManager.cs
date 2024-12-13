@@ -9,15 +9,15 @@ public class GameManager : MonoBehaviour
 {
     [Header("Temporizador")]
     [SerializeField] private TMP_Text timerText;
-    [SerializeField] private float levelTimer = 100;
+    [SerializeField] private float levelTimer = 120;
 
     private float remainingTime;
 
 
     [Header("Pontuação")]
     [SerializeField] private Slider scoreBar;
-    [SerializeField] private float scoreGoal = 100;
-    [SerializeField, Tooltip("Ganho máxmimo por segundo.")] private float scoreGain = 10;
+    [SerializeField] private float scoreGoal = 500;
+    [SerializeField, Tooltip("Ganho máxmimo por segundo.")] private float scoreGain = 3;
     [SerializeField] private List<GasFlow> finalOutputs = new List<GasFlow>();
 
 
