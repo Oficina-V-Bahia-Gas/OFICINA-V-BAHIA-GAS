@@ -2,55 +2,87 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    [SerializeField] private Joystick _joystick;
-    [SerializeField] private CharacterInfo _characterInfo;
-    [SerializeField] private Rigidbody _rb;
-    private Vector2 _movementDirection;
+    [SerializeField] private Joystick joystick;
+    [SerializeField] private CharacterInfo characterInfo;
+    [SerializeField] private Rigidbody rb;
 
-    [SerializeField] PlayerInteractionController interactionController;
+    [SerializeField] private float rotationSpeed = 10f;
+    private Vector2 movementDirection;
 
-    void Update()
+    [SerializeField] private PlayerInteractionController interactionController;
+
+    private Animator animator;
+
+    private enum AnimationState { Idle, Walk }
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
+    private void Update()
     {
         if (interactionController == null || !interactionController.IsInteracting)
         {
-            OnJoyMovement();
+            UpdateMovementInput();
             RotateCharacter();
+            UpdateAnimation();
         }
         else
         {
-            _movementDirection = Vector2.zero;
+            movementDirection = Vector2.zero;
+            UpdateAnimation();
         }
     }
 
     private void FixedUpdate()
     {
-        CharMovement();
+        MoveCharacter();
     }
 
-    void OnJoyMovement()
+    private void UpdateMovementInput()
     {
-        _movementDirection = new Vector2(_joystick.Horizontal, _joystick.Vertical) * _characterInfo.GetWalkSpeed();
-    }
+        movementDirection = new Vector2(joystick.Horizontal, joystick.Vertical);
 
-    void RotateCharacter()
-    {
-        if (_movementDirection.magnitude > 0.1f)
+        if (movementDirection.magnitude > 1f)
         {
-            Vector3 _movementDirection3D = new Vector3(_movementDirection.x, 0f, _movementDirection.y);
-            Quaternion _targetRotation = Quaternion.LookRotation(_movementDirection3D, Vector3.up);
-            transform.rotation = Quaternion.Lerp(transform.rotation, _targetRotation, Time.deltaTime * 10f);
+            movementDirection.Normalize();
         }
     }
 
-    void CharMovement()
+    private void MoveCharacter()
     {
-        if (_movementDirection.magnitude > 0)
+        if (movementDirection.sqrMagnitude > 0.01f)
         {
-            _rb.velocity = new Vector3(_movementDirection.x * Time.deltaTime, _rb.velocity.y, _movementDirection.y * Time.deltaTime);
+            Vector3 moveVector = new Vector3(movementDirection.x, 0f, movementDirection.y) * characterInfo.GetWalkSpeed();
+            rb.MovePosition(rb.position + moveVector * Time.fixedDeltaTime);
+        }
+    }
+
+    private void RotateCharacter()
+    {
+        if (movementDirection.sqrMagnitude > 0.01f)
+        {
+            Vector3 targetDirection = new Vector3(movementDirection.x, 0f, movementDirection.y);
+            Quaternion targetRotation = Quaternion.LookRotation(targetDirection, Vector3.up);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+        }
+    }
+
+    private void UpdateAnimation()
+    {
+        if (movementDirection.sqrMagnitude > 0.01f)
+        {
+            SetAnimationState(AnimationState.Walk);
         }
         else
         {
-            _rb.velocity = new Vector3(0, _rb.velocity.y, 0);
+            SetAnimationState(AnimationState.Idle);
         }
+    }
+
+    private void SetAnimationState(AnimationState state)
+    {
+        animator.SetInteger("State", (int)state);
     }
 }

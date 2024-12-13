@@ -2,13 +2,12 @@ using UnityEngine;
 
 public class CharacterInfo : MonoBehaviour
 {
-    [SerializeField] float walkSpeed = 10f;
-    [SerializeField] float interactionDistance = 4f;
-    [SerializeField] LayerMask interactionLayer;
+    [SerializeField] private float walkSpeed;
+    [SerializeField] private float interactionDistance = 8f;
+    [SerializeField] private LayerMask interactionLayer;
 
     public HudInteraction hudInteraction;
-
-    Machines currentMachine;
+    private Machines currentMachine;
 
     public static CharacterInfo instance;
 
@@ -17,7 +16,7 @@ public class CharacterInfo : MonoBehaviour
         instance = this;
     }
 
-    void Update()
+    private void Update()
     {
         DetectInteractable();
     }
@@ -32,16 +31,16 @@ public class CharacterInfo : MonoBehaviour
         return currentMachine;
     }
 
-    void DetectInteractable()
+    private void DetectInteractable()
     {
-        Ray _ray = new Ray(transform.position, transform.forward);
-        RaycastHit _hit;
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
 
         Debug.DrawRay(transform.position, transform.forward * interactionDistance, Color.red);
 
-        if (Physics.Raycast(_ray, out _hit, interactionDistance, interactionLayer))
+        if (Physics.Raycast(ray, out hit, interactionDistance, interactionLayer))
         {
-            Machines machine = _hit.collider.GetComponent<Machines>();
+            Machines machine = hit.collider.GetComponent<Machines>();
 
             if (machine != null && machine != currentMachine)
             {

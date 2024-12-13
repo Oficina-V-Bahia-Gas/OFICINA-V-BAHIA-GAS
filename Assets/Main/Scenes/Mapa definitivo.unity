@@ -290,13 +290,16 @@ MonoBehaviour:
   coreRepairs: 00000000
   coreRepairsStart: 0.65
   coreRepairsAmount: 1
+  coreRepairsScore: 25
   randomRepairs: 000000000100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
+  randomRepairsScore: 25
   randomGasFlow: 0.5
   fullRepairs: 00000000
   fullRepairsStart: 0
   fullRepairsAmount: 1
+  fullRepairsScore: 25
   fullGasFlow: 0
   currentRepairs: 
   currentDurability: 0
@@ -906,13 +909,16 @@ MonoBehaviour:
   coreRepairs: 00000000
   coreRepairsStart: 0.65
   coreRepairsAmount: 1
+  coreRepairsScore: 25
   randomRepairs: 000000000100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
+  randomRepairsScore: 25
   randomGasFlow: 0.5
   fullRepairs: 00000000
   fullRepairsStart: 0
   fullRepairsAmount: 1
+  fullRepairsScore: 25
   fullGasFlow: 0
   currentRepairs: 
   currentDurability: 0
@@ -1128,7 +1134,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4736481313194128657}
         m_TargetAssemblyTypeName: CharacterInfo, Assembly-CSharp
         m_MethodName: OpenHud
         m_Mode: 1
@@ -1288,13 +1294,16 @@ MonoBehaviour:
   coreRepairs: 00000000
   coreRepairsStart: 0.65
   coreRepairsAmount: 1
+  coreRepairsScore: 25
   randomRepairs: 000000000100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
+  randomRepairsScore: 25
   randomGasFlow: 0.5
   fullRepairs: 00000000
   fullRepairsStart: 0
   fullRepairsAmount: 1
+  fullRepairsScore: 25
   fullGasFlow: 0
   currentRepairs: 
   currentDurability: 0
@@ -1496,13 +1505,16 @@ MonoBehaviour:
   coreRepairs: 00000000
   coreRepairsStart: 0.65
   coreRepairsAmount: 1
+  coreRepairsScore: 25
   randomRepairs: 000000000100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
+  randomRepairsScore: 25
   randomGasFlow: 0.5
   fullRepairs: 00000000
   fullRepairsStart: 0
   fullRepairsAmount: 1
+  fullRepairsScore: 25
   fullGasFlow: 0
   currentRepairs: 
   currentDurability: 0
@@ -2125,13 +2137,16 @@ MonoBehaviour:
   coreRepairs: 02000000
   coreRepairsStart: 0.65
   coreRepairsAmount: 1
+  coreRepairsScore: 25
   randomRepairs: 000000000100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
+  randomRepairsScore: 25
   randomGasFlow: 0.5
   fullRepairs: 02000000
   fullRepairsStart: 0
   fullRepairsAmount: 1
+  fullRepairsScore: 25
   fullGasFlow: 0
   currentRepairs: 
   currentDurability: 0
@@ -2324,13 +2339,16 @@ MonoBehaviour:
   coreRepairs: 02000000
   coreRepairsStart: 0.65
   coreRepairsAmount: 1
+  coreRepairsScore: 25
   randomRepairs: 000000000100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
+  randomRepairsScore: 25
   randomGasFlow: 0.5
   fullRepairs: 02000000
   fullRepairsStart: 0
   fullRepairsAmount: 1
+  fullRepairsScore: 25
   fullGasFlow: 0
   currentRepairs: 
   currentDurability: 0
@@ -3266,13 +3284,16 @@ MonoBehaviour:
   coreRepairs: 02000000
   coreRepairsStart: 0.65
   coreRepairsAmount: 1
+  coreRepairsScore: 25
   randomRepairs: 000000000100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
+  randomRepairsScore: 25
   randomGasFlow: 0.5
   fullRepairs: 02000000
   fullRepairsStart: 0
   fullRepairsAmount: 1
+  fullRepairsScore: 25
   fullGasFlow: 0
   currentRepairs: 
   currentDurability: 0
@@ -4560,13 +4581,16 @@ MonoBehaviour:
   coreRepairs: 02000000
   coreRepairsStart: 0.65
   coreRepairsAmount: 1
+  coreRepairsScore: 25
   randomRepairs: 000000000100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
+  randomRepairsScore: 25
   randomGasFlow: 0.5
   fullRepairs: 02000000
   fullRepairsStart: 0
   fullRepairsAmount: 1
+  fullRepairsScore: 25
   fullGasFlow: 0
   currentRepairs: 
   currentDurability: 0
@@ -4682,13 +4706,16 @@ MonoBehaviour:
   coreRepairs: 00000000
   coreRepairsStart: 0.65
   coreRepairsAmount: 1
+  coreRepairsScore: 25
   randomRepairs: 000000000100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
+  randomRepairsScore: 25
   randomGasFlow: 0.5
   fullRepairs: 00000000
   fullRepairsStart: 0
   fullRepairsAmount: 1
+  fullRepairsScore: 25
   fullGasFlow: 0
   currentRepairs: 
   currentDurability: 0
@@ -4880,13 +4907,16 @@ MonoBehaviour:
   coreRepairs: 00000000
   coreRepairsStart: 0.65
   coreRepairsAmount: 1
+  coreRepairsScore: 25
   randomRepairs: 000000000100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
+  randomRepairsScore: 25
   randomGasFlow: 0.5
   fullRepairs: 00000000
   fullRepairsStart: 0
   fullRepairsAmount: 1
+  fullRepairsScore: 25
   fullGasFlow: 0
   currentRepairs: 
   currentDurability: 0
@@ -5753,13 +5783,16 @@ MonoBehaviour:
   coreRepairs: 00000000
   coreRepairsStart: 0.65
   coreRepairsAmount: 1
+  coreRepairsScore: 25
   randomRepairs: 000000000100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
+  randomRepairsScore: 25
   randomGasFlow: 0.5
   fullRepairs: 00000000
   fullRepairsStart: 0
   fullRepairsAmount: 1
+  fullRepairsScore: 25
   fullGasFlow: 0
   currentRepairs: 
   currentDurability: 0
@@ -6032,6 +6065,7 @@ MonoBehaviour:
   machineNameText: {fileID: 1930743880}
   durabilitySlider: {fileID: 2140845615}
   gasFlowSlider: {fileID: 0}
+  gasFlowText: {fileID: 0}
   statusMessageText: {fileID: 1940595928}
   currentMachine: {fileID: 0}
   repairManager: {fileID: 482345415}
@@ -7053,13 +7087,16 @@ MonoBehaviour:
   coreRepairs: 00000000
   coreRepairsStart: 0.65
   coreRepairsAmount: 1
+  coreRepairsScore: 25
   randomRepairs: 000000000100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
+  randomRepairsScore: 25
   randomGasFlow: 0.5
   fullRepairs: 00000000
   fullRepairsStart: 0
   fullRepairsAmount: 1
+  fullRepairsScore: 25
   fullGasFlow: 0
   currentRepairs: 
   currentDurability: 0
@@ -7378,13 +7415,16 @@ MonoBehaviour:
   coreRepairs: 02000000
   coreRepairsStart: 0.65
   coreRepairsAmount: 1
+  coreRepairsScore: 25
   randomRepairs: 000000000100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
+  randomRepairsScore: 25
   randomGasFlow: 0.5
   fullRepairs: 02000000
   fullRepairsStart: 0
   fullRepairsAmount: 1
+  fullRepairsScore: 25
   fullGasFlow: 0
   currentRepairs: 
   currentDurability: 0
@@ -7849,13 +7889,16 @@ MonoBehaviour:
   coreRepairs: 0000000001000000
   coreRepairsStart: 0.65
   coreRepairsAmount: 1
+  coreRepairsScore: 25
   randomRepairs: 000000000100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
+  randomRepairsScore: 25
   randomGasFlow: 0.5
   fullRepairs: 03000000
   fullRepairsStart: 0
   fullRepairsAmount: 1
+  fullRepairsScore: 25
   fullGasFlow: 0
   currentRepairs: 
   currentDurability: 0
@@ -7973,13 +8016,16 @@ MonoBehaviour:
   coreRepairs: 02000000
   coreRepairsStart: 0.65
   coreRepairsAmount: 1
+  coreRepairsScore: 25
   randomRepairs: 000000000100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
+  randomRepairsScore: 25
   randomGasFlow: 0.5
   fullRepairs: 02000000
   fullRepairsStart: 0
   fullRepairsAmount: 1
+  fullRepairsScore: 25
   fullGasFlow: 0
   currentRepairs: 
   currentDurability: 0
@@ -8143,18 +8189,6 @@ PrefabInstance:
       value: Character
       objectReference: {fileID: 0}
     - target: {fileID: 885991004940431060, guid: c13e5e7fefc6d3a4682c484043e53ef2, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 885991004940431060, guid: c13e5e7fefc6d3a4682c484043e53ef2, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 885991004940431060, guid: c13e5e7fefc6d3a4682c484043e53ef2, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 885991004940431060, guid: c13e5e7fefc6d3a4682c484043e53ef2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -8198,10 +8232,30 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3530275007866894140, guid: c13e5e7fefc6d3a4682c484043e53ef2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5081949394840643549, guid: c13e5e7fefc6d3a4682c484043e53ef2, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 4736481313194128659}
+    - target: {fileID: 5081949394840643549, guid: c13e5e7fefc6d3a4682c484043e53ef2, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 4736481313194128661}
+    - target: {fileID: 5081949394840643549, guid: c13e5e7fefc6d3a4682c484043e53ef2, type: 3}
+      propertyPath: joystick
+      value: 
+      objectReference: {fileID: 1899953455}
     - target: {fileID: 5081949394840643549, guid: c13e5e7fefc6d3a4682c484043e53ef2, type: 3}
       propertyPath: _joystick
       value: 
       objectReference: {fileID: 1899953455}
+    - target: {fileID: 5081949394840643549, guid: c13e5e7fefc6d3a4682c484043e53ef2, type: 3}
+      propertyPath: characterInfo
+      value: 
+      objectReference: {fileID: 4736481313194128657}
     - target: {fileID: 5081949394840643549, guid: c13e5e7fefc6d3a4682c484043e53ef2, type: 3}
       propertyPath: _characterInfo
       value: 
@@ -8214,6 +8268,10 @@ PrefabInstance:
       propertyPath: hudInteraction
       value: 
       objectReference: {fileID: 1707870575}
+    - target: {fileID: 9059954592354747692, guid: c13e5e7fefc6d3a4682c484043e53ef2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8235,6 +8293,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66984e939f560de43bfdd3c6b6c1ac9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &4736481313194128659 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 7648285300383105429, guid: c13e5e7fefc6d3a4682c484043e53ef2, type: 3}
+  m_PrefabInstance: {fileID: 4736481313194128655}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4736481313194128661 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5676001370052986274, guid: c13e5e7fefc6d3a4682c484043e53ef2, type: 3}
+  m_PrefabInstance: {fileID: 4736481313194128655}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4782152627088564606
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8407,13 +8475,16 @@ MonoBehaviour:
   coreRepairs: 00000000
   coreRepairsStart: 0.65
   coreRepairsAmount: 1
+  coreRepairsScore: 25
   randomRepairs: 000000000100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
+  randomRepairsScore: 25
   randomGasFlow: 0.5
   fullRepairs: 00000000
   fullRepairsStart: 0
   fullRepairsAmount: 1
+  fullRepairsScore: 25
   fullGasFlow: 0
   currentRepairs: 
   currentDurability: 0
