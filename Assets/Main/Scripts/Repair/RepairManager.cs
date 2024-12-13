@@ -74,7 +74,10 @@ public class RepairManager : MonoBehaviour
 
     public void StopRepair()
     {
-        currentRepairScript.ResetRepair();
+        if (currentRepairScript)
+        {
+            currentRepairScript.ResetRepair();
+        }
     }
 
     Repairs GetRepairScript(RepairType type)

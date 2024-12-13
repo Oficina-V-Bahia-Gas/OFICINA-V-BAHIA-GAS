@@ -14,6 +14,7 @@ public class Machines : MonoBehaviour
     [Tooltip("Quanto começa a poder reparar a máquina")] [Range(0f, 1f)] public float coreRepairsStart = 0.65f;
     [Tooltip("Quanto consertos precisa inicialmente")] public int coreRepairsAmount = 1;
     [Tooltip("Ganho de pontuação de reparo inicialmente")] public int coreRepairsScore = 25;
+    [Tooltip("Passagem de gás quando parcialmente quebrado")] public float coreGasFlow = 0.9f;
     [Space]
     public List<RepairManager.RepairType> randomRepairs = new List<RepairManager.RepairType>();
     [Tooltip("Quando começa a ter consertos aleatórios")][Range(0f, 1f)] public float randomRepairsStart = 0.3f;
@@ -109,7 +110,11 @@ public class Machines : MonoBehaviour
         {
             if (GetComponent<GasFlow>() != null)
             {
-                float _gasvalue = (CheckDurability(fullRepairsAmount)) ? fullGasFlow : randomGasFlow;
+                float _gasvalue = coreGasFlow;
+
+                if (CheckDurability(randomRepairsStart)) _gasvalue = randomGasFlow;
+                if (CheckDurability(fullRepairsStart)) _gasvalue = fullGasFlow;
+
                 GetComponent<GasFlow>().ChangeFixValue(_gasvalue);
             }
         }

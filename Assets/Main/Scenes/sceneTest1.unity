@@ -12779,6 +12779,7 @@ MonoBehaviour:
   coreRepairsStart: 0.5
   coreRepairsAmount: 1
   coreRepairsScore: 25
+  coreGasFlow: 0.9
   randomRepairs: 01000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 0
@@ -12792,8 +12793,8 @@ MonoBehaviour:
   currentRepairs: 
   currentDurability: 0
   maxDurability: 0
-  minDurability: 5
-  maxDurabilityRange: 10
+  minDurability: 20
+  maxDurabilityRange: 40
   onCooldown: 0
   minCooldown: 20
   maxCooldown: 50
@@ -18185,6 +18186,7 @@ MonoBehaviour:
   coreRepairsStart: 0.5
   coreRepairsAmount: 1
   coreRepairsScore: 25
+  coreGasFlow: 0.9
   randomRepairs: 
   randomRepairsStart: 0.3
   randomRepairsAmount: 0
@@ -18198,8 +18200,8 @@ MonoBehaviour:
   currentRepairs: 
   currentDurability: 0
   maxDurability: 0
-  minDurability: 5
-  maxDurabilityRange: 10
+  minDurability: 30
+  maxDurabilityRange: 70
   onCooldown: 0
   minCooldown: 20
   maxCooldown: 50
@@ -18709,8 +18711,8 @@ MonoBehaviour:
   timerText: {fileID: 1273806698}
   levelTimer: 100
   scoreBar: {fileID: 1205847739}
-  scoreGoal: 100
-  scoreGain: 20
+  scoreGoal: 300
+  scoreGain: 2
   finalOutputs:
   - {fileID: 1745188828}
 --- !u!1 &1002742709
@@ -20848,6 +20850,7 @@ MonoBehaviour:
   coreRepairsStart: 0.5
   coreRepairsAmount: 1
   coreRepairsScore: 25
+  coreGasFlow: 0.9
   randomRepairs: 
   randomRepairsStart: 0.3
   randomRepairsAmount: 0
@@ -20861,8 +20864,8 @@ MonoBehaviour:
   currentRepairs: 
   currentDurability: 0
   maxDurability: 0
-  minDurability: 5
-  maxDurabilityRange: 10
+  minDurability: 40
+  maxDurabilityRange: 50
   onCooldown: 0
   minCooldown: 20
   maxCooldown: 50
@@ -32035,6 +32038,7 @@ MonoBehaviour:
   coreRepairsStart: 0.5
   coreRepairsAmount: 1
   coreRepairsScore: 25
+  coreGasFlow: 0.9
   randomRepairs: 
   randomRepairsStart: 0.3
   randomRepairsAmount: 0
@@ -32048,8 +32052,8 @@ MonoBehaviour:
   currentRepairs: 
   currentDurability: 0
   maxDurability: 0
-  minDurability: 5
-  maxDurabilityRange: 10
+  minDurability: 20
+  maxDurabilityRange: 50
   onCooldown: 0
   minCooldown: 20
   maxCooldown: 50
@@ -32778,24 +32782,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   machineType: 0
   coreRepairs: 0000000001000000
-  coreRepairsStart: 1
+  coreRepairsStart: 0.685
   coreRepairsAmount: 2
   coreRepairsScore: 25
+  coreGasFlow: 0.9
   randomRepairs: 0200000003000000
-  randomRepairsStart: 0.5
+  randomRepairsStart: 0.37
   randomRepairsAmount: 1
   randomRepairsScore: 25
   randomGasFlow: 0.5
   fullRepairs: 030000000000000002000000
-  fullRepairsStart: 0
+  fullRepairsStart: 0.046
   fullRepairsAmount: 1
   fullRepairsScore: 25
   fullGasFlow: 0
   currentRepairs: 
   currentDurability: 0
   maxDurability: 0
-  minDurability: 5
-  maxDurabilityRange: 10
+  minDurability: 40
+  maxDurabilityRange: 50
   onCooldown: 0
   minCooldown: 20
   maxCooldown: 50
