@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Slider scoreBar;
     [SerializeField] private float scoreGoal = 100;
     [SerializeField, Tooltip("Ganho máxmimo por segundo.")] private float scoreGain = 10;
+    [SerializeField] private List<GasFlow> finalOutputs = new List<GasFlow>();
 
 
     private float currentScore = 0;
@@ -25,8 +26,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        remainingTime = levelTimer;
-        scoreBar.maxValue = scoreGoal;
+        ResetManager();
     }
 
     // Update is called once per frame
@@ -34,8 +34,18 @@ public class GameManager : MonoBehaviour
     {
         TimerDecrease();
         TimerVisualization();
-        ScoreGain(Time.deltaTime * scoreGain); // unfinished
-        ScoreVisualization();
+
+        if(finalOutputs.Count > 0)
+        {
+            float _totalFlow = 0f;
+            foreach (GasFlow _output in finalOutputs)
+            {
+                _totalFlow += _output.currentFlow;
+            }
+            _totalFlow = _totalFlow / finalOutputs.Count;
+
+            ScoreGain(_totalFlow * scoreGain * Time.deltaTime);
+        }
     }
 
     void TimerDecrease()
@@ -58,16 +68,11 @@ public class GameManager : MonoBehaviour
         timerText.text = $"{_minutes:00} : {_seconds:00}";
     }
 
-    void ScoreGain(float _gain = -13.7f)
+    public void ScoreGain(float _gain)
     {
-        if (remainingTime > 0)
-        {
-            // Default Value
-            if(_gain == -13.7)
-            {
+        currentScore += _gain;
 
-            }
-        }
+        ScoreVisualization();
     }
 
     void ScoreVisualization()
@@ -78,5 +83,16 @@ public class GameManager : MonoBehaviour
     public float GetRemainingTime()
     {
         return remainingTime;
+    }
+
+    public void ResetManager()
+    {
+        remainingTime = levelTimer;
+        currentScore = 0f;
+
+        scoreBar.maxValue = scoreGoal;
+        scoreBar.value = currentScore;
+
+        ScoreVisualization();
     }
 }

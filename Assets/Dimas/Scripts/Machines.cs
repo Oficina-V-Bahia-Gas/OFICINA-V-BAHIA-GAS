@@ -67,7 +67,7 @@ public class Machines : MonoBehaviour
         SetDurability();
         repairCooldown = Random.Range(minCooldown, maxCooldown);
         needsRepair = CheckDurability();
-        gameManager = FindObjectOfType<GameManager>();
+        gameManager = FindAnyObjectByType<GameManager>();
     }
 
     private void Update()
@@ -133,6 +133,13 @@ public class Machines : MonoBehaviour
                 DeactivateRepair();
                 SetDurability();
                 StartCoroutine(RepairCooldown());
+                if (gameManager)
+                {
+                    float _gain = coreRepairsScore;
+                    if (CheckDurability(randomRepairsStart)) _gain = randomRepairsScore;
+                    if (CheckDurability(fullRepairsStart)) _gain = fullRepairsScore;
+                    gameManager.ScoreGain(_gain);
+                }
             }
             else
             {
