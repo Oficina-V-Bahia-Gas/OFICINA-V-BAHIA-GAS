@@ -46,6 +46,23 @@ public class GameManager : MonoBehaviour
 
             ScoreGain(_totalFlow * scoreGain * Time.deltaTime);
         }
+
+        if(currentScore >= scoreGoal)
+        {
+            Debug.Log("Sucesso!!");
+        }
+
+        if (remainingTime <= 0)
+        {
+            if(currentScore >= scoreGoal)
+            {
+                Debug.Log("Tempo acabado. Missão concluida!!!!");
+            }
+            else
+            {
+                Debug.Log("Tempo acabado. Missão fracassada...");
+            }
+        }
     }
 
     void TimerDecrease()
@@ -70,7 +87,10 @@ public class GameManager : MonoBehaviour
 
     public void ScoreGain(float _gain)
     {
-        currentScore += _gain;
+        if (remainingTime > 0)
+        {
+            currentScore += _gain;
+        }
 
         ScoreVisualization();
     }
