@@ -19,13 +19,13 @@ public class Machines : MonoBehaviour
     public List<RepairManager.RepairType> randomRepairs = new List<RepairManager.RepairType>();
     [Tooltip("Quando começa a ter consertos aleatórios")][Range(0f, 1f)] public float randomRepairsStart = 0.3f;
     [Tooltip("Quantos consertos extras são adicionados")] public int randomRepairsAmount = 0;
-    [Tooltip("Ganho de pontuação de reparo quando parcialmente quebrado")] public int randomRepairsScore = 25;
+    [Tooltip("Ganho de pontuação de reparo quando parcialmente quebrado")] public int randomRepairsScore = 27;
     [Tooltip("Passagem de gás quando parcialmente quebrado")] public float randomGasFlow = 0.5f;
     [Space]
     public List<RepairManager.RepairType> fullRepairs = new List<RepairManager.RepairType>();
     [Tooltip("Conserto prioritário quando está totalmente quebrado")][Range(0f, 1f)] public float fullRepairsStart = 0f;
     [Tooltip("Quantos consertos extras são adicionados")] public int fullRepairsAmount = 0;
-    [Tooltip("Ganho de pontuação de reparo quando totalmente quebrado")] public int fullRepairsScore = 25;
+    [Tooltip("Ganho de pontuação de reparo quando totalmente quebrado")] public int fullRepairsScore = 32;
     [Tooltip("Passagem de gás quando totalmente quebrado")] public float fullGasFlow = 0f;
 
     [HideInInspector] public List<RepairManager.RepairType> currentRepairs = new List<RepairManager.RepairType>();
@@ -40,8 +40,8 @@ public class Machines : MonoBehaviour
 
 
     [Header("Durability Ranges")]
-    public float minDurability = 5f;
-    public float maxDurabilityRange = 10f;
+    public float minDurability = 20f;
+    public float maxDurabilityRange = 40f;
 
     public bool needsRepair { get; private set; }
     public bool onCooldown;
@@ -49,7 +49,7 @@ public class Machines : MonoBehaviour
 
     [Header("Repair Cooldown Range")]
     public float minCooldown = 5f;
-    public float maxCooldown = 7f;
+    public float maxCooldown = 20f;
     float repairCooldown;
 
     bool onUse = false;

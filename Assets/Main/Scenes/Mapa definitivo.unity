@@ -363,14 +363,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   machineType: 1
   coreRepairs: 00000000
-  coreRepairsStart: 0.65
+  coreRepairsStart: 0.8
   coreRepairsAmount: 1
-  coreRepairsScore: 25
+  coreRepairsScore: 40
   coreGasFlow: 0.9
   randomRepairs: 000000000100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
-  randomRepairsScore: 25
+  randomRepairsScore: 30
   randomGasFlow: 0.5
   fullRepairs: 00000000
   fullRepairsStart: 0
@@ -380,11 +380,11 @@ MonoBehaviour:
   currentRepairs: 
   currentDurability: 0
   maxDurability: 0
-  minDurability: 5
-  maxDurabilityRange: 10
+  minDurability: 20
+  maxDurabilityRange: 45
   onCooldown: 0
-  minCooldown: 5
-  maxCooldown: 7
+  minCooldown: 15
+  maxCooldown: 40
 --- !u!1 &111908180
 GameObject:
   m_ObjectHideFlags: 0
@@ -1064,14 +1064,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   machineType: 1
   coreRepairs: 00000000
-  coreRepairsStart: 0.65
+  coreRepairsStart: 0.8
   coreRepairsAmount: 1
-  coreRepairsScore: 25
+  coreRepairsScore: 40
   coreGasFlow: 0.9
   randomRepairs: 000000000100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
-  randomRepairsScore: 25
+  randomRepairsScore: 30
   randomGasFlow: 0.5
   fullRepairs: 00000000
   fullRepairsStart: 0
@@ -1081,11 +1081,11 @@ MonoBehaviour:
   currentRepairs: 
   currentDurability: 0
   maxDurability: 0
-  minDurability: 5
-  maxDurabilityRange: 10
+  minDurability: 20
+  maxDurabilityRange: 45
   onCooldown: 0
-  minCooldown: 5
-  maxCooldown: 7
+  minCooldown: 15
+  maxCooldown: 40
 --- !u!1 &299823274
 GameObject:
   m_ObjectHideFlags: 0
@@ -1450,14 +1450,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   machineType: 1
   coreRepairs: 00000000
-  coreRepairsStart: 0.65
+  coreRepairsStart: 0.8
   coreRepairsAmount: 1
-  coreRepairsScore: 25
+  coreRepairsScore: 40
   coreGasFlow: 0.9
   randomRepairs: 000000000100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
-  randomRepairsScore: 25
+  randomRepairsScore: 30
   randomGasFlow: 0.5
   fullRepairs: 00000000
   fullRepairsStart: 0
@@ -1467,11 +1467,11 @@ MonoBehaviour:
   currentRepairs: 
   currentDurability: 0
   maxDurability: 0
-  minDurability: 5
-  maxDurabilityRange: 10
+  minDurability: 20
+  maxDurabilityRange: 45
   onCooldown: 0
-  minCooldown: 5
-  maxCooldown: 7
+  minCooldown: 15
+  maxCooldown: 40
 --- !u!1 &408417536
 GameObject:
   m_ObjectHideFlags: 0
@@ -1773,14 +1773,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   machineType: 1
   coreRepairs: 00000000
-  coreRepairsStart: 0.65
+  coreRepairsStart: 0.8
   coreRepairsAmount: 1
-  coreRepairsScore: 25
+  coreRepairsScore: 40
   coreGasFlow: 0.9
   randomRepairs: 000000000100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
-  randomRepairsScore: 25
+  randomRepairsScore: 30
   randomGasFlow: 0.5
   fullRepairs: 00000000
   fullRepairsStart: 0
@@ -1790,11 +1790,11 @@ MonoBehaviour:
   currentRepairs: 
   currentDurability: 0
   maxDurability: 0
-  minDurability: 5
-  maxDurabilityRange: 10
+  minDurability: 20
+  maxDurabilityRange: 45
   onCooldown: 0
-  minCooldown: 5
-  maxCooldown: 7
+  minCooldown: 15
+  maxCooldown: 40
 --- !u!1 &482345414
 GameObject:
   m_ObjectHideFlags: 0
@@ -2413,21 +2413,21 @@ MonoBehaviour:
   randomRepairs: 000000000100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
-  randomRepairsScore: 25
+  randomRepairsScore: 28
   randomGasFlow: 0.5
   fullRepairs: 02000000
   fullRepairsStart: 0
   fullRepairsAmount: 1
-  fullRepairsScore: 25
+  fullRepairsScore: 32
   fullGasFlow: 0
   currentRepairs: 
   currentDurability: 0
   maxDurability: 0
-  minDurability: 5
-  maxDurabilityRange: 10
+  minDurability: 25
+  maxDurabilityRange: 35
   onCooldown: 0
   minCooldown: 5
-  maxCooldown: 7
+  maxCooldown: 10
 --- !u!1001 &628028387
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2727,21 +2727,21 @@ MonoBehaviour:
   randomRepairs: 000000000100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
-  randomRepairsScore: 25
+  randomRepairsScore: 28
   randomGasFlow: 0.5
   fullRepairs: 02000000
   fullRepairsStart: 0
   fullRepairsAmount: 1
-  fullRepairsScore: 25
+  fullRepairsScore: 32
   fullGasFlow: 0
   currentRepairs: 
   currentDurability: 0
   maxDurability: 0
-  minDurability: 5
-  maxDurabilityRange: 10
+  minDurability: 25
+  maxDurabilityRange: 35
   onCooldown: 0
   minCooldown: 5
-  maxCooldown: 7
+  maxCooldown: 10
 --- !u!1 &649420107
 GameObject:
   m_ObjectHideFlags: 0
@@ -3713,7 +3713,9 @@ MonoBehaviour:
   scoreBar: {fileID: 1791323578}
   scoreGoal: 500
   scoreGain: 2
-  finalOutputs: []
+  finalOutputs:
+  - {fileID: 1310317504}
+  - {fileID: 622024957}
 --- !u!1 &1032532818
 GameObject:
   m_ObjectHideFlags: 0
@@ -4032,21 +4034,21 @@ MonoBehaviour:
   randomRepairs: 000000000100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
-  randomRepairsScore: 25
+  randomRepairsScore: 28
   randomGasFlow: 0.5
   fullRepairs: 02000000
   fullRepairsStart: 0
   fullRepairsAmount: 1
-  fullRepairsScore: 25
+  fullRepairsScore: 32
   fullGasFlow: 0
   currentRepairs: 
   currentDurability: 0
   maxDurability: 0
-  minDurability: 5
-  maxDurabilityRange: 10
+  minDurability: 25
+  maxDurabilityRange: 35
   onCooldown: 0
   minCooldown: 5
-  maxCooldown: 7
+  maxCooldown: 10
 --- !u!1 &1083236918
 GameObject:
   m_ObjectHideFlags: 0
@@ -5312,21 +5314,21 @@ MonoBehaviour:
   randomRepairs: 000000000100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
-  randomRepairsScore: 25
+  randomRepairsScore: 28
   randomGasFlow: 0.5
   fullRepairs: 02000000
   fullRepairsStart: 0
   fullRepairsAmount: 1
-  fullRepairsScore: 25
+  fullRepairsScore: 32
   fullGasFlow: 0
   currentRepairs: 
   currentDurability: 0
   maxDurability: 0
-  minDurability: 5
-  maxDurabilityRange: 10
+  minDurability: 25
+  maxDurabilityRange: 35
   onCooldown: 0
   minCooldown: 5
-  maxCooldown: 7
+  maxCooldown: 10
 --- !u!1 &1350218097
 GameObject:
   m_ObjectHideFlags: 0
@@ -5506,14 +5508,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   machineType: 1
   coreRepairs: 00000000
-  coreRepairsStart: 0.65
+  coreRepairsStart: 0.8
   coreRepairsAmount: 1
-  coreRepairsScore: 25
+  coreRepairsScore: 40
   coreGasFlow: 0.9
   randomRepairs: 000000000100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
-  randomRepairsScore: 25
+  randomRepairsScore: 30
   randomGasFlow: 0.5
   fullRepairs: 00000000
   fullRepairsStart: 0
@@ -5523,11 +5525,11 @@ MonoBehaviour:
   currentRepairs: 
   currentDurability: 0
   maxDurability: 0
-  minDurability: 5
-  maxDurabilityRange: 10
+  minDurability: 20
+  maxDurabilityRange: 45
   onCooldown: 0
-  minCooldown: 5
-  maxCooldown: 7
+  minCooldown: 15
+  maxCooldown: 40
 --- !u!1 &1383757484
 GameObject:
   m_ObjectHideFlags: 0
@@ -5708,14 +5710,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   machineType: 1
   coreRepairs: 00000000
-  coreRepairsStart: 0.65
+  coreRepairsStart: 0.8
   coreRepairsAmount: 1
-  coreRepairsScore: 25
+  coreRepairsScore: 40
   coreGasFlow: 0.9
   randomRepairs: 000000000100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
-  randomRepairsScore: 25
+  randomRepairsScore: 30
   randomGasFlow: 0.5
   fullRepairs: 00000000
   fullRepairsStart: 0
@@ -5725,11 +5727,11 @@ MonoBehaviour:
   currentRepairs: 
   currentDurability: 0
   maxDurability: 0
-  minDurability: 5
-  maxDurabilityRange: 10
+  minDurability: 20
+  maxDurabilityRange: 45
   onCooldown: 0
-  minCooldown: 5
-  maxCooldown: 7
+  minCooldown: 15
+  maxCooldown: 40
 --- !u!1 &1426106177
 GameObject:
   m_ObjectHideFlags: 0
@@ -6640,14 +6642,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   machineType: 1
   coreRepairs: 00000000
-  coreRepairsStart: 0.65
+  coreRepairsStart: 0.8
   coreRepairsAmount: 1
-  coreRepairsScore: 25
+  coreRepairsScore: 40
   coreGasFlow: 0.9
   randomRepairs: 000000000100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
-  randomRepairsScore: 25
+  randomRepairsScore: 30
   randomGasFlow: 0.5
   fullRepairs: 00000000
   fullRepairsStart: 0
@@ -6657,11 +6659,11 @@ MonoBehaviour:
   currentRepairs: 
   currentDurability: 0
   maxDurability: 0
-  minDurability: 5
-  maxDurabilityRange: 10
+  minDurability: 20
+  maxDurabilityRange: 45
   onCooldown: 0
-  minCooldown: 5
-  maxCooldown: 7
+  minCooldown: 15
+  maxCooldown: 40
 --- !u!1 &1697560424
 GameObject:
   m_ObjectHideFlags: 0
@@ -8092,14 +8094,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   machineType: 1
   coreRepairs: 00000000
-  coreRepairsStart: 0.65
+  coreRepairsStart: 0.8
   coreRepairsAmount: 1
-  coreRepairsScore: 25
+  coreRepairsScore: 40
   coreGasFlow: 0.9
   randomRepairs: 000000000100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
-  randomRepairsScore: 25
+  randomRepairsScore: 30
   randomGasFlow: 0.5
   fullRepairs: 00000000
   fullRepairsStart: 0
@@ -8109,11 +8111,11 @@ MonoBehaviour:
   currentRepairs: 
   currentDurability: 0
   maxDurability: 0
-  minDurability: 5
-  maxDurabilityRange: 10
+  minDurability: 20
+  maxDurabilityRange: 45
   onCooldown: 0
-  minCooldown: 5
-  maxCooldown: 7
+  minCooldown: 15
+  maxCooldown: 40
 --- !u!1 &1996596589
 GameObject:
   m_ObjectHideFlags: 0
@@ -8428,21 +8430,21 @@ MonoBehaviour:
   randomRepairs: 000000000100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
-  randomRepairsScore: 25
+  randomRepairsScore: 28
   randomGasFlow: 0.5
   fullRepairs: 02000000
   fullRepairsStart: 0
   fullRepairsAmount: 1
-  fullRepairsScore: 25
+  fullRepairsScore: 32
   fullGasFlow: 0
   currentRepairs: 
   currentDurability: 0
   maxDurability: 0
-  minDurability: 5
-  maxDurabilityRange: 10
+  minDurability: 25
+  maxDurabilityRange: 35
   onCooldown: 0
   minCooldown: 5
-  maxCooldown: 7
+  maxCooldown: 10
 --- !u!1001 &2045498062
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8787,26 +8789,26 @@ MonoBehaviour:
   coreRepairs: 0000000001000000
   coreRepairsStart: 0.65
   coreRepairsAmount: 1
-  coreRepairsScore: 25
+  coreRepairsScore: 65
   coreGasFlow: 0.9
   randomRepairs: 000000000100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
-  randomRepairsScore: 25
+  randomRepairsScore: 50
   randomGasFlow: 0.5
   fullRepairs: 03000000
   fullRepairsStart: 0
   fullRepairsAmount: 1
-  fullRepairsScore: 25
+  fullRepairsScore: 45
   fullGasFlow: 0
   currentRepairs: 
   currentDurability: 0
   maxDurability: 0
-  minDurability: 5
-  maxDurabilityRange: 10
+  minDurability: 35
+  maxDurabilityRange: 50
   onCooldown: 0
   minCooldown: 5
-  maxCooldown: 7
+  maxCooldown: 10
 --- !u!1001 &2345162579516082094
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8920,21 +8922,21 @@ MonoBehaviour:
   randomRepairs: 000000000100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
-  randomRepairsScore: 25
+  randomRepairsScore: 28
   randomGasFlow: 0.5
   fullRepairs: 02000000
   fullRepairsStart: 0
   fullRepairsAmount: 1
-  fullRepairsScore: 25
+  fullRepairsScore: 32
   fullGasFlow: 0
   currentRepairs: 
   currentDurability: 0
   maxDurability: 0
-  minDurability: 5
-  maxDurabilityRange: 10
+  minDurability: 25
+  maxDurabilityRange: 35
   onCooldown: 0
   minCooldown: 5
-  maxCooldown: 7
+  maxCooldown: 10
 --- !u!4 &2607744883129699678 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2911076759343413184, guid: 190af2864d2aea54e9f5a4b4752856d7, type: 3}
@@ -9393,14 +9395,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   machineType: 1
   coreRepairs: 00000000
-  coreRepairsStart: 0.65
+  coreRepairsStart: 0.8
   coreRepairsAmount: 1
-  coreRepairsScore: 25
+  coreRepairsScore: 40
   coreGasFlow: 0.9
   randomRepairs: 000000000100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
-  randomRepairsScore: 25
+  randomRepairsScore: 30
   randomGasFlow: 0.5
   fullRepairs: 00000000
   fullRepairsStart: 0
@@ -9410,11 +9412,11 @@ MonoBehaviour:
   currentRepairs: 
   currentDurability: 0
   maxDurability: 0
-  minDurability: 5
-  maxDurabilityRange: 10
+  minDurability: 20
+  maxDurabilityRange: 45
   onCooldown: 0
-  minCooldown: 5
-  maxCooldown: 7
+  minCooldown: 15
+  maxCooldown: 40
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
