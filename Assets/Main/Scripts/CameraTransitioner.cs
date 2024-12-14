@@ -9,17 +9,12 @@ public class CameraTransitioner : MonoBehaviour
     [SerializeField] [Tooltip("Alvo acima ou à direita")] private GameObject targetUR;
     [SerializeField] [Tooltip("Alvo abaixo ou à esquerda")] private GameObject targetDL;
     [SerializeField] private bool horizontal;
-    // Start is called before the first frame update
+
     void Start()
     {
         Check();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     private void OnTriggerExit(Collider _other)
     {
         if (!Check()) return;

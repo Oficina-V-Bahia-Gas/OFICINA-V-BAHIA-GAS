@@ -13,9 +13,9 @@ public class RepairRotate : Repairs
 
     public RepairsCameraManager rotateCameraManager;
 
-    private void Start()
+    public override void StartRepair()
     {
-        rotationCenter = new Vector2(Screen.width / 2, Screen.height / 2);
+        base.StartRepair();
 
         CharacterInfo _characterInfo = FindObjectOfType<CharacterInfo>();
         if (_characterInfo != null)
@@ -36,11 +36,17 @@ public class RepairRotate : Repairs
                 Debug.LogWarning($"Nenhum filho encontrado na máquina {currentMachine.name}.");
             }
         }
+
+        rotationCenter = new Vector2(Screen.width / 2, Screen.height / 2);
+        rotationProgress = 0f;
+        isRotating = false;
+
+        Debug.Log("Iniciando conserto de rotação.");
     }
 
     Transform GetFirstChild(Machines _machine)
     {
-        if (_machine.transform.childCount > 0)
+        if (_machine != null && _machine.transform.childCount > 0)
         {
             return _machine.transform.GetChild(0);
         }
@@ -111,6 +117,8 @@ public class RepairRotate : Repairs
         {
             rotateCameraManager.ClearTarget();
         }
+
+        Debug.Log("Conserto de rotação concluído.");
     }
 
     public override void ResetRepair()

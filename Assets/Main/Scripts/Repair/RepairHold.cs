@@ -30,11 +30,15 @@ public class RepairHold : Repairs
                 Debug.LogWarning($"Nenhum filho encontrado na máquina {currentMachine.name}.");
             }
         }
+        else
+        {
+            Debug.LogWarning("Câmera de reparo ou máquina atual não configurada corretamente.");
+        }
     }
 
     Transform GetFirstChild(Machines _machine)
     {
-        if (_machine.transform.childCount > 0)
+        if (_machine != null && _machine.transform.childCount > 0)
         {
             return _machine.transform.GetChild(0);
         }

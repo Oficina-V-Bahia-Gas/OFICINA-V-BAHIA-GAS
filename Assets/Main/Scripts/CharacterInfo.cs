@@ -9,11 +9,17 @@ public class CharacterInfo : MonoBehaviour
     public HudInteraction hudInteraction;
     private Machines currentMachine;
 
+    [SerializeField] private GameObject interactionButton;
+
     public static CharacterInfo instance;
 
     private void Start()
     {
         instance = this;
+        if (interactionButton != null)
+        {
+            interactionButton.SetActive(false);
+        }
     }
 
     private void Update()
@@ -45,11 +51,19 @@ public class CharacterInfo : MonoBehaviour
             if (machine != null && machine != currentMachine)
             {
                 currentMachine = machine;
+                if (interactionButton != null)
+                {
+                    interactionButton.SetActive(true);
+                }
             }
         }
         else
         {
             currentMachine = null;
+            if (interactionButton != null)
+            {
+                interactionButton.SetActive(false);
+            }
         }
     }
 
