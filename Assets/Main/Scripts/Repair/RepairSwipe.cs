@@ -78,6 +78,6 @@ public class RepairSwipe : Repairs
 
     protected override void PlayAnimation(string animationName)
     {
-        currentMachine?.PlayPlayerAnimation(animationName);
+        currentMachine?.PlayAnimation(animationName);
     }
 }
