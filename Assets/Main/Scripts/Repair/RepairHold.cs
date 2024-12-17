@@ -5,55 +5,23 @@ public class RepairHold : Repairs
     bool isHolding = false;
     float holdProgress = 0f;
     public float holdDuration = 5f;
-    public RepairsCameraManager holdCameraManager;
-
-    public override void StartRepair()
-    {
-        base.StartRepair();
-
-        CharacterInfo _characterInfo = FindObjectOfType<CharacterInfo>();
-        if (_characterInfo != null)
-        {
-            currentMachine = _characterInfo.GetLastInteractedMachine();
-        }
-
-        if (holdCameraManager != null && currentMachine != null)
-        {
-            Transform _target = GetFirstChild(currentMachine);
-            if (_target != null)
-            {
-                holdCameraManager.SetTargetTransform(_target);
-                holdCameraManager.ActivateCamera();
-            }
-            else
-            {
-                Debug.LogWarning($"Nenhum filho encontrado na máquina {currentMachine.name}.");
-            }
-        }
-        else
-        {
-            Debug.LogWarning("Câmera de reparo ou máquina atual não configurada corretamente.");
-        }
-    }
-
-    Transform GetFirstChild(Machines _machine)
-    {
-        if (_machine != null && _machine.transform.childCount > 0)
-        {
-            return _machine.transform.GetChild(0);
-        }
-        return null;
-    }
 
     private void Update()
     {
-        if (repairInProgress && isHolding)
+        if (repairInProgress)
         {
-            holdProgress += Time.deltaTime;
-            if (holdProgress >= holdDuration)
+            if (isHolding)
             {
-                StopHolding();
-                FinishRepair();
+                holdProgress += Time.deltaTime;
+                if (holdProgress >= holdDuration)
+                {
+                    StopHolding();
+                    FinishRepair();
+                }
+            }
+            else
+            {
+                PausePlayerAnimation();
             }
         }
     }
@@ -64,26 +32,17 @@ public class RepairHold : Repairs
 
         isHolding = true;
         holdProgress = 0f;
+        ResumePlayerAnimation();
     }
 
     public void StopHolding()
     {
         isHolding = false;
+        PausePlayerAnimation();
     }
 
-    public override void FinishRepair()
+    protected override void PlayAnimation(string animationName)
     {
-        base.FinishRepair();
-        if (holdCameraManager != null)
-        {
-            holdCameraManager.ClearTarget();
-        }
-    }
-
-    public override void ResetRepair()
-    {
-        base.ResetRepair();
-        holdProgress = 0f;
-        Debug.Log("Resetando conserto: RepairHold");
+        currentMachine?.PlayAnimation(animationName);
     }
 }

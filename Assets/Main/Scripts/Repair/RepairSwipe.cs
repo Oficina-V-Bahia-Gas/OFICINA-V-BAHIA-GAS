@@ -75,4 +75,9 @@ public class RepairSwipe : Repairs
             swipeCameraManager.ClearTarget();
         }
     }
+
+    protected override void PlayAnimation(string animationName)
+    {
+        currentMachine?.PlayPlayerAnimation(animationName);
+    }
 }

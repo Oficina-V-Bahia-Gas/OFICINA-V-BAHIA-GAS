@@ -6,6 +6,8 @@ public abstract class Repairs : MonoBehaviour
     protected bool repairCompleted = false;
     protected Machines currentMachine;
 
+    protected Animator playerAnimator; // Referência ao Animator do jogador
+
     public virtual void StartRepair()
     {
         ResetRepair();
@@ -20,35 +22,53 @@ public abstract class Repairs : MonoBehaviour
             if (currentMachine != null)
             {
                 FaceMachine(characterInfo.gameObject, currentMachine.transform);
+                playerAnimator = characterInfo.GetComponent<Animator>();
+
+                if (playerAnimator != null)
+                {
+                    playerAnimator.SetTrigger("StartRepair");
+                    playerAnimator.SetBool("IsRepairing", true);
+                }
             }
         }
+
+        PlayAnimation("StartRepair");
     }
 
     public virtual void FinishRepair()
     {
-        if (!repairInProgress)
-        {
-            Debug.LogWarning("Conserto já finalizado ou não iniciado.");
-            return;
-        }
+        if (!repairInProgress) return;
 
         repairInProgress = false;
         repairCompleted = true;
 
+        if (playerAnimator != null)
+        {
+            playerAnimator.SetTrigger("FinishRepair");
+            playerAnimator.SetBool("IsRepairing", false);
+        }
+
         if (HudInteraction.instance != null && HudInteraction.instance.repairManager != null)
         {
-            Debug.Log("Chamando EndRepair no RepairManager.");
             HudInteraction.instance.repairManager.NotifyRepairComplete();
         }
 
+        PlayAnimation("FinishRepair");
         Debug.Log("Conserto concluído.");
-        //ResetRepair();
     }
 
     public virtual void ResetRepair()
     {
         repairInProgress = false;
         repairCompleted = false;
+
+        if (playerAnimator != null)
+        {
+            playerAnimator.SetTrigger("ResetRepair");
+            playerAnimator.SetBool("IsRepairing", false);
+        }
+
+        PlayAnimation("ResetRepair");
         Debug.Log("Conserto resetado.");
     }
 
@@ -59,4 +79,22 @@ public abstract class Repairs : MonoBehaviour
         Quaternion targetRotation = Quaternion.LookRotation(directionToMachine);
         player.transform.rotation = targetRotation;
     }
+
+    protected void PausePlayerAnimation()
+    {
+        if (playerAnimator != null)
+        {
+            playerAnimator.speed = 0;
+        }
+    }
+
+    protected void ResumePlayerAnimation()
+    {
+        if (playerAnimator != null)
+        {
+            playerAnimator.speed = 1;
+        }
+    }
+
+    protected abstract void PlayAnimation(string animationName);
 }

@@ -62,6 +62,10 @@ public class Machines : MonoBehaviour
 
     private GameManager gameManager;
 
+    [Header("Animators")]
+    [SerializeField] private Animator machineAnimator;
+    private Animator playerAnimator;
+
 
     private void Start()
     {
@@ -182,6 +186,7 @@ public class Machines : MonoBehaviour
         //_gasFlow.ChangeFixValue(0f);
     }
 
+
     public void DeactivateRepair()
     {
         repairActive = false;
@@ -283,5 +288,37 @@ public class Machines : MonoBehaviour
         Mathf.Clamp(_durability, 0f, 1f);
 
         return (currentDurability / maxDurability < _durability);
+    }
+
+    void ResetAnimations()
+    {
+        PlayMachineAnimation("Idle");
+        PlayPlayerAnimation("PlayerIdle");
+    }
+
+    void PlayMachineAnimation(string animationState)
+    {
+        if (machineAnimator != null)
+        {
+            machineAnimator.Play(animationState);
+        }
+    }
+
+    void PlayPlayerAnimation(string animationState)
+    {
+        if (playerAnimator == null)
+        {
+            playerAnimator = CharacterInfo.instance?.GetComponent<Animator>();
+        }
+
+        if (playerAnimator != null)
+        {
+            playerAnimator.Play(animationState);
+        }
+    }
+
+    public void PlayAnimation(string animationState)
+    {
+        PlayMachineAnimation(animationState);
     }
 }
