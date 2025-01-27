@@ -461,6 +461,7 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 15
   maxCooldown: 40
+  machineAnimator: {fileID: 0}
 --- !u!1 &111908180
 GameObject:
   m_ObjectHideFlags: 0
@@ -1162,6 +1163,7 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 15
   maxCooldown: 40
+  machineAnimator: {fileID: 0}
 --- !u!1 &299823274
 GameObject:
   m_ObjectHideFlags: 0
@@ -1548,6 +1550,7 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 15
   maxCooldown: 40
+  machineAnimator: {fileID: 0}
 --- !u!1 &408417536
 GameObject:
   m_ObjectHideFlags: 0
@@ -1598,7 +1601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e272387c4ab200745878742d4fe283d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateCameraManager: {fileID: 762434224}
+  repairCameraManager: {fileID: 762434224}
 --- !u!114 &408417539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1871,6 +1874,7 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 15
   maxCooldown: 40
+  machineAnimator: {fileID: 0}
 --- !u!1 &482345414
 GameObject:
   m_ObjectHideFlags: 0
@@ -2264,8 +2268,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3716a3a2cd60f704c9939517ba1e7708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  repairCameraManager: {fileID: 762434224}
   tapsRequired: 20
-  tapCameraManager: {fileID: 762434224}
 --- !u!114 &538758407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2580,6 +2584,7 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 5
   maxCooldown: 10
+  machineAnimator: {fileID: 0}
 --- !u!1001 &628028387
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2894,6 +2899,7 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 5
   maxCooldown: 10
+  machineAnimator: {fileID: 0}
 --- !u!1 &649420107
 GameObject:
   m_ObjectHideFlags: 0
@@ -3179,6 +3185,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43b05ddc84b8cb34da24ef0f3c7c2401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followSpeed: 5
+  rotationSpeed: 5
 --- !u!1 &810951548
 GameObject:
   m_ObjectHideFlags: 0
@@ -4469,6 +4477,7 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 5
   maxCooldown: 10
+  machineAnimator: {fileID: 1996145988}
 --- !u!1 &1083236918
 GameObject:
   m_ObjectHideFlags: 0
@@ -5883,6 +5892,7 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 5
   maxCooldown: 10
+  machineAnimator: {fileID: 0}
 --- !u!1 &1350218097
 GameObject:
   m_ObjectHideFlags: 0
@@ -5989,8 +5999,8 @@ Transform:
   m_GameObject: {fileID: 1356901244}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.1, y: -7.6, z: 3.8}
-  m_LocalScale: {x: 14.234813, y: 13.394949, z: 8.687049}
+  m_LocalPosition: {x: -6.5407, y: -7.6, z: 3.8}
+  m_LocalScale: {x: 15.547263, y: 13.394949, z: 8.687049}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1697560425}
@@ -6192,6 +6202,7 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 15
   maxCooldown: 40
+  machineAnimator: {fileID: 0}
 --- !u!1 &1383757484
 GameObject:
   m_ObjectHideFlags: 0
@@ -6394,6 +6405,7 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 15
   maxCooldown: 40
+  machineAnimator: {fileID: 0}
 --- !u!1 &1426106177
 GameObject:
   m_ObjectHideFlags: 0
@@ -6929,7 +6941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adf860e07cb925647ae288deeac193da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swipeCameraManager: {fileID: 762434224}
+  repairCameraManager: {fileID: 762434224}
   distance: 30
   swipesRequired: 100
 --- !u!1 &1679639254
@@ -7326,6 +7338,7 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 15
   maxCooldown: 40
+  machineAnimator: {fileID: 0}
 --- !u!1 &1697560424
 GameObject:
   m_ObjectHideFlags: 0
@@ -7740,8 +7753,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1ee9ae566be5f14c81ebae21e04a7e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  repairCameraManager: {fileID: 762434224}
   holdDuration: 5
-  holdCameraManager: {fileID: 762434224}
 --- !u!114 &1717265501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8827,6 +8840,12 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 15
   maxCooldown: 40
+  machineAnimator: {fileID: 0}
+--- !u!95 &1996145988 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3404851517906073526, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+  m_PrefabInstance: {fileID: 622024954}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1996596589
 GameObject:
   m_ObjectHideFlags: 0
@@ -9156,6 +9175,7 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 5
   maxCooldown: 10
+  machineAnimator: {fileID: 0}
 --- !u!1001 &2045498062
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9520,6 +9540,7 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 5
   maxCooldown: 10
+  machineAnimator: {fileID: 0}
 --- !u!1001 &2345162579516082094
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9648,6 +9669,7 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 5
   maxCooldown: 10
+  machineAnimator: {fileID: 0}
 --- !u!4 &2607744883129699678 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2911076759343413184, guid: 190af2864d2aea54e9f5a4b4752856d7, type: 3}
@@ -10132,6 +10154,7 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 15
   maxCooldown: 40
+  machineAnimator: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

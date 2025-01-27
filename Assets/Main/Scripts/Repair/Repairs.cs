@@ -26,10 +26,25 @@ public abstract class Repairs : MonoBehaviour
 
                 if (playerAnimator != null)
                 {
+                    Debug.Log("Ativando animações de reparo.");
                     playerAnimator.SetTrigger("StartRepair");
                     playerAnimator.SetBool("IsRepairing", true);
                 }
+                else
+                {
+                    Debug.LogWarning("Animator do jogador não encontrado.");
+                }
             }
+            else
+            {
+                Debug.LogWarning("Nenhuma máquina definida como última interagida.");
+                return;
+            }
+        }
+        else
+        {
+            Debug.LogWarning("CharacterInfo não encontrado.");
+            return;
         }
 
         PlayAnimation("StartRepair");
@@ -42,8 +57,11 @@ public abstract class Repairs : MonoBehaviour
         repairInProgress = false;
         repairCompleted = true;
 
+        Debug.Log("Conserto concluído.");
+
         if (playerAnimator != null)
         {
+            Debug.Log("Finalizando animações de reparo.");
             playerAnimator.SetTrigger("FinishRepair");
             playerAnimator.SetBool("IsRepairing", false);
         }
@@ -54,7 +72,6 @@ public abstract class Repairs : MonoBehaviour
         }
 
         PlayAnimation("FinishRepair");
-        Debug.Log("Conserto concluído.");
     }
 
     public virtual void ResetRepair()
@@ -62,29 +79,30 @@ public abstract class Repairs : MonoBehaviour
         repairInProgress = false;
         repairCompleted = false;
 
+        Debug.Log("Conserto resetado.");
+
         if (playerAnimator != null)
         {
-            playerAnimator.SetTrigger("ResetRepair");
             playerAnimator.SetBool("IsRepairing", false);
         }
-
-        PlayAnimation("ResetRepair");
-        Debug.Log("Conserto resetado.");
     }
 
-    void FaceMachine(GameObject player, Transform machineTransform)
+    private void FaceMachine(GameObject player, Transform machineTransform)
     {
         Vector3 directionToMachine = (machineTransform.position - player.transform.position).normalized;
         directionToMachine.y = 0;
         Quaternion targetRotation = Quaternion.LookRotation(directionToMachine);
         player.transform.rotation = targetRotation;
+
+        Debug.Log("Jogador virado em direção à máquina.");
     }
 
     protected void PausePlayerAnimation()
     {
         if (playerAnimator != null)
         {
-            playerAnimator.speed = 0;
+            Debug.Log("Pausando animações do jogador.");
+            playerAnimator.speed = 0; // Pausa o Animator
         }
     }
 
@@ -92,7 +110,8 @@ public abstract class Repairs : MonoBehaviour
     {
         if (playerAnimator != null)
         {
-            playerAnimator.speed = 1;
+            Debug.Log("Retomando animações do jogador.");
+            playerAnimator.speed = 1; // Retoma o Animator
         }
     }
 

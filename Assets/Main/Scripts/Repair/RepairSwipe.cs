@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class RepairSwipe : Repairs
 {
-    public RepairsCameraManager swipeCameraManager;
+    public RepairsCameraManager repairCameraManager;
     public float distance = 50f;
     float swipeProgress = 0f;
     public float swipesRequired = 20f;
@@ -11,37 +11,42 @@ public class RepairSwipe : Repairs
     {
         base.StartRepair();
 
-        CharacterInfo _characterInfo = FindObjectOfType<CharacterInfo>();
-        if (_characterInfo != null)
+        CharacterInfo characterInfo = FindObjectOfType<CharacterInfo>();
+        if (characterInfo != null)
         {
-            currentMachine = _characterInfo.GetLastInteractedMachine();
-        }
-
-        if (swipeCameraManager != null && currentMachine != null)
-        {
-            Transform _target = GetFirstChild(currentMachine);
-            if (_target != null)
+            currentMachine = characterInfo.GetLastInteractedMachine();
+            if (currentMachine != null)
             {
-                swipeCameraManager.SetTargetTransform(_target);
-                swipeCameraManager.ActivateCamera();
+                Transform targetTransform = GetFirstChild(currentMachine);
+                if (targetTransform != null && repairCameraManager != null)
+                {
+                    repairCameraManager.SetTargetTransform(targetTransform);
+                    Debug.Log("Câmera configurada com sucesso para a máquina.");
+                }
+                else
+                {
+                    Debug.LogWarning("Target ou CameraManager não configurados corretamente.");
+                }
             }
             else
             {
-                Debug.LogWarning($"Nenhum filho encontrado na máquina {currentMachine.name}.");
+                Debug.LogWarning("Nenhuma máquina definida como última interagida.");
             }
         }
         else
         {
-            Debug.LogWarning("Câmera de reparo ou máquina atual não configurada corretamente.");
+            Debug.LogWarning("CharacterInfo não encontrado.");
         }
     }
 
-    Transform GetFirstChild(Machines _machine)
+    private Transform GetFirstChild(Machines machine)
     {
-        if (_machine != null && _machine.transform.childCount > 0)
+        if (machine != null && machine.transform.childCount > 0)
         {
-            return _machine.transform.GetChild(0);
+            return machine.transform.GetChild(0); // Retorna o primeiro filho da máquina
         }
+
+        Debug.LogWarning("A máquina não possui filhos ou é nula.");
         return null;
     }
 
@@ -70,9 +75,9 @@ public class RepairSwipe : Repairs
     public override void FinishRepair()
     {
         base.FinishRepair();
-        if (swipeCameraManager != null)
+        if (repairCameraManager != null)
         {
-            swipeCameraManager.ClearTarget();
+            repairCameraManager.ClearTarget();
         }
     }
 
