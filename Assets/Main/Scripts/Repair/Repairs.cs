@@ -26,7 +26,7 @@ public abstract class Repairs : MonoBehaviour
 
                 if (playerAnimator != null)
                 {
-                    Debug.Log("Ativando animações de reparo.");
+                    Debug.Log("Ativando animações de reparo do jogador.");
                     playerAnimator.SetTrigger("StartRepair");
                     playerAnimator.SetBool("IsRepairing", true);
                 }
@@ -34,6 +34,9 @@ public abstract class Repairs : MonoBehaviour
                 {
                     Debug.LogWarning("Animator do jogador não encontrado.");
                 }
+
+                Debug.Log("Ativando animações de reparo da máquina.");
+                PlayMachineAnimation("MachineRepairStart");
             }
             else
             {
@@ -61,9 +64,15 @@ public abstract class Repairs : MonoBehaviour
 
         if (playerAnimator != null)
         {
-            Debug.Log("Finalizando animações de reparo.");
+            Debug.Log("Finalizando animações de reparo do jogador.");
             playerAnimator.SetTrigger("FinishRepair");
             playerAnimator.SetBool("IsRepairing", false);
+        }
+
+        if (currentMachine != null)
+        {
+            Debug.Log("Finalizando animações de reparo da máquina.");
+            PlayMachineAnimation("MachineRepairFinish");
         }
 
         if (HudInteraction.instance != null && HudInteraction.instance.repairManager != null)
@@ -85,6 +94,11 @@ public abstract class Repairs : MonoBehaviour
         {
             playerAnimator.SetBool("IsRepairing", false);
         }
+
+        if (currentMachine != null)
+        {
+            PlayMachineAnimation("MachineIdle");
+        }
     }
 
     private void FaceMachine(GameObject player, Transform machineTransform)
@@ -104,6 +118,12 @@ public abstract class Repairs : MonoBehaviour
             Debug.Log("Pausando animações do jogador.");
             playerAnimator.speed = 0; // Pausa o Animator
         }
+
+        if (currentMachine != null)
+        {
+            Debug.Log("Pausando animações da máquina.");
+            PauseMachineAnimation();
+        }
     }
 
     protected void ResumePlayerAnimation()
@@ -112,6 +132,52 @@ public abstract class Repairs : MonoBehaviour
         {
             Debug.Log("Retomando animações do jogador.");
             playerAnimator.speed = 1; // Retoma o Animator
+        }
+
+        if (currentMachine != null)
+        {
+            Debug.Log("Retomando animações da máquina.");
+            ResumeMachineAnimation();
+        }
+    }
+
+    protected void PlayMachineAnimation(string animationName)
+    {
+        if (currentMachine != null)
+        {
+            Animator machineAnimator = currentMachine.GetComponent<Animator>();
+            if (machineAnimator != null)
+            {
+                machineAnimator.Play(animationName);
+            }
+            else
+            {
+                Debug.LogWarning($"Animator não encontrado na máquina {currentMachine.name}.");
+            }
+        }
+    }
+
+    protected void PauseMachineAnimation()
+    {
+        if (currentMachine != null)
+        {
+            Animator machineAnimator = currentMachine.GetComponent<Animator>();
+            if (machineAnimator != null)
+            {
+                machineAnimator.speed = 0; // Pausa o Animator
+            }
+        }
+    }
+
+    protected void ResumeMachineAnimation()
+    {
+        if (currentMachine != null)
+        {
+            Animator machineAnimator = currentMachine.GetComponent<Animator>();
+            if (machineAnimator != null)
+            {
+                machineAnimator.speed = 1; // Retoma o Animator
+            }
         }
     }
 
