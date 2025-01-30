@@ -33,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: CharacterArmature|Fixing part 2 (1)
-      takeName: CharacterArmature|Fixing part 2
+      name: CharacterArmature|Fixing part 1 (1)
+      takeName: CharacterArmature|Fixing part 1
       internalID: 1132547922023742953
       firstFrame: 0
-      lastFrame: 111
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -102,7 +102,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

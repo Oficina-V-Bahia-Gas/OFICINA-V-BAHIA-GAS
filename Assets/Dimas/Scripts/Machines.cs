@@ -1,4 +1,4 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -11,22 +11,22 @@ public class Machines : MonoBehaviour
 
     [Header("Repairs")]
     public List<RepairManager.RepairType> coreRepairs = new List<RepairManager.RepairType>();
-    [Tooltip("Quanto comeÁa a poder reparar a m·quina")] [Range(0f, 1f)] public float coreRepairsStart = 0.65f;
+    [Tooltip("Quanto come√ßa a poder reparar a m√°quina")] [Range(0f, 1f)] public float coreRepairsStart = 0.65f;
     [Tooltip("Quanto consertos precisa inicialmente")] public int coreRepairsAmount = 1;
-    [Tooltip("Ganho de pontuaÁ„o de reparo inicialmente")] public int coreRepairsScore = 25;
-    [Tooltip("Passagem de g·s quando parcialmente quebrado")] public float coreGasFlow = 0.9f;
+    [Tooltip("Ganho de pontua√ß√£o de reparo inicialmente")] public int coreRepairsScore = 25;
+    [Tooltip("Passagem de g√°s quando parcialmente quebrado")] public float coreGasFlow = 0.9f;
     [Space]
     public List<RepairManager.RepairType> randomRepairs = new List<RepairManager.RepairType>();
-    [Tooltip("Quando comeÁa a ter consertos aleatÛrios")][Range(0f, 1f)] public float randomRepairsStart = 0.3f;
-    [Tooltip("Quantos consertos extras s„o adicionados")] public int randomRepairsAmount = 0;
-    [Tooltip("Ganho de pontuaÁ„o de reparo quando parcialmente quebrado")] public int randomRepairsScore = 27;
-    [Tooltip("Passagem de g·s quando parcialmente quebrado")] public float randomGasFlow = 0.5f;
+    [Tooltip("Quando come√ßa a ter consertos aleat√≥rios")][Range(0f, 1f)] public float randomRepairsStart = 0.3f;
+    [Tooltip("Quantos consertos extras s√£o adicionados")] public int randomRepairsAmount = 0;
+    [Tooltip("Ganho de pontua√ß√£o de reparo quando parcialmente quebrado")] public int randomRepairsScore = 27;
+    [Tooltip("Passagem de g√°s quando parcialmente quebrado")] public float randomGasFlow = 0.5f;
     [Space]
     public List<RepairManager.RepairType> fullRepairs = new List<RepairManager.RepairType>();
-    [Tooltip("Conserto priorit·rio quando est· totalmente quebrado")][Range(0f, 1f)] public float fullRepairsStart = 0f;
-    [Tooltip("Quantos consertos extras s„o adicionados")] public int fullRepairsAmount = 0;
-    [Tooltip("Ganho de pontuaÁ„o de reparo quando totalmente quebrado")] public int fullRepairsScore = 32;
-    [Tooltip("Passagem de g·s quando totalmente quebrado")] public float fullGasFlow = 0f;
+    [Tooltip("Conserto priorit√°rio quando est√° totalmente quebrado")][Range(0f, 1f)] public float fullRepairsStart = 0f;
+    [Tooltip("Quantos consertos extras s√£o adicionados")] public int fullRepairsAmount = 0;
+    [Tooltip("Ganho de pontua√ß√£o de reparo quando totalmente quebrado")] public int fullRepairsScore = 32;
+    [Tooltip("Passagem de g√°s quando totalmente quebrado")] public float fullGasFlow = 0f;
 
     [HideInInspector] public List<RepairManager.RepairType> currentRepairs = new List<RepairManager.RepairType>();
     private bool coreRoll = false;
@@ -52,6 +52,11 @@ public class Machines : MonoBehaviour
     public float maxCooldown = 20f;
     float repairCooldown;
 
+    [Header("Animators")]
+    [SerializeField] Animator machineAnimator;
+    [SerializeField] string repairAnimation;
+    private static Machines lastRepairedMachine = null;
+
     bool onUse = false;
 
     public bool OnUse { get { return onUse; }  set { onUse = value; } }
@@ -61,11 +66,6 @@ public class Machines : MonoBehaviour
     public bool repairActive { get; private set; }
 
     private GameManager gameManager;
-
-    [Header("Animators")]
-    [SerializeField] private Animator machineAnimator;
-    private Animator playerAnimator;
-
 
     private void Start()
     {
@@ -132,6 +132,33 @@ public class Machines : MonoBehaviour
         }
     }
 
+    public void StartRepairAnimation()
+    {
+        if (machineAnimator != null && !string.IsNullOrEmpty(repairAnimation))
+        {
+            if (lastRepairedMachine != null && lastRepairedMachine != this)
+            {
+                lastRepairedMachine.StopRepairAnimation();
+            }
+
+            machineAnimator.Play(repairAnimation);
+            lastRepairedMachine = this;
+        }
+    }
+
+    public void StopRepairAnimation()
+    {
+        if (machineAnimator != null)
+        {
+            machineAnimator.Play("Idle");
+
+            if (lastRepairedMachine == this)
+            {
+                lastRepairedMachine = null;
+            }
+        }
+    }
+
     public void Repair()
     {
         if (needsRepair && !onCooldown)
@@ -166,7 +193,7 @@ public class Machines : MonoBehaviour
         onCooldown = false;
     }
 
-    [System.Obsolete("MÈtodo repetido. Use CheckDurability() ao invÈs disso.", false)]
+    [System.Obsolete("M√©todo repetido. Use CheckDurability() ao inv√©s disso.", false)]
     void CheckRepairStatus() // APAGAR
     {
         needsRepair = CheckDurability();
@@ -181,18 +208,13 @@ public class Machines : MonoBehaviour
     public void ActivateRepair()
     {
         repairActive = true;
-
-        //GasFlow _gasFlow = GetComponent<GasFlow>();
-        //_gasFlow.ChangeFixValue(0f);
+        StartRepairAnimation();
     }
-
 
     public void DeactivateRepair()
     {
         repairActive = false;
-
-        //GasFlow _gasFlow = GetComponent<GasFlow>();
-        //_gasFlow.ChangeFixValue(1f);
+        StopRepairAnimation();
     }
 
     public bool IsCanvasActivated()
@@ -277,48 +299,15 @@ public class Machines : MonoBehaviour
         //Debug.Log(currentRepairs);
     }
 
-    // Checar se durabilidade abaixo do alvo.
     public bool CheckDurability(float _durability = -1f)
     {
         if (_durability == -1f)
         {
-            _durability = coreRepairsStart; // padr„o
+            _durability = coreRepairsStart;
         }
 
         Mathf.Clamp(_durability, 0f, 1f);
 
         return (currentDurability / maxDurability < _durability);
-    }
-
-    void ResetAnimations()
-    {
-        PlayMachineAnimation("Idle");
-        PlayPlayerAnimation("PlayerIdle");
-    }
-
-    void PlayMachineAnimation(string animationState)
-    {
-        if (machineAnimator != null)
-        {
-            machineAnimator.Play(animationState);
-        }
-    }
-
-    void PlayPlayerAnimation(string animationState)
-    {
-        if (playerAnimator == null)
-        {
-            playerAnimator = CharacterInfo.instance?.GetComponent<Animator>();
-        }
-
-        if (playerAnimator != null)
-        {
-            playerAnimator.Play(animationState);
-        }
-    }
-
-    public void PlayAnimation(string animationState)
-    {
-        PlayMachineAnimation(animationState);
     }
 }

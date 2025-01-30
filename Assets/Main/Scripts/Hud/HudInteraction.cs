@@ -15,7 +15,7 @@ public class HudInteraction : MonoBehaviour
     [SerializeField] GameObject PauseMenuButton;
 
     CanvasGroup hudCanvasGroup;
-    bool isHudOpen = false;
+    public bool isHudOpen = false;
 
     public static HudInteraction instance;
 

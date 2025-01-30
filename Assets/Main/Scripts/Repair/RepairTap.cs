@@ -20,7 +20,6 @@ public class RepairTap : Repairs
                 if (targetTransform != null && repairCameraManager != null)
                 {
                     repairCameraManager.SetTargetTransform(targetTransform);
-                    Debug.Log("Câmera configurada com sucesso para a máquina.");
                 }
                 else
                 {
@@ -42,7 +41,7 @@ public class RepairTap : Repairs
     {
         if (machine != null && machine.transform.childCount > 0)
         {
-            return machine.transform.GetChild(0); // Retorna o primeiro filho da máquina
+            return machine.transform.GetChild(0);
         }
 
         Debug.LogWarning("A máquina não possui filhos ou é nula.");
@@ -54,21 +53,12 @@ public class RepairTap : Repairs
         if (repairInProgress)
         {
             tapCount++;
-            ResumePlayerAnimation();
             Debug.Log($"Tap registrado: {tapCount}/{tapsRequired}");
 
             if (tapCount >= tapsRequired)
             {
                 FinishRepair();
             }
-        }
-    }
-
-    private void Update()
-    {
-        if (repairInProgress && tapCount < tapsRequired)
-        {
-            PausePlayerAnimation();
         }
     }
 
@@ -79,10 +69,5 @@ public class RepairTap : Repairs
         {
             repairCameraManager.ClearTarget();
         }
-    }
-
-    protected override void PlayAnimation(string animationName)
-    {
-        currentMachine?.PlayAnimation(animationName);
     }
 }

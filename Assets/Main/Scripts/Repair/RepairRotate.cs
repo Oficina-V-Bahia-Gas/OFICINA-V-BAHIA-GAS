@@ -24,7 +24,6 @@ public class RepairRotate : Repairs
                 if (targetTransform != null && repairCameraManager != null)
                 {
                     repairCameraManager.SetTargetTransform(targetTransform);
-                    Debug.Log("Câmera configurada com sucesso para a máquina.");
                 }
                 else
                 {
@@ -46,7 +45,7 @@ public class RepairRotate : Repairs
     {
         if (machine != null && machine.transform.childCount > 0)
         {
-            return machine.transform.GetChild(0); // Retorna o primeiro filho da máquina
+            return machine.transform.GetChild(0);
         }
 
         Debug.LogWarning("A máquina não possui filhos ou é nula.");
@@ -73,18 +72,12 @@ public class RepairRotate : Repairs
                     break;
             }
         }
-
-        if (!isRotating)
-        {
-            PausePlayerAnimation();
-        }
     }
 
     void StartRotation(Vector2 touchPosition)
     {
         lastTouchDirection = (touchPosition - rotationCenter).normalized;
         isRotating = true;
-        ResumePlayerAnimation();
     }
 
     void UpdateRotation(Vector2 touchPosition)
@@ -113,10 +106,5 @@ public class RepairRotate : Repairs
         {
             repairCameraManager.ClearTarget();
         }
-    }
-
-    protected override void PlayAnimation(string animationName)
-    {
-        currentMachine?.PlayAnimation(animationName);
     }
 }

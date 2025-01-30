@@ -21,7 +21,6 @@ public class RepairHold : Repairs
                 if (targetTransform != null && repairCameraManager != null)
                 {
                     repairCameraManager.SetTargetTransform(targetTransform);
-                    Debug.Log("Câmera configurada com sucesso para a máquina.");
                 }
                 else
                 {
@@ -43,7 +42,7 @@ public class RepairHold : Repairs
     {
         if (machine != null && machine.transform.childCount > 0)
         {
-            return machine.transform.GetChild(0); // Retorna o primeiro filho da máquina
+            return machine.transform.GetChild(0);
         }
 
         Debug.LogWarning("A máquina não possui filhos ou é nula.");
@@ -63,10 +62,6 @@ public class RepairHold : Repairs
                     FinishRepair();
                 }
             }
-            else
-            {
-                PausePlayerAnimation();
-            }
         }
     }
 
@@ -76,13 +71,11 @@ public class RepairHold : Repairs
 
         isHolding = true;
         holdProgress = 0f;
-        ResumePlayerAnimation();
     }
 
     public void StopHolding()
     {
         isHolding = false;
-        PausePlayerAnimation();
     }
 
     public override void FinishRepair()
@@ -92,10 +85,5 @@ public class RepairHold : Repairs
         {
             repairCameraManager.ClearTarget();
         }
-    }
-
-    protected override void PlayAnimation(string animationName)
-    {
-        currentMachine?.PlayAnimation(animationName);
     }
 }

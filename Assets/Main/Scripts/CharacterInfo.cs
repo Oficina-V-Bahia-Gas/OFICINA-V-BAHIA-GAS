@@ -1,4 +1,4 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
 
 public class CharacterInfo : MonoBehaviour
 {
@@ -115,7 +115,7 @@ public class CharacterInfo : MonoBehaviour
         {
             if (hudInteraction.IsHudConfiguredFor(currentMachine))
             {
-                Debug.Log("HUD j· est· configurada para esta m·quina.");
+                Debug.Log("HUD j√° est√° configurada para esta m√°quina.");
                 return;
             }
 
@@ -124,7 +124,7 @@ public class CharacterInfo : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Nenhuma m·quina detectada ou HudInteraction n„o configurado.");
+            Debug.LogWarning("Nenhuma m√°quina detectada ou HudInteraction n√£o configurado.");
         }
     }
 }
