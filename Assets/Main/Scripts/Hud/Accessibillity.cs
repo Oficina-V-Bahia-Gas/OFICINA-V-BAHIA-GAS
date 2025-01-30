@@ -5,50 +5,71 @@ using TMPro;
 
 public class Accessibility : MonoBehaviour
 {
-    [SerializeField] private Toggle accessibilityToggle;
-    [SerializeField] private Slider textSlider;
+    [Header("Outline (Destaque de Objetos)")]
+    [SerializeField] Image outlineButton;
+    [SerializeField] Sprite outlineDefault;
+    [SerializeField] Sprite outlineSelected;
 
-    [Header("Configurações de Acessibilidade")]
-    [SerializeField] private TextMeshProUGUI textSizeValue;
-    [SerializeField] private TextMeshProUGUI dialogueText; // Referência ao texto do diálogo
+    [Header("Tamanho do Texto")]
+    [SerializeField] Slider textSizeSlider;
+    [SerializeField] TextMeshProUGUI exampleText;
+    [SerializeField] TextMeshProUGUI dialogueText;
 
-    public static bool isOutlineEnabled = false;
+    int outlineEnabled;
+    float minTextSize = 1.00f;
+    float maxTextSize = 1.50f;
+    float minFontSize = 20f;
+    float maxFontSize = 27f;
 
-    private void Start()
+    void Start()
     {
-        // Carregar configurações salvas
-        isOutlineEnabled = PlayerPrefs.GetInt("Outline", 0) == 1;
-        accessibilityToggle.isOn = isOutlineEnabled;
-
-        float savedTextSize = PlayerPrefs.GetFloat("textSize", 1f);
-        textSlider.value = savedTextSize;
-        UpdateDialogueTextSize(savedTextSize);
-
-        // Adiciona os eventos dos botões
-        accessibilityToggle.onValueChanged.AddListener(SetOutlineState);
-        textSlider.onValueChanged.AddListener(UpdateDialogueTextSize);
+        LoadAccessibilitySettings();
+        textSizeSlider.onValueChanged.AddListener(UpdateTextSize);
     }
 
-    public void SetOutlineState(bool state)
+    void LoadAccessibilitySettings()
     {
-        isOutlineEnabled = state;
-        PlayerPrefs.SetInt("Outline", state ? 1 : 0);
-        PlayerPrefs.Save();
+        textSizeSlider.minValue = minTextSize;
+        textSizeSlider.maxValue = maxTextSize;
+
+        outlineEnabled = PlayerPrefs.GetInt("Outline", 0);
+        UpdateOutlineVisual();
+
+        float textSize = PlayerPrefs.GetFloat("TextSize", minTextSize);
+        textSizeSlider.value = textSize;
+        UpdateTextSize(textSize);
     }
 
-    public void UpdateDialogueTextSize(float value)
+    public void ToggleOutline()
     {
-        // Salva o novo tamanho do texto
-        PlayerPrefs.SetFloat("textSize", value);
+        outlineEnabled = outlineEnabled == 0 ? 1 : 0;
+        PlayerPrefs.SetInt("Outline", outlineEnabled);
+        PlayerPrefs.Save();
+        UpdateOutlineVisual();
+    }
+
+    void UpdateOutlineVisual()
+    {
+        outlineButton.sprite = outlineEnabled == 1 ? outlineSelected : outlineDefault;
+    }
+
+    public void UpdateTextSize(float value)
+    {
+        Debug.Log("Novo valor do slider: " + value);
+
+        PlayerPrefs.SetFloat("TextSize", value);
         PlayerPrefs.Save();
 
-        // Atualiza a interface do menu
-        textSizeValue.text = value.ToString("F2");
+        float newFontSize = Mathf.Lerp(minFontSize, maxFontSize, Mathf.InverseLerp(minTextSize, maxTextSize, value));
 
-        // Aplica o novo tamanho SOMENTE ao diálogo
-        if (dialogueText != null)
+        if (exampleText != null)
         {
-            dialogueText.fontSize = 40 * value;
+            exampleText.fontSize = newFontSize;
+        }
+
+        if (SceneManager.GetActiveScene().buildIndex == 2 && dialogueText != null)
+        {
+            dialogueText.fontSize = newFontSize;
         }
     }
 }
