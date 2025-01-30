@@ -798,14 +798,6 @@ MonoBehaviour:
   sfxSlider: {fileID: 0}
   musicMixer: {fileID: 0}
   effectMixer: {fileID: 0}
-  outlineToggle: {fileID: 0}
-  outlineButton: {fileID: 0}
-  outlineButtonText: {fileID: 0}
-  outlineDefault: {fileID: 0}
-  outlineSelected: {fileID: 0}
-  textSizeSlider: {fileID: 0}
-  textSizeValue: {fileID: 0}
-  exampleText: {fileID: 0}
   continueButton: {fileID: 0}
   menuCanvasGroup: {fileID: 0}
   menuPanel: {fileID: 0}
