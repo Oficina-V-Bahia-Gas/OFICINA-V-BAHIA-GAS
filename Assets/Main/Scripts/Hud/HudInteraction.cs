@@ -12,6 +12,8 @@ public class HudInteraction : MonoBehaviour
     public Machines currentMachine;
     public RepairManager repairManager;
 
+    [SerializeField] GameObject PauseMenuButton;
+
     CanvasGroup hudCanvasGroup;
     bool isHudOpen = false;
 
@@ -156,6 +158,7 @@ public class HudInteraction : MonoBehaviour
     {
         if (hudCanvasGroup != null && !isHudOpen)
         {
+            PauseMenuButton.gameObject.SetActive(false);
             hudCanvasGroup.alpha = 1;
             hudCanvasGroup.interactable = true;
             hudCanvasGroup.blocksRaycasts = true;
@@ -171,6 +174,7 @@ public class HudInteraction : MonoBehaviour
             hudCanvasGroup.interactable = false;
             hudCanvasGroup.blocksRaycasts = false;
             isHudOpen = false;
+            PauseMenuButton.gameObject.SetActive(true);
         }
 
         repairManager.StopRepair();

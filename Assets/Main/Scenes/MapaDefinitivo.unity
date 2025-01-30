@@ -10964,6 +10964,7 @@ MonoBehaviour:
   statusMessageText: {fileID: 1940595928}
   currentMachine: {fileID: 0}
   repairManager: {fileID: 482345415}
+  PauseMenuButton: {fileID: 1734880791}
 --- !u!225 &1707870576
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -13746,7 +13747,7 @@ PrefabInstance:
       addedObject: {fileID: 519733525}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4427671993393455992, guid: 389c8ec452b00a64e9005a1d55fde350, type: 3}
-      insertIndex: -1
+      insertIndex: 2
       addedObject: {fileID: 1898101970635177475}
   m_SourcePrefab: {fileID: 100100000, guid: 389c8ec452b00a64e9005a1d55fde350, type: 3}
 --- !u!4 &1898101970635177473 stripped
@@ -14124,7 +14125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3530275007866894140, guid: c13e5e7fefc6d3a4682c484043e53ef2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5081949394840643549, guid: c13e5e7fefc6d3a4682c484043e53ef2, type: 3}
       propertyPath: rb

@@ -16,6 +16,7 @@ public class Accessibility : MonoBehaviour
     [SerializeField] TextMeshProUGUI dialogueText;
 
     int outlineEnabled;
+
     float minTextSize = 1.00f;
     float maxTextSize = 1.50f;
     float minFontSize = 20f;
@@ -44,7 +45,6 @@ public class Accessibility : MonoBehaviour
     {
         outlineEnabled = outlineEnabled == 0 ? 1 : 0;
         PlayerPrefs.SetInt("Outline", outlineEnabled);
-        PlayerPrefs.Save();
         UpdateOutlineVisual();
     }
 
@@ -69,5 +69,10 @@ public class Accessibility : MonoBehaviour
         {
             dialogueText.fontSize = newFontSize;
         }
+    }
+
+    public bool IsOutlineEnabled()
+    {
+        return outlineEnabled == 1;
     }
 }
