@@ -75,13 +75,12 @@ public class HUDController : MonoBehaviour
             .SetEase(Ease.OutQuint)
             .OnComplete(() =>
             {
-                Time.timeScale = 0;
+                //Time.timeScale = 0;
                 menuCanvasGroup.interactable = true;
                 menuCanvasGroup.blocksRaycasts = true;
             });
 
         menuCanvasGroup.DOFade(1, 0.5f);
-        Debug.Log("Jogo pausado.");
     }
 
     public void ResumeGame()
@@ -102,7 +101,5 @@ public class HUDController : MonoBehaviour
                 menuCanvasGroup.interactable = true;
                 menuCanvasGroup.blocksRaycasts = true;
             });
-
-        Debug.Log("Jogo retomado.");
     }
 }

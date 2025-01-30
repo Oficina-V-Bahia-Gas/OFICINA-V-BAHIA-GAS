@@ -55,8 +55,6 @@ public class Accessibility : MonoBehaviour
 
     public void UpdateTextSize(float value)
     {
-        Debug.Log("Novo valor do slider: " + value);
-
         PlayerPrefs.SetFloat("TextSize", value);
         PlayerPrefs.Save();
 
