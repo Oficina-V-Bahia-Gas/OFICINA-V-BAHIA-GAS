@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class RepairsCameraManager : MonoBehaviour
 {
-    private Transform target; // Alvo da câmera
-    public float followSpeed = 5f; // Velocidade de movimento
-    public float rotationSpeed = 5f; // Velocidade de rotação
+    private Transform target;
+    public float followSpeed = 5f;
+    public float rotationSpeed = 5f;
 
     /// <summary>
     /// Define o Transform do novo alvo e ativa a câmera.
@@ -36,7 +36,7 @@ public class RepairsCameraManager : MonoBehaviour
 
         if (target != null)
         {
-            gameObject.SetActive(true); // Ativa o GameObject da câmera
+            gameObject.SetActive(true);
             transform.position = target.position;
             transform.rotation = target.rotation;
 
@@ -55,7 +55,6 @@ public class RepairsCameraManager : MonoBehaviour
     {
         target = null;
         gameObject.SetActive(false);
-        Debug.Log("Câmera desativada.");
     }
 
     /// <summary>
@@ -65,10 +64,8 @@ public class RepairsCameraManager : MonoBehaviour
     {
         if (target != null)
         {
-            // Movimentação suave em direção ao alvo
             transform.position = Vector3.Lerp(transform.position, target.position, followSpeed * Time.deltaTime);
 
-            // Rotação suave para alinhar com o alvo
             transform.rotation = Quaternion.Slerp(transform.rotation, target.rotation, rotationSpeed * Time.deltaTime);
         }
         else if (gameObject.activeSelf)
