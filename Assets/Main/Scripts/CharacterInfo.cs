@@ -14,6 +14,11 @@ public class CharacterInfo : MonoBehaviour
     public static CharacterInfo instance;
     private Accessibility accessibility;
 
+    private bool tutorial;
+    private Tutorial tutorialScript;
+    private Machines allowedMachine;
+    public bool checkFixTutorial;
+
     void Start()
     {
         instance = this;
@@ -32,6 +37,15 @@ public class CharacterInfo : MonoBehaviour
         if (accessibility != null && !accessibility.IsOutlineEnabled())
         {
             DisableLastOutline();
+        }
+
+        if (checkFixTutorial)
+        {
+            if((currentMachine == allowedMachine || allowedMachine == null) && !currentMachine.needsRepair)
+            {
+                tutorialScript.FixReturn();
+                checkFixTutorial = false;
+            }
         }
     }
 
@@ -111,6 +125,12 @@ public class CharacterInfo : MonoBehaviour
 
     public void OpenHud()
     {
+        if (tutorial && currentMachine != allowedMachine)
+        {
+            tutorialScript.MachineInteractError(allowedMachine);
+            return;
+        }
+
         if (currentMachine != null && hudInteraction != null)
         {
             if (hudInteraction.IsHudConfiguredFor(currentMachine))
@@ -119,6 +139,10 @@ public class CharacterInfo : MonoBehaviour
                 return;
             }
 
+            if (tutorial)
+            {
+                tutorialScript.MachineReturn();
+            }
             hudInteraction.ConfigureHud(currentMachine);
             currentMachine.OnUse = true;
         }
@@ -126,5 +150,19 @@ public class CharacterInfo : MonoBehaviour
         {
             Debug.LogWarning("Nenhuma máquina detectada ou HudInteraction não configurado.");
         }
+    }
+
+    public void SetTutorial(bool b = false,Tutorial t = null)
+    {
+        tutorial = b;
+        if(tutorialScript == null || t != null)
+        {
+            tutorialScript = t;
+        }
+    }
+
+    public void SetAllowedMachine(Machines m = null)
+    {
+        allowedMachine = m;
     }
 }
