@@ -2306,7 +2306,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &403978622
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4583,7 +4583,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &829560380
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5587,7 +5587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineButton: {fileID: 62920555}
-  outlineDefault: {fileID: -816381168, guid: 1b69b8a83530cea4f9253d47b69f1601, type: 3}
+  outlineDefault: {fileID: -487493710, guid: 081778759b2c6ef4ea189256ac00ac5b, type: 3}
   outlineSelected: {fileID: -1164079926, guid: 1b69b8a83530cea4f9253d47b69f1601, type: 3}
   textSizeSlider: {fileID: 1703585478}
   exampleText: {fileID: 1618009445}
@@ -9242,7 +9242,7 @@ RectTransform:
   m_Father: {fileID: 1778819870}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -0.000015258789, y: 0}
   m_SizeDelta: {x: 40, y: 0}
   m_Pivot: {x: 0, y: 0.5}
@@ -12300,7 +12300,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1882192276
 RectTransform:
   m_ObjectHideFlags: 0
