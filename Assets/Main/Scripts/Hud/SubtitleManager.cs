@@ -12,12 +12,20 @@ public class SubtitleManager : MonoBehaviour
     [SerializeField] AudioSource subtitleAudio;
 
     Coroutine subtitleCoroutine;
+    Accessibility accessibility;
 
     private void Start()
     {
+        accessibility = FindObjectOfType<Accessibility>();
+
         if (subtitleTxt != null)
         {
             subtitleTxt.text = "";
+        }
+
+        if (accessibility != null && accessibility.IsDubEnabled())
+        {
+            StartSubtitles();
         }
     }
 
@@ -61,7 +69,7 @@ public class SubtitleManager : MonoBehaviour
                 subtitleTxt.text = subtitle.text;
             }
 
-            if (subtitleAudio != null && subtitle.voice != null)
+            if (accessibility != null && accessibility.IsDubEnabled() && subtitleAudio != null && subtitle.voice != null)
             {
                 subtitleAudio.PlayOneShot(subtitle.voice);
             }

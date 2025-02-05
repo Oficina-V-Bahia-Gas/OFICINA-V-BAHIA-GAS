@@ -55,6 +55,7 @@ namespace SOG.CVDFilter
         {
             if (Instance == this)
             {
+                LoadSavedProfile();
                 ChangeProfile();
             }
         }
@@ -63,6 +64,18 @@ namespace SOG.CVDFilter
         {
             AssignProfileSO();
             ConfigureVolume();
+        }
+
+        void LoadSavedProfile()
+        {
+            if (PlayerPrefs.HasKey("SelectedVisionType"))
+            {
+                int savedType = PlayerPrefs.GetInt("SelectedVisionType");
+                if (savedType >= 0 && savedType < System.Enum.GetValues(typeof(VisionTypeNames)).Length)
+                {
+                    currentType = (VisionTypeNames)savedType;
+                }
+            }
         }
 
         private void AssignProfileSO()
