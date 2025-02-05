@@ -1,10 +1,14 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class RepairRotate : Repairs
 {
     public RepairsCameraManager repairCameraManager;
-    float rotationsRequired = 360f;
+    [SerializeField] int totalRotationsRequired = 5;
+    const float rotationsRequired = 360f;
     float rotationProgress = 0f;
+
+    [SerializeField] RectTransform handleTransform;
+    float rotationAngle = 0f;
 
     Vector2 rotationCenter;
     Vector2 lastTouchDirection;
@@ -13,6 +17,8 @@ public class RepairRotate : Repairs
     public override void StartRepair(RepairManager _repairManager = null)
     {
         base.StartRepair(_repairManager);
+        rotationProgress = 0f;
+        rotationAngle = 0f;
 
         CharacterInfo characterInfo = FindObjectOfType<CharacterInfo>();
         if (characterInfo != null)
@@ -25,30 +31,18 @@ public class RepairRotate : Repairs
                 {
                     repairCameraManager.SetTargetTransform(targetTransform);
                 }
-                else
-                {
-                    Debug.LogWarning("Target ou CameraManager não configurados corretamente.");
-                }
             }
-            else
-            {
-                Debug.LogWarning("Nenhuma máquina definida como última interagida.");
-            }
-        }
-        else
-        {
-            Debug.LogWarning("CharacterInfo não encontrado.");
         }
     }
 
-    private Transform GetFirstChild(Machines machine)
+    Transform GetFirstChild(Machines machine)
     {
         if (machine != null && machine.transform.childCount > 0)
         {
             return machine.transform.GetChild(0);
         }
 
-        Debug.LogWarning("A máquina não possui filhos ou é nula.");
+        Debug.LogWarning("A mÃ¡quina nÃ£o possui filhos ou Ã© nula.");
         return null;
     }
 
@@ -72,23 +66,35 @@ public class RepairRotate : Repairs
                     break;
             }
         }
+
+        if (handleTransform != null && isRotating)
+        {
+            handleTransform.localRotation = Quaternion.Euler(0, 0, -rotationAngle);
+        }
     }
 
     void StartRotation(Vector2 touchPosition)
     {
-        lastTouchDirection = (touchPosition - rotationCenter).normalized;
+        rotationCenter = touchPosition;
+        lastTouchDirection = Vector2.right;
         isRotating = true;
     }
 
     void UpdateRotation(Vector2 touchPosition)
     {
+        if (!isRotating) return;
+
         Vector2 _currentTouchDirection = (touchPosition - rotationCenter).normalized;
         float _angleDelta = Vector2.SignedAngle(lastTouchDirection, _currentTouchDirection);
 
-        rotationProgress += Mathf.Abs(_angleDelta);
-        lastTouchDirection = _currentTouchDirection;
+        if (!float.IsNaN(_angleDelta))
+        {
+            rotationProgress += Mathf.Abs(_angleDelta);
+            rotationAngle += _angleDelta;
+            lastTouchDirection = _currentTouchDirection;
+        }
 
-        if (rotationProgress >= rotationsRequired)
+        if (rotationProgress >= totalRotationsRequired * rotationsRequired)
         {
             FinishRepair();
         }
@@ -102,9 +108,17 @@ public class RepairRotate : Repairs
     public override void FinishRepair()
     {
         base.FinishRepair();
+        rotationProgress = 0f;
+        rotationAngle = 0f;
+
         if (repairCameraManager != null)
         {
             repairCameraManager.ClearTarget();
+        }
+
+        if (handleTransform != null)
+        {
+            handleTransform.localRotation = Quaternion.identity;
         }
     }
 }

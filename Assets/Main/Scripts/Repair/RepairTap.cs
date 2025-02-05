@@ -1,14 +1,22 @@
-using UnityEngine;
+ï»¿using UnityEngine;
+using UnityEngine.UI;
 
 public class RepairTap : Repairs
 {
     public RepairsCameraManager repairCameraManager;
+
+    [SerializeField] Image[] looseScrews;
+    [SerializeField] Image[] placedScrews;
     int tapCount = 0;
-    public int tapsRequired = 20;
+    const int totalTapsRequired = 8;
 
     public override void StartRepair(RepairManager _repairManager = null)
     {
         base.StartRepair(_repairManager);
+        tapCount = 0;
+
+        foreach (var screw in looseScrews) screw.gameObject.SetActive(true);
+        foreach (var hole in placedScrews) hole.gameObject.SetActive(false);
 
         CharacterInfo characterInfo = FindObjectOfType<CharacterInfo>();
         if (characterInfo != null)
@@ -21,41 +29,40 @@ public class RepairTap : Repairs
                 {
                     repairCameraManager.SetTargetTransform(targetTransform);
                 }
-                else
-                {
-                    Debug.LogWarning("Target ou CameraManager não configurados corretamente.");
-                }
             }
-            else
-            {
-                Debug.LogWarning("Nenhuma máquina definida como última interagida.");
-            }
-        }
-        else
-        {
-            Debug.LogWarning("CharacterInfo não encontrado.");
         }
     }
 
-    private Transform GetFirstChild(Machines machine)
+    Transform GetFirstChild(Machines machine)
     {
         if (machine != null && machine.transform.childCount > 0)
         {
             return machine.transform.GetChild(0);
         }
-
-        Debug.LogWarning("A máquina não possui filhos ou é nula.");
         return null;
     }
 
     public void OnTap()
     {
-        if (repairInProgress)
-        {
-            tapCount++;
-            Debug.Log($"Tap registrado: {tapCount}/{tapsRequired}");
+        if (!repairInProgress) return;
 
-            if (tapCount >= tapsRequired)
+        if (tapCount < totalTapsRequired)
+        {
+            int screwIndex = tapCount / 2;
+
+            if (tapCount % 2 == 0)
+            {
+                looseScrews[screwIndex].gameObject.SetActive(false);
+            }
+            else
+            {
+                placedScrews[screwIndex].gameObject.SetActive(true);
+            }
+
+            tapCount++;
+            Debug.Log($"Tap registrado: {tapCount}/{totalTapsRequired}");
+
+            if (tapCount >= totalTapsRequired)
             {
                 FinishRepair();
             }
@@ -65,6 +72,8 @@ public class RepairTap : Repairs
     public override void FinishRepair()
     {
         base.FinishRepair();
+        tapCount = 0;
+
         if (repairCameraManager != null)
         {
             repairCameraManager.ClearTarget();

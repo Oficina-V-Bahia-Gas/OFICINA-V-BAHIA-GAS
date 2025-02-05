@@ -1,15 +1,36 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using System.Collections;
+using UnityEngine.EventSystems;
 
 public class RepairHold : Repairs
 {
     public RepairsCameraManager repairCameraManager;
+
+    [Header("Configura√ß√µes de Tempo")]
     bool isHolding = false;
     float holdProgress = 0f;
     public float holdDuration = 5f;
 
+    [Header("UI do Conserto")]
+    [SerializeField] Button repairButton;
+    [SerializeField] TextMeshProUGUI feedbackText;
+    [SerializeField] Image[] indicatorLights;
+
     public override void StartRepair(RepairManager _repairManager = null)
     {
         base.StartRepair(_repairManager);
+        holdProgress = 0f;
+        isHolding = false;
+
+        if (repairButton != null)
+        {
+            AddEventTrigger(repairButton.gameObject, EventTriggerType.PointerDown, (data) => StartHolding());
+            AddEventTrigger(repairButton.gameObject, EventTriggerType.PointerUp, (data) => StopHolding());
+        }
+
+        UpdateUI(0);
 
         CharacterInfo characterInfo = FindObjectOfType<CharacterInfo>();
         if (characterInfo != null)
@@ -22,45 +43,30 @@ public class RepairHold : Repairs
                 {
                     repairCameraManager.SetTargetTransform(targetTransform);
                 }
-                else
-                {
-                    Debug.LogWarning("Target ou CameraManager n„o configurados corretamente.");
-                }
             }
-            else
-            {
-                Debug.LogWarning("Nenhuma m·quina definida como ˙ltima interagida.");
-            }
-        }
-        else
-        {
-            Debug.LogWarning("CharacterInfo n„o encontrado.");
         }
     }
 
-    private Transform GetFirstChild(Machines machine)
+    Transform GetFirstChild(Machines machine)
     {
         if (machine != null && machine.transform.childCount > 0)
         {
             return machine.transform.GetChild(0);
         }
-
-        Debug.LogWarning("A m·quina n„o possui filhos ou È nula.");
         return null;
     }
 
     private void Update()
     {
-        if (repairInProgress)
+        if (repairInProgress && isHolding)
         {
-            if (isHolding)
+            holdProgress += Time.deltaTime;
+            UpdateUI(holdProgress / holdDuration);
+
+            if (holdProgress >= holdDuration)
             {
-                holdProgress += Time.deltaTime;
-                if (holdProgress >= holdDuration)
-                {
-                    StopHolding();
-                    FinishRepair();
-                }
+                StopHolding();
+                FinishRepair();
             }
         }
     }
@@ -69,7 +75,6 @@ public class RepairHold : Repairs
     {
         if (!repairInProgress) return;
 
-        
         isHolding = true;
         holdProgress = 0f;
     }
@@ -82,9 +87,60 @@ public class RepairHold : Repairs
     public override void FinishRepair()
     {
         base.FinishRepair();
+        holdProgress = 0f;
+        isHolding = false;
+
+        UpdateUI(1f);
+
         if (repairCameraManager != null)
         {
             repairCameraManager.ClearTarget();
         }
+    }
+
+    void UpdateUI(float progress)
+    {
+        if (feedbackText != null)
+        {
+            if (progress == 0)
+                feedbackText.text = "Reinicializa√ß√£o necess√°ria!";
+            else if (progress < 1)
+                feedbackText.text = "Reinicializando...";
+            else
+                feedbackText.text = "Reinicializa√ß√£o conclu√≠da!";
+        }
+
+        if (indicatorLights != null)
+        {
+            int lightState = Mathf.Clamp(Mathf.FloorToInt(progress * 4), 0, 4);
+
+            for (int i = 0; i < indicatorLights.Length; i++)
+            {
+                if (i < lightState)
+                {
+                    indicatorLights[i].color = Color.yellow;
+                }
+                else
+                {
+                    indicatorLights[i].color = Color.red;
+                }
+            }
+
+            if (progress >= 1)
+            {
+                foreach (var light in indicatorLights)
+                {
+                    light.color = Color.green;
+                }
+            }
+        }
+    }
+
+    void AddEventTrigger(GameObject target, EventTriggerType eventType, System.Action<BaseEventData> callback)
+    {
+        EventTrigger trigger = target.GetComponent<EventTrigger>() ?? target.AddComponent<EventTrigger>();
+        EventTrigger.Entry entry = new EventTrigger.Entry { eventID = eventType };
+        entry.callback.AddListener((data) => callback(data));
+        trigger.triggers.Add(entry);
     }
 }
