@@ -12,7 +12,6 @@ public abstract class Repairs : MonoBehaviour
     {
         if(_repairManager != null)
         {
-            Debug.LogError("check");
             repairManager = _repairManager;
         }
 
@@ -68,9 +67,10 @@ public abstract class Repairs : MonoBehaviour
 
         if (repairManager != null)
         {
-            Debug.LogError("check");
             repairManager.NotifyRepairComplete();
         }
+
+        ResetRepair();
     }
 
     public virtual void ResetRepair()

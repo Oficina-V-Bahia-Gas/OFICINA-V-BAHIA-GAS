@@ -31,7 +31,6 @@ public class RepairManager : MonoBehaviour
             return;
         }
 
-        //int index = Random.Range(0, repairTypes.Count);
         currentRepair = HudInteraction.instance.currentMachine.currentRepairs[0];
 
         ActivateCanvas((int)currentRepair);
@@ -56,7 +55,6 @@ public class RepairManager : MonoBehaviour
 
     public void NotifyRepairComplete()
     {
-        Debug.LogError("check");
         if (!repairInProgress)
         {
             Debug.LogWarning("Nenhum conserto em andamento para finalizar.");
