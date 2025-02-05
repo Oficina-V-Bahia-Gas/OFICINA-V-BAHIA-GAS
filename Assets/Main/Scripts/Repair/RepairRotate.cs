@@ -10,9 +10,9 @@ public class RepairRotate : Repairs
     Vector2 lastTouchDirection;
     bool isRotating = false;
 
-    public override void StartRepair()
+    public override void StartRepair(RepairManager _repairManager = null)
     {
-        base.StartRepair();
+        base.StartRepair(_repairManager);
 
         CharacterInfo characterInfo = FindObjectOfType<CharacterInfo>();
         if (characterInfo != null)

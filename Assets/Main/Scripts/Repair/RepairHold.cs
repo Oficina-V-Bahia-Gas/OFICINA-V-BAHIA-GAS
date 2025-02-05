@@ -7,9 +7,9 @@ public class RepairHold : Repairs
     float holdProgress = 0f;
     public float holdDuration = 5f;
 
-    public override void StartRepair()
+    public override void StartRepair(RepairManager _repairManager = null)
     {
-        base.StartRepair();
+        base.StartRepair(_repairManager);
 
         CharacterInfo characterInfo = FindObjectOfType<CharacterInfo>();
         if (characterInfo != null)
@@ -69,6 +69,7 @@ public class RepairHold : Repairs
     {
         if (!repairInProgress) return;
 
+        
         isHolding = true;
         holdProgress = 0f;
     }

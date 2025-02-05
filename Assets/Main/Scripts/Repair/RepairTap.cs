@@ -6,9 +6,9 @@ public class RepairTap : Repairs
     int tapCount = 0;
     public int tapsRequired = 20;
 
-    public override void StartRepair()
+    public override void StartRepair(RepairManager _repairManager = null)
     {
-        base.StartRepair();
+        base.StartRepair(_repairManager);
 
         CharacterInfo characterInfo = FindObjectOfType<CharacterInfo>();
         if (characterInfo != null)
