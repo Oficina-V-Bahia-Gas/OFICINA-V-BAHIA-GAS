@@ -23,6 +23,7 @@ public class Tutorial : MonoBehaviour
     private int machineIndex;
 
     private bool error = false;
+    private bool waitFix = false;
 
     // Start is called before the first frame update
     void Start()
@@ -49,8 +50,8 @@ public class Tutorial : MonoBehaviour
         {
             step += 1;
         }
-
-        if(step + 1 >= steps.Length)
+        Debug.LogError(step);
+        if (step >= steps.Length)
         {
             characterInfo.SetTutorial();
             dialogue.tutorial = null;
@@ -70,6 +71,7 @@ public class Tutorial : MonoBehaviour
                 break;
             case StepType.AguardarReparo:
                 characterInfo.checkFixTutorial = true;
+                waitFix = true;
                 break;
             default:
                 break;
@@ -80,15 +82,19 @@ public class Tutorial : MonoBehaviour
     {
         if (error)
         {
+            Debug.LogError("t_error");
             dialogue.Close();
+            error = false;
             return;
         }
-        if(step + 1 >= steps.Length)
+        if(step + 1 >= steps.Length && !waitFix)
         {
+            Debug.LogError("t_close");
             dialogue.Close();
         }
-        else if (steps[step +1] != StepType.Dialogo)
+        else if (steps[step +1] != StepType.Dialogo && !waitFix)
         {
+            Debug.LogError("t2_CLOSE");
             dialogue.Close();
         }
         Step();
@@ -96,12 +102,14 @@ public class Tutorial : MonoBehaviour
 
     public void MachineReturn()
     {
+        if(!waitFix)
         Step();
     }
 
     public void FixReturn()
     {
         Step();
+        waitFix = false;
     }
 
     public void MachineInteractError(Machines _allowedMachine = null)

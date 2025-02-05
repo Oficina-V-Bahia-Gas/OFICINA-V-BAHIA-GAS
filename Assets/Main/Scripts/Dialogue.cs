@@ -23,15 +23,14 @@ public class Dialogue : MonoBehaviour
 
     public void Interaction()
     {
-        if(text.text != currentLine)
+        if (text.text != currentLine)
         {
             StopAllCoroutines();
             text.text = currentLine;
             return;
-        }
-
-        if (tutorial != null)
+        }else if (tutorial != null)
         {
+            Debug.LogError("interact"); 
             tutorial.DialogueReturn();
         }
         else
@@ -63,6 +62,7 @@ public class Dialogue : MonoBehaviour
         }
         else
         {
+            Debug.LogError("dialogue close");
             Close();
         }
     }

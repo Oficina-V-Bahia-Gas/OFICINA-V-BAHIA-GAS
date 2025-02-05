@@ -82,7 +82,7 @@ public class Machines : MonoBehaviour
         {
             currentDurability -= Time.deltaTime;
         }
-
+        if(!CharacterInfo.instance.hudInteraction.isHudOpen && CharacterInfo.instance.hudInteraction.currentMachine != this)
         SetRepairs();
 
         if (CheckDurability()) 
