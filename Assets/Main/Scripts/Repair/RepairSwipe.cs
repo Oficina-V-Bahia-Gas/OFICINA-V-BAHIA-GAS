@@ -7,9 +7,9 @@ public class RepairSwipe : Repairs
     float swipeProgress = 0f;
     public float swipesRequired = 20f;
 
-    public override void StartRepair()
+    public override void StartRepair(RepairManager _repairManager = null)
     {
-        base.StartRepair();
+        base.StartRepair(_repairManager);
 
         CharacterInfo characterInfo = FindObjectOfType<CharacterInfo>();
         if (characterInfo != null)

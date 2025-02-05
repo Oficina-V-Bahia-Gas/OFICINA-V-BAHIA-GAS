@@ -39,7 +39,7 @@ public class RepairManager : MonoBehaviour
         currentRepairScript = GetRepairScript(currentRepair);
         if (currentRepairScript != null)
         {
-            currentRepairScript.StartRepair();
+            currentRepairScript.StartRepair(this);
             repairInProgress = true;
             Debug.Log($"Conserto sorteado e iniciado: {currentRepair}");
         }
@@ -56,6 +56,7 @@ public class RepairManager : MonoBehaviour
 
     public void NotifyRepairComplete()
     {
+        Debug.LogError("check");
         if (!repairInProgress)
         {
             Debug.LogWarning("Nenhum conserto em andamento para finalizar.");
