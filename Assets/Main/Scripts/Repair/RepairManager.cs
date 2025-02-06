@@ -31,7 +31,6 @@ public class RepairManager : MonoBehaviour
             return;
         }
 
-        //int index = Random.Range(0, repairTypes.Count);
         currentRepair = HudInteraction.instance.currentMachine.currentRepairs[0];
 
         ActivateCanvas((int)currentRepair);
@@ -39,7 +38,7 @@ public class RepairManager : MonoBehaviour
         currentRepairScript = GetRepairScript(currentRepair);
         if (currentRepairScript != null)
         {
-            currentRepairScript.StartRepair();
+            currentRepairScript.StartRepair(this);
             repairInProgress = true;
             Debug.Log($"Conserto sorteado e iniciado: {currentRepair}");
         }

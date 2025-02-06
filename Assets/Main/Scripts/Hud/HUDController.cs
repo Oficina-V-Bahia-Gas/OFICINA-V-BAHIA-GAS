@@ -7,10 +7,8 @@ using DG.Tweening;
 public class HUDController : MonoBehaviour
 {
     [Header("Configurações de Áudio")]
-    [SerializeField] Slider musicSlider;
-    [SerializeField] Slider sfxSlider;
-    [SerializeField] AudioMixer musicMixer;
-    [SerializeField] AudioMixer effectMixer;
+    [SerializeField] Slider musicSlider, sfxSlider;
+    [SerializeField] AudioMixer musicMixer, effectMixer;
 
     [Header("Opções do Menu")]
     [SerializeField] Button continueButton;

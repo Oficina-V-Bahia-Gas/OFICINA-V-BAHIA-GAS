@@ -82,7 +82,7 @@ public class Machines : MonoBehaviour
         {
             currentDurability -= Time.deltaTime;
         }
-
+        
         SetRepairs();
 
         if (CheckDurability()) 
@@ -247,7 +247,8 @@ public class Machines : MonoBehaviour
             }
 
             // Random
-            if (CheckDurability(randomRepairsStart) && !randomRoll && randomRepairs.Count > 0)
+            if (CheckDurability(randomRepairsStart) && !randomRoll && randomRepairs.Count > 0
+                && !CharacterInfo.instance.hudInteraction.isHudOpen && CharacterInfo.instance.hudInteraction.currentMachine != this)
             {
                 if(randomRepairsAmount > 0)
                 {
@@ -268,7 +269,8 @@ public class Machines : MonoBehaviour
             }
 
             // Full
-            if (CheckDurability(fullRepairsStart) && !fullRoll && fullRepairs.Count > 0)
+            if (CheckDurability(fullRepairsStart) && !fullRoll && fullRepairs.Count > 0
+                && !CharacterInfo.instance.hudInteraction.isHudOpen && CharacterInfo.instance.hudInteraction.currentMachine != this)
             {
                 if (fullRepairsAmount > 0)
                 {

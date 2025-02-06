@@ -7,25 +7,53 @@ public class Accessibility : MonoBehaviour
 {
     [Header("Outline (Destaque de Objetos)")]
     [SerializeField] Image outlineButton;
-    [SerializeField] Sprite outlineDefault;
-    [SerializeField] Sprite outlineSelected;
+    [SerializeField] Sprite outlineDefault, outlineSelected;
 
     [Header("Tamanho do Texto")]
     [SerializeField] Slider textSizeSlider;
     [SerializeField] TextMeshProUGUI exampleText;
-    [SerializeField] TextMeshProUGUI dialogueText;
 
-    int outlineEnabled;
+    [Header("Dublagem (Voz nos Diálogos)")]
+    [SerializeField] Image dubButton;
+    [SerializeField] Sprite dubDefault, dubSelected;
 
-    float minTextSize = 1.00f;
-    float maxTextSize = 1.50f;
-    float minFontSize = 20f;
-    float maxFontSize = 27f;
+    static bool settingsLoaded = false;
+    int outlineEnabled, dubEnabled;
+
+    const float minTextSize = 1.00f;
+    const float maxTextSize = 1.50f;
+
+    const float minExampleFontSize = 20f;
+    const float maxExampleFontSize = 27f;
+
+    const float minDialogueFontSize = 30f;
+    const float maxDialogueFontSize = 45f;
 
     void Start()
     {
-        LoadAccessibilitySettings();
-        textSizeSlider.onValueChanged.AddListener(UpdateTextSize);
+        if (!settingsLoaded)
+        {
+            LoadAccessibilitySettings();
+            settingsLoaded = true;
+        }
+
+        if (textSizeSlider != null)
+        {
+            textSizeSlider.onValueChanged.AddListener(UpdateTextSize);
+        }
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        ApplyTextSizeToDialogues();
+        ApplyDubbingSetting();
     }
 
     void LoadAccessibilitySettings()
@@ -36,8 +64,15 @@ public class Accessibility : MonoBehaviour
         outlineEnabled = PlayerPrefs.GetInt("Outline", 0);
         UpdateOutlineVisual();
 
+        dubEnabled = PlayerPrefs.GetInt("Dublagem", 1);
+        UpdateDubVisual();
+
         float textSize = PlayerPrefs.GetFloat("TextSize", minTextSize);
-        textSizeSlider.value = textSize;
+        if (textSizeSlider != null)
+        {
+            textSizeSlider.value = textSize;
+        }
+
         UpdateTextSize(textSize);
     }
 
@@ -48,31 +83,72 @@ public class Accessibility : MonoBehaviour
         UpdateOutlineVisual();
     }
 
+    public void ToggleDubbing()
+    {
+        dubEnabled = dubEnabled == 0 ? 1 : 0;
+        PlayerPrefs.SetInt("Dublagem", dubEnabled);
+        PlayerPrefs.Save();
+        UpdateDubVisual();
+    }
+
     void UpdateOutlineVisual()
     {
-        outlineButton.sprite = outlineEnabled == 1 ? outlineSelected : outlineDefault;
+        if (outlineButton != null)
+        {
+            outlineButton.sprite = outlineEnabled == 1 ? outlineSelected : outlineDefault;
+        }
+    }
+
+    void UpdateDubVisual()
+    {
+        if (dubButton != null)
+        {
+            dubButton.sprite = dubEnabled == 1 ? dubSelected : dubDefault;
+        }
     }
 
     public void UpdateTextSize(float value)
     {
         PlayerPrefs.SetFloat("TextSize", value);
         PlayerPrefs.Save();
+        ApplyTextSizeToDialogues();
+    }
 
-        float newFontSize = Mathf.Lerp(minFontSize, maxFontSize, Mathf.InverseLerp(minTextSize, maxTextSize, value));
+    void ApplyTextSizeToDialogues()
+    {
+        float textSize = PlayerPrefs.GetFloat("TextSize", minTextSize);
 
         if (exampleText != null)
         {
-            exampleText.fontSize = newFontSize;
+            exampleText.fontSize = Mathf.Lerp(minExampleFontSize, maxExampleFontSize, Mathf.InverseLerp(minTextSize, maxTextSize, textSize));
         }
 
-        if (SceneManager.GetActiveScene().buildIndex == 2 && dialogueText != null)
+        Dialogue[] dialogues = FindObjectsOfType<Dialogue>(true);
+        foreach (Dialogue dialogue in dialogues)
         {
-            dialogueText.fontSize = newFontSize;
+            if (dialogue.text != null)
+            {
+                dialogue.text.fontSize = Mathf.Lerp(minDialogueFontSize, maxDialogueFontSize, Mathf.InverseLerp(minTextSize, maxTextSize, textSize));
+            }
         }
     }
 
-    public bool IsOutlineEnabled()
+    void ApplyDubbingSetting()
     {
-        return outlineEnabled == 1;
+        SubtitleManager subtitleManager = FindObjectOfType<SubtitleManager>();
+        if (subtitleManager != null)
+        {
+            if (IsDubEnabled())
+            {
+                subtitleManager.StartSubtitles();
+            }
+            else
+            {
+                subtitleManager.StopSubtitles();
+            }
+        }
     }
+
+    public bool IsOutlineEnabled() => outlineEnabled == 1;
+    public bool IsDubEnabled() => dubEnabled == 1;
 }

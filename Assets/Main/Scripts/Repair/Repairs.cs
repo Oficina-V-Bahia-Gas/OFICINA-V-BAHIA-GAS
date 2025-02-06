@@ -6,17 +6,25 @@ public abstract class Repairs : MonoBehaviour
     protected bool repairCompleted = false;
     protected Machines currentMachine;
     protected Animator playerAnimator;
+    protected RepairManager repairManager;
 
-    public virtual void StartRepair()
+    public virtual void StartRepair(RepairManager _repairManager = null)
     {
+        if(_repairManager != null)
+        {
+            repairManager = _repairManager;
+        }
+
         ResetRepair();
         repairInProgress = true;
         repairCompleted = false;
 
         CharacterInfo characterInfo = FindObjectOfType<CharacterInfo>();
+
         if (characterInfo != null)
         {
             Machines newMachine = characterInfo.GetLastInteractedMachine();
+            
 
             if (newMachine != null)
             {
@@ -56,6 +64,13 @@ public abstract class Repairs : MonoBehaviour
             currentMachine.StopRepairAnimation();
             currentMachine = null;
         }
+
+        if (repairManager != null)
+        {
+            repairManager.NotifyRepairComplete();
+        }
+
+        ResetRepair();
     }
 
     public virtual void ResetRepair()

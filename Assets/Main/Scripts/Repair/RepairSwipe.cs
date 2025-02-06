@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RepairSwipe : Repairs
 {
@@ -7,9 +8,23 @@ public class RepairSwipe : Repairs
     float swipeProgress = 0f;
     public float swipesRequired = 20f;
 
-    public override void StartRepair()
+    [SerializeField] Image dirtOverlay;
+    [SerializeField] ParticleSystem foamParticles;
+
+    public override void StartRepair(RepairManager _repairManager = null)
     {
-        base.StartRepair();
+        base.StartRepair(_repairManager);
+        swipeProgress = 0f;
+
+        if (dirtOverlay != null)
+        {
+            dirtOverlay.color = new Color(dirtOverlay.color.r, dirtOverlay.color.g, dirtOverlay.color.b, 1f);
+        }
+
+        if (foamParticles != null)
+        {
+            foamParticles.Stop();
+        }
 
         CharacterInfo characterInfo = FindObjectOfType<CharacterInfo>();
         if (characterInfo != null)
@@ -22,30 +37,16 @@ public class RepairSwipe : Repairs
                 {
                     repairCameraManager.SetTargetTransform(targetTransform);
                 }
-                else
-                {
-                    Debug.LogWarning("Target ou CameraManager não configurados corretamente.");
-                }
             }
-            else
-            {
-                Debug.LogWarning("Nenhuma máquina definida como última interagida.");
-            }
-        }
-        else
-        {
-            Debug.LogWarning("CharacterInfo não encontrado.");
         }
     }
 
-    private Transform GetFirstChild(Machines machine)
+    Transform GetFirstChild(Machines machine)
     {
         if (machine != null && machine.transform.childCount > 0)
         {
             return machine.transform.GetChild(0);
         }
-
-        Debug.LogWarning("A máquina não possui filhos ou é nula.");
         return null;
     }
 
@@ -63,6 +64,8 @@ public class RepairSwipe : Repairs
                 swipeProgress++;
                 Debug.Log($"Swipe registrado: {swipeProgress}/{swipesRequired}");
 
+                UpdateDirtTransparency();
+
                 if (swipeProgress >= swipesRequired)
                 {
                     FinishRepair();
@@ -71,9 +74,39 @@ public class RepairSwipe : Repairs
         }
     }
 
+    void UpdateDirtTransparency()
+    {
+        if (dirtOverlay != null)
+        {
+            float progress = swipeProgress / swipesRequired;
+            float newAlpha = Mathf.Lerp(1f, 0f, progress);
+            dirtOverlay.color = new Color(dirtOverlay.color.r, dirtOverlay.color.g, dirtOverlay.color.b, newAlpha);
+        }
+
+        if (foamParticles != null)
+        {
+            if (!foamParticles.isPlaying)
+            {
+                foamParticles.Play();
+            }
+        }
+    }
+
     public override void FinishRepair()
     {
         base.FinishRepair();
+        swipeProgress = 0f;
+
+        if (dirtOverlay != null)
+        {
+            dirtOverlay.color = new Color(dirtOverlay.color.r, dirtOverlay.color.g, dirtOverlay.color.b, 0f);
+        }
+
+        if (foamParticles != null)
+        {
+            foamParticles.Stop();
+        }
+
         if (repairCameraManager != null)
         {
             repairCameraManager.ClearTarget();
