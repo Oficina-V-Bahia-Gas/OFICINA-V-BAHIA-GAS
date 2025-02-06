@@ -26,7 +26,7 @@ public class HUDController : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("MapaDefinitivo");
+        SceneManager.LoadScene("Fase1");
     }
 
     public void ContinueGame()
