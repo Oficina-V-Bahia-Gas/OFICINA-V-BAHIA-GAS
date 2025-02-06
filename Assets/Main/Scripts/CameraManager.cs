@@ -55,6 +55,8 @@ public class CameraManager : MonoBehaviour
         if (_target != null)
         {
             _camera.Follow = _target.transform;
+
+            if(_tutorial != null)
             _tutorial.CameraReturn();
         }
     }
