@@ -3804,6 +3804,81 @@ RectTransform:
   m_AnchoredPosition: {x: -37, y: -152}
   m_SizeDelta: {x: 1100, y: 720}
   m_Pivot: {x: 1, y: 1}
+--- !u!1 &494104360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 494104361}
+  - component: {fileID: 494104363}
+  - component: {fileID: 494104362}
+  m_Layer: 5
+  m_Name: img_Fade
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &494104361
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494104360}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1272807181}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 2036, y: 942}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &494104362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494104360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &494104363
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494104360}
+  m_CullTransparentMesh: 1
 --- !u!1 &496811003
 GameObject:
   m_ObjectHideFlags: 3
@@ -6589,7 +6664,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 3000
+  m_text: 300
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 44c75113be99fcc4faf58bfbe38842aa, type: 2}
   m_sharedMaterial: {fileID: 1296939363434934376, guid: 44c75113be99fcc4faf58bfbe38842aa, type: 2}
@@ -6999,7 +7074,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1000
+  m_text: 100
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 44c75113be99fcc4faf58bfbe38842aa, type: 2}
   m_sharedMaterial: {fileID: 1296939363434934376, guid: 44c75113be99fcc4faf58bfbe38842aa, type: 2}
@@ -7033,7 +7108,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -8251,8 +8326,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 179091522}
   levelTimer: 120
+  fadeImage: {fileID: 494104362}
+  fadeDuration: 1.5
   scoreBar: {fileID: 1791323578}
   scoreGoal: 500
+  firstStarThreshold: 100
+  secondStarThreshold: 200
+  thirdStarThreshold: 300
   scoreGain: 2
   finalOutputs:
   - {fileID: 0}
@@ -9982,7 +10062,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2000
+  m_text: 200
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 44c75113be99fcc4faf58bfbe38842aa, type: 2}
   m_sharedMaterial: {fileID: 1296939363434934376, guid: 44c75113be99fcc4faf58bfbe38842aa, type: 2}
@@ -10016,7 +10096,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -10489,6 +10569,7 @@ RectTransform:
   - {fileID: 1707870574}
   - {fileID: 1734880792}
   - {fileID: 829560380}
+  - {fileID: 494104361}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
