@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Tutorial : MonoBehaviour
 {
-    private enum StepType { Dialogo, InteragirMaquina , AguardarReparo}
+    private enum StepType { Dialogo, InteragirMaquina , AguardarReparo, FecharUI, AguardarCamera}
     [Header("Pendências")]
     public CharacterInfo characterInfo;
     public Dialogue dialogue;
@@ -24,6 +24,8 @@ public class Tutorial : MonoBehaviour
 
     private bool error = false;
     private bool waitFix = false;
+    private bool waitUI = false;
+    private bool waitCamera = false;
 
     // Start is called before the first frame update
     void Start()
@@ -73,6 +75,12 @@ public class Tutorial : MonoBehaviour
                 characterInfo.checkFixTutorial = true;
                 waitFix = true;
                 break;
+            case StepType.FecharUI:
+                waitUI = true;
+                break;
+            case StepType.AguardarCamera:
+
+                break;
             default:
                 break;
         }
@@ -97,19 +105,38 @@ public class Tutorial : MonoBehaviour
             Debug.LogError("t2_CLOSE");
             dialogue.Close();
         }
-        Step();
+        if(!waitFix)
+            Step();
     }
 
     public void MachineReturn()
     {
         if(!waitFix)
-        Step();
+            Step();
     }
 
     public void FixReturn()
     {
         Step();
         waitFix = false;
+    }
+
+    public void UIReturn()
+    {
+        if(!waitFix && waitUI)
+        {
+            Step();
+            waitUI = false;
+        }
+    }
+
+    public void CameraReturn()
+    {
+        if (!waitFix && waitCamera)
+        {
+            Step();
+            waitCamera = false;
+        }
     }
 
     public void MachineInteractError(Machines _allowedMachine = null)
