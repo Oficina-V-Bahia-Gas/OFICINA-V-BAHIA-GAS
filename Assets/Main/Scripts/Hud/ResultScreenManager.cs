@@ -1,5 +1,5 @@
-using System.Collections;
 using UnityEngine;
+using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
@@ -19,33 +19,62 @@ public class ResultScreenManager : MonoBehaviour
     [SerializeField] Button retryButton;
     [SerializeField] Button menuButton;
 
+    [Header("Configuração do Fade")]
+    [SerializeField] Image fadeImage;
+    [SerializeField] CanvasGroup fadeCanvasGroup;
+    [SerializeField] float fadeDuration = 1.5f;
+
     private float finalScore;
     private const float firstStarThreshold = 100;
     private const float secondStarThreshold = 200;
     private const float thirdStarThreshold = 300;
 
+    private string tutorialScene = "Tutorial";
+    private string fase1Scene = "Fase1";
+    private string fase2Scene = "Fase2";
+    private string menuScene = "MainMenu";
+
     void Start()
     {
-        finalScore = PlayerPrefs.GetFloat("FinalScore", 0);
-
-        bool won = finalScore >= firstStarThreshold;
-        resultText.text = won ? "Vitória!" : "Derrota!";
-
-        SetStars(finalScore);
-
-        continueButton.gameObject.SetActive(won);
-        retryButton.gameObject.SetActive(!won);
-
-        if (won)
+        if (fadeCanvasGroup == null)
         {
-            continueButton.onClick.AddListener(ContinueToNextLevel);
+            fadeCanvasGroup = fadeImage.GetComponent<CanvasGroup>();
+        }
+
+        fadeCanvasGroup.alpha = 0;
+        fadeCanvasGroup.gameObject.SetActive(false);
+
+        finalScore = PlayerPrefs.GetFloat("FinalScore", 0);
+        string lastScene = PlayerPrefs.GetString("LastScene", tutorialScene);
+        bool won = finalScore >= firstStarThreshold;
+
+        if (lastScene == fase2Scene)
+        {
+            resultText.text = "Parabéns!";
+            continueButton.gameObject.SetActive(false);
+            retryButton.gameObject.SetActive(false);
+            menuButton.gameObject.SetActive(true);
         }
         else
         {
-            retryButton.onClick.AddListener(RetryLevel);
+            if (won)
+            {
+                resultText.text = "Vitória!";
+                continueButton.gameObject.SetActive(true);
+                retryButton.gameObject.SetActive(false);
+                continueButton.onClick.AddListener(ContinueToNextLevel);
+            }
+            else
+            {
+                resultText.text = "Derrota!";
+                continueButton.gameObject.SetActive(false);
+                retryButton.gameObject.SetActive(true);
+                retryButton.onClick.AddListener(RetryLevel);
+            }
         }
 
-        menuButton.onClick.AddListener(ReturnToMenu);
+        menuButton.onClick.AddListener(() => StartCoroutine(FadeToScene(menuScene)));
+        SetStars(finalScore);
     }
 
     void SetStars(float score)
@@ -69,20 +98,46 @@ public class ResultScreenManager : MonoBehaviour
 
     void ContinueToNextLevel()
     {
-        PlayerPrefs.DeleteKey("FinalScore");
-        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        SceneManager.LoadScene(nextSceneIndex);
+        string nextScene = GetNextScene();
+        StartCoroutine(FadeToScene(nextScene));
     }
 
     void RetryLevel()
     {
-        PlayerPrefs.DeleteKey("FinalScore");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        string retryScene = GetRetryScene();
+        StartCoroutine(FadeToScene(retryScene));
     }
 
-    void ReturnToMenu()
+    string GetNextScene()
     {
+        string lastScene = PlayerPrefs.GetString("LastScene", tutorialScene);
+
+        if (lastScene == tutorialScene)
+            return fase1Scene;
+        else if (lastScene == fase1Scene)
+            return fase2Scene;
+        else
+            return menuScene;
+    }
+
+    string GetRetryScene()
+    {
+        string lastScene = PlayerPrefs.GetString("LastScene", tutorialScene);
+
+        if (lastScene == tutorialScene)
+            return tutorialScene;
+        else if (lastScene == fase1Scene)
+            return fase1Scene;
+        else
+            return fase2Scene;
+    }
+
+    IEnumerator FadeToScene(string sceneName)
+    {
+        fadeCanvasGroup.gameObject.SetActive(true);
+        yield return fadeCanvasGroup.DOFade(1, fadeDuration).WaitForCompletion();
+        yield return new WaitForSeconds(0.5f);
         PlayerPrefs.DeleteKey("FinalScore");
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene(sceneName);
     }
 }

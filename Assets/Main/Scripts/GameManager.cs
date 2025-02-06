@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+Ôªøusing System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,46 +12,49 @@ public class GameManager : MonoBehaviour
     [SerializeField] TMP_Text timerText;
     [SerializeField] float levelTimer = 120;
     [SerializeField] Image fadeImage;
+    [SerializeField] CanvasGroup fadeCanvasGroup;
     [SerializeField] float fadeDuration = 1.5f;
 
-    private float remainingTime;
+    float remainingTime;
 
-    [Header("PontuaÁ„o")]
+    [Header("Pontua√ß√£o")]
     [SerializeField] Slider scoreBar;
     [SerializeField] float scoreGoal = 300;
     [SerializeField] float firstStarThreshold = 100;
     [SerializeField] float secondStarThreshold = 200;
     [SerializeField] float thirdStarThreshold = 300;
-    [SerializeField, Tooltip("Ganho m·ximo por segundo.")] float scoreGain = 3;
+    [SerializeField, Tooltip("Ganho m√°ximo por segundo.")] float scoreGain = 3;
     [SerializeField] List<GasFlow> finalOutputs = new List<GasFlow>();
 
-    private float currentScore = 0;
+    float currentScore = 0;
+    bool gameEnded = false;
 
     void Start()
     {
+        if (fadeCanvasGroup == null)
+        {
+            fadeCanvasGroup = fadeImage.GetComponent<CanvasGroup>();
+        }
+
+        fadeCanvasGroup.alpha = 0;
+        fadeCanvasGroup.gameObject.SetActive(false);
+
         ResetManager();
     }
 
     void Update()
     {
-        TimerDecrease();
-        TimerVisualization();
-
-        if (finalOutputs.Count > 0)
+        if (!gameEnded)
         {
-            float _totalFlow = 0f;
-            foreach (GasFlow _output in finalOutputs)
+            TimerDecrease();
+            TimerVisualization();
+            UpdateScore();
+
+            if (remainingTime <= 0 && !gameEnded)
             {
-                _totalFlow += _output.currentFlow;
+                gameEnded = true;
+                StartCoroutine(FadeToResultScene());
             }
-            _totalFlow = _totalFlow / finalOutputs.Count;
-
-            ScoreGain(_totalFlow * scoreGain * Time.deltaTime);
-        }
-
-        if (remainingTime <= 0)
-        {
-            StartCoroutine(FadeToResultScene());
         }
     }
 
@@ -60,15 +63,31 @@ public class GameManager : MonoBehaviour
         if (remainingTime > 0)
         {
             remainingTime -= Time.deltaTime;
+            if (remainingTime < 0) remainingTime = 0;
         }
     }
 
     void TimerVisualization()
     {
         float _minutes = Mathf.FloorToInt(remainingTime / 60);
-        float _seconds = remainingTime % 60;
+        float _seconds = Mathf.FloorToInt(remainingTime % 60);
 
         timerText.text = $"{_minutes:00} : {_seconds:00}";
+    }
+
+    void UpdateScore()
+    {
+        if (finalOutputs.Count > 0)
+        {
+            float _totalFlow = 0f;
+            foreach (GasFlow _output in finalOutputs)
+            {
+                _totalFlow += _output.currentFlow;
+            }
+            _totalFlow /= finalOutputs.Count;
+
+            ScoreGain(_totalFlow * scoreGain * Time.deltaTime);
+        }
     }
 
     public void ScoreGain(float _gain)
@@ -86,15 +105,11 @@ public class GameManager : MonoBehaviour
         scoreBar.value = currentScore;
     }
 
-    public float GetRemainingTime()
-    {
-        return remainingTime;
-    }
-
     public void ResetManager()
     {
         remainingTime = levelTimer;
         currentScore = 0f;
+        gameEnded = false;
 
         scoreBar.maxValue = scoreGoal;
         scoreBar.value = currentScore;
@@ -104,14 +119,14 @@ public class GameManager : MonoBehaviour
 
     IEnumerator FadeToResultScene()
     {
-        fadeImage.gameObject.SetActive(true);
-        fadeImage.DOFade(1, fadeDuration).OnComplete(() =>
-        {
-            PlayerPrefs.SetFloat("FinalScore", currentScore);
-            SceneManager.LoadScene(currentScore >= firstStarThreshold ? "VictoryScene" : "DefeatScene");
-        });
+        fadeCanvasGroup.gameObject.SetActive(true);
 
-        yield return null;
+        yield return fadeCanvasGroup.DOFade(1, fadeDuration).WaitForCompletion();
+
+        yield return new WaitForSeconds(0.5f);
+
+        PlayerPrefs.SetFloat("FinalScore", currentScore);
+        SceneManager.LoadScene("Vitoria&Derrota");
     }
 
     public void ForceSetScore(float score)
@@ -122,7 +137,6 @@ public class GameManager : MonoBehaviour
 
     public void ForceSetTime(float time)
     {
-        remainingTime = time;
+        remainingTime = Mathf.Max(0, time);
     }
-
 }

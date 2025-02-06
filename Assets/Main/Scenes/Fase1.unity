@@ -3815,6 +3815,7 @@ GameObject:
   - component: {fileID: 494104361}
   - component: {fileID: 494104363}
   - component: {fileID: 494104362}
+  - component: {fileID: 494104364}
   m_Layer: 5
   m_Name: img_Fade
   m_TagString: Untagged
@@ -3854,7 +3855,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3879,6 +3880,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 494104360}
   m_CullTransparentMesh: 1
+--- !u!225 &494104364
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494104360}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &496811003
 GameObject:
   m_ObjectHideFlags: 3
@@ -4459,6 +4472,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2270953058019775134, guid: fb90261ea33f6a84f8efb0830bce832c, type: 3}
   m_PrefabInstance: {fileID: 584086320}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &586994305 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3442019015678866616, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+  m_PrefabInstance: {fileID: 634891222}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &604089114
 GameObject:
   m_ObjectHideFlags: 0
@@ -4907,7 +4925,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2223815101723907407, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
       insertIndex: 0
       addedObject: {fileID: 155755984}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3442019015678866616, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1832155843}
   m_SourcePrefab: {fileID: 100100000, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
 --- !u!4 &622024955 stripped
 Transform:
@@ -5161,13 +5182,33 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2223815101723907407, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
       insertIndex: 0
       addedObject: {fileID: 1996596590}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3442019015678866616, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 634891228}
   m_SourcePrefab: {fileID: 100100000, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
 --- !u!4 &634891223 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2223815101723907407, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
   m_PrefabInstance: {fileID: 634891222}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &634891228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586994305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 106494c5359d3b64d910c107bb003f5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  origin: 0
+  inputs:
+  - {fileID: 2345162579516082097}
+  currentFlow: 1
+  fixValue: 1
 --- !u!1 &636857842
 GameObject:
   m_ObjectHideFlags: 0
@@ -8327,6 +8368,7 @@ MonoBehaviour:
   timerText: {fileID: 179091522}
   levelTimer: 120
   fadeImage: {fileID: 494104362}
+  fadeCanvasGroup: {fileID: 0}
   fadeDuration: 1.5
   scoreBar: {fileID: 1791323578}
   scoreGoal: 500
@@ -8335,8 +8377,8 @@ MonoBehaviour:
   thirdStarThreshold: 300
   scoreGain: 2
   finalOutputs:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1832155843}
+  - {fileID: 1790441088}
 --- !u!1 &1019714440
 GameObject:
   m_ObjectHideFlags: 0
@@ -10807,7 +10849,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2223815101723907407, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
       insertIndex: 0
       addedObject: {fileID: 917440439}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3442019015678866616, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1790441088}
   m_SourcePrefab: {fileID: 100100000, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
 --- !u!4 &1310317502 stripped
 Transform:
@@ -16471,6 +16516,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1786924102}
   m_CullTransparentMesh: 1
+--- !u!1 &1790441083 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3442019015678866616, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+  m_PrefabInstance: {fileID: 1310317501}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1790441088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790441083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 106494c5359d3b64d910c107bb003f5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  origin: 0
+  inputs:
+  - {fileID: 1081084200}
+  currentFlow: 1
+  fixValue: 1
 --- !u!1 &1791323575
 GameObject:
   m_ObjectHideFlags: 0
@@ -16582,6 +16649,28 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1832155838 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3442019015678866616, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+  m_PrefabInstance: {fileID: 622024954}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1832155843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832155838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 106494c5359d3b64d910c107bb003f5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  origin: 0
+  inputs:
+  - {fileID: 634891228}
+  currentFlow: 1
+  fixValue: 1
 --- !u!1001 &1838269567
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -26,7 +26,7 @@ public class HUDController : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Fase1");
+        SceneManager.LoadScene("Tutorial");
     }
 
     public void ContinueGame()

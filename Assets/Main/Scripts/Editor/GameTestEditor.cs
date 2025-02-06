@@ -3,7 +3,7 @@ using UnityEditor;
 
 public class GameTestEditor : EditorWindow
 {
-    private GameManager gameManager;
+    GameManager gameManager;
 
     [MenuItem("Tools/Game Test")]
     public static void ShowWindow()
@@ -36,11 +36,6 @@ public class GameTestEditor : EditorWindow
         if (GUILayout.Button("Definir Tempo para 2 segundos"))
         {
             SetTimeRemaining(2);
-        }
-
-        if (GUILayout.Button("Definir Tempo para 1 segundo"))
-        {
-            SetTimeRemaining(1);
         }
     }
 
