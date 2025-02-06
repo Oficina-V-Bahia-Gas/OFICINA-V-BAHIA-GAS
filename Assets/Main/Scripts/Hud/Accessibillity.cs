@@ -22,8 +22,12 @@ public class Accessibility : MonoBehaviour
 
     const float minTextSize = 1.00f;
     const float maxTextSize = 1.50f;
-    const float minFontSize = 20f;
-    const float maxFontSize = 27f;
+
+    const float minExampleFontSize = 20f;
+    const float maxExampleFontSize = 27f;
+
+    const float minDialogueFontSize = 30f;
+    const float maxDialogueFontSize = 45f;
 
     void Start()
     {
@@ -113,19 +117,18 @@ public class Accessibility : MonoBehaviour
     void ApplyTextSizeToDialogues()
     {
         float textSize = PlayerPrefs.GetFloat("TextSize", minTextSize);
-        float newFontSize = Mathf.Lerp(minFontSize, maxFontSize, Mathf.InverseLerp(minTextSize, maxTextSize, textSize));
 
         if (exampleText != null)
         {
-            exampleText.fontSize = newFontSize;
+            exampleText.fontSize = Mathf.Lerp(minExampleFontSize, maxExampleFontSize, Mathf.InverseLerp(minTextSize, maxTextSize, textSize));
         }
 
-        TextMeshProUGUI[] dialogueTexts = FindObjectsOfType<TextMeshProUGUI>(true);
-        foreach (var text in dialogueTexts)
+        Dialogue[] dialogues = FindObjectsOfType<Dialogue>(true);
+        foreach (Dialogue dialogue in dialogues)
         {
-            if (text.CompareTag("DialogueText"))
+            if (dialogue.text != null)
             {
-                text.fontSize = newFontSize;
+                dialogue.text.fontSize = Mathf.Lerp(minDialogueFontSize, maxDialogueFontSize, Mathf.InverseLerp(minTextSize, maxTextSize, textSize));
             }
         }
     }
