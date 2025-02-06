@@ -1904,6 +1904,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6875248715001325667, guid: c2e9d8341ee12b94aab47b6ad6cdd37c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 288614498}
+    - targetCorrespondingSourceObject: {fileID: 6875248715001325667, guid: c2e9d8341ee12b94aab47b6ad6cdd37c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 288614500}
   m_SourcePrefab: {fileID: 100100000, guid: c2e9d8341ee12b94aab47b6ad6cdd37c, type: 3}
 --- !u!4 &288614496 stripped
 Transform:
@@ -1953,6 +1956,24 @@ MonoBehaviour:
   maxCooldown: 1e+9
   machineAnimator: {fileID: 4736481313194128661}
   repairAnimation: 
+--- !u!114 &288614500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288614497}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 1, g: 0.9534184, b: 0, a: 1}
+  outlineWidth: 3
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &307854923
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7874,7 +7895,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 165.29999, y: -5.777405}
+  m_AnchoredPosition: {x: 165.30005, y: -5.777405}
   m_SizeDelta: {x: -706.62, y: -166.3824}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1100298585
@@ -13742,7 +13763,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 331.99994, y: -79.00012}
+  m_AnchoredPosition: {x: 331.99988, y: -79.00012}
   m_SizeDelta: {x: 600, y: 108}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1791323577
