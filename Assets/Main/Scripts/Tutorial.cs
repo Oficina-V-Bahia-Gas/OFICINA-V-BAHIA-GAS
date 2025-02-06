@@ -52,7 +52,7 @@ public class Tutorial : MonoBehaviour
         {
             step += 1;
         }
-        Debug.LogError(step);
+        
         if (step >= steps.Length)
         {
             characterInfo.SetTutorial();
@@ -79,7 +79,7 @@ public class Tutorial : MonoBehaviour
                 waitUI = true;
                 break;
             case StepType.AguardarCamera:
-
+                waitCamera = true;
                 break;
             default:
                 break;
@@ -90,19 +90,16 @@ public class Tutorial : MonoBehaviour
     {
         if (error)
         {
-            Debug.LogError("t_error");
             dialogue.Close();
             error = false;
             return;
         }
         if(step + 1 >= steps.Length && !waitFix)
         {
-            Debug.LogError("t_close");
             dialogue.Close();
         }
         else if (steps[step +1] != StepType.Dialogo && !waitFix)
         {
-            Debug.LogError("t2_CLOSE");
             dialogue.Close();
         }
         if(!waitFix)
