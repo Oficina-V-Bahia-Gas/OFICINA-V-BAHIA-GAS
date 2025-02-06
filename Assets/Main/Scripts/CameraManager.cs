@@ -6,6 +6,7 @@ using Cinemachine;
 public class CameraManager : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera _camera;
+    [SerializeField] private Tutorial _tutorial;
     // Start is called before the first frame update
     void Start()
     {
@@ -52,7 +53,10 @@ public class CameraManager : MonoBehaviour
     public void SetTarget(GameObject _target)
     {
         if (_target != null)
+        {
             _camera.Follow = _target.transform;
+            _tutorial.CameraReturn();
+        }
     }
     public CinemachineVirtualCamera GetCamera()
     {
