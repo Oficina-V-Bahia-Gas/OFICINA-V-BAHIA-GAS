@@ -27,7 +27,7 @@ public class Accessibility : MonoBehaviour
     const float maxExampleFontSize = 27f;
 
     const float minDialogueFontSize = 30f;
-    const float maxDialogueFontSize = 45f;
+    const float maxDialogueFontSize = 43f;
 
     void Start()
     {

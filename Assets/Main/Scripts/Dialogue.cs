@@ -158,7 +158,7 @@ public class Dialogue : MonoBehaviour
 
         float textSize = PlayerPrefs.GetFloat("TextSize", 1.00f);
         float minFontSize = 30f;
-        float maxFontSize = 45f;
+        float maxFontSize = 43f;
 
         text.fontSize = Mathf.Lerp(minFontSize, maxFontSize, Mathf.InverseLerp(1.00f, 1.50f, textSize));
     }

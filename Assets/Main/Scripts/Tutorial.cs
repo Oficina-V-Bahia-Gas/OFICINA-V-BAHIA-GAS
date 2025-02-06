@@ -9,7 +9,7 @@ public class Tutorial : MonoBehaviour
     [Header("Pendências")]
     public CharacterInfo characterInfo;
     public Dialogue dialogue;
-    public SubtitleManager subtitleManager;
+    public AudioSource audioSource;
 
     [Header("Passos tutorial")]
     [SerializeField] private StepType[] steps;
@@ -24,8 +24,11 @@ public class Tutorial : MonoBehaviour
     [TextArea(1, 3)]
     public string[] extraTexts;
 
-    [Header("Dublagem (opcional)")]
+    [Header("Dublagem (Diálogos Principais)")]
     public List<AudioClip> voiceClips;
+
+    [Header("Dublagem (Textos Extras)")]
+    public List<AudioClip> extraVoiceClips = new List<AudioClip>();
 
     [Header("Máquinas")]
     public Machines[] machines;
@@ -38,12 +41,18 @@ public class Tutorial : MonoBehaviour
 
     private Accessibility accessibility;
 
+    private const float dubDelay = 0.2f;
+
     void Start()
     {
         dialogue.tutorial = this;
         characterInfo.SetTutorial(true, this);
-        subtitleManager = FindObjectOfType<SubtitleManager>();
         accessibility = FindObjectOfType<Accessibility>();
+
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
 
         Step(true);
 
@@ -101,6 +110,8 @@ public class Tutorial : MonoBehaviour
 
     public void DialogueReturn()
     {
+        StopAudio();
+
         if (error)
         {
             dialogue.Close();
@@ -156,23 +167,23 @@ public class Tutorial : MonoBehaviour
         error = true;
         if (_allowedMachine == null)
         {
-            PlayDialogueWithDubbing(extraTexts[0], -1);
+            PlayExtraDialogueWithDubbing(0);
         }
         else
         {
             switch (_allowedMachine.machineType)
             {
                 case Machines.MachineType.BombaHidraulica:
-                    PlayDialogueWithDubbing(extraTexts[1], -1);
+                    PlayExtraDialogueWithDubbing(1);
                     break;
                 case Machines.MachineType.Transmissor:
-                    PlayDialogueWithDubbing(extraTexts[2], -1);
+                    PlayExtraDialogueWithDubbing(2);
                     break;
                 case Machines.MachineType.Valvula:
-                    PlayDialogueWithDubbing(extraTexts[3], -1);
+                    PlayExtraDialogueWithDubbing(3);
                     break;
                 case Machines.MachineType.Outro:
-                    PlayDialogueWithDubbing(extraTexts[4], -1);
+                    PlayExtraDialogueWithDubbing(4);
                     break;
                 default:
                     break;
@@ -183,16 +194,46 @@ public class Tutorial : MonoBehaviour
     void PlayDialogueWithDubbing(string text, int index)
     {
         dialogue.SimpleLine(text);
+        StartCoroutine(PlayDubbingWithDelay(index));
+    }
 
-        if (accessibility != null && accessibility.IsDubEnabled() && subtitleManager != null)
+    void PlayExtraDialogueWithDubbing(int extraIndex)
+    {
+        if (extraIndex < 0 || extraIndex >= extraTexts.Length) return;
+
+        dialogue.SimpleLine(extraTexts[extraIndex]);
+        StartCoroutine(PlayExtraDubbingWithDelay(extraIndex));
+    }
+
+    IEnumerator PlayDubbingWithDelay(int index)
+    {
+        StopAudio();
+
+        yield return new WaitForSeconds(dubDelay);
+
+        if (accessibility != null && accessibility.IsDubEnabled() && index >= 0 && index < voiceClips.Count && voiceClips[index] != null)
         {
-            subtitleManager.StopSubtitles();
+            audioSource.PlayOneShot(voiceClips[index]);
+        }
+    }
 
-            if (index >= 0 && index < voiceClips.Count && voiceClips[index] != null)
-            {
-                subtitleManager.StartSubtitles();
-                subtitleManager.GetComponent<AudioSource>().PlayOneShot(voiceClips[index]);
-            }
+    IEnumerator PlayExtraDubbingWithDelay(int extraIndex)
+    {
+        StopAudio();
+
+        yield return new WaitForSeconds(dubDelay);
+
+        if (accessibility != null && accessibility.IsDubEnabled() && extraIndex < extraVoiceClips.Count && extraVoiceClips[extraIndex] != null)
+        {
+            audioSource.PlayOneShot(extraVoiceClips[extraIndex]);
+        }
+    }
+
+    void StopAudio()
+    {
+        if (audioSource.isPlaying)
+        {
+            audioSource.Stop();
         }
     }
 }

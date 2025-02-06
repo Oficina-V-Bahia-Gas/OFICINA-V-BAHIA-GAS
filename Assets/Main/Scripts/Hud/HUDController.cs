@@ -6,10 +6,6 @@ using DG.Tweening;
 
 public class HUDController : MonoBehaviour
 {
-    [Header("Configurações de Áudio")]
-    [SerializeField] Slider musicSlider, sfxSlider;
-    [SerializeField] AudioMixer musicMixer, effectMixer;
-
     [Header("Opções do Menu")]
     [SerializeField] Button continueButton;
     [SerializeField] CanvasGroup menuCanvasGroup;
@@ -24,23 +20,8 @@ public class HUDController : MonoBehaviour
 
     void LoadSettings()
     {
-        musicSlider.value = PlayerPrefs.GetFloat("musicVolume", 0.5f);
-        sfxSlider.value = PlayerPrefs.GetFloat("effectVolume", 0.5f);
-
         if (continueButton != null)
             continueButton.interactable = PlayerPrefs.GetInt("TutorialComplete", 0) == 1;
-    }
-
-    public void SetMusicVolume(float volume)
-    {
-        musicMixer.SetFloat("musicVolume", volume);
-        PlayerPrefs.SetFloat("musicVolume", volume);
-    }
-
-    public void SetEffectVolume(float volume)
-    {
-        effectMixer.SetFloat("effectVolume", volume);
-        PlayerPrefs.SetFloat("effectVolume", volume);
     }
 
     public void StartGame()
