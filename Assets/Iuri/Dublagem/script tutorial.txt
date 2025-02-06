@@ -1,0 +1,67 @@
+Ei, James! Seja bem-vindo à equipe. Antes de começar, deixa eu te situar. Você irá trabalhar nossa unidade principal, onde mantemos o sistema funcionando sob pressão máxima. Literalmente. Sua função? Garantir que nada aqui exploda. Simples, né?
+
+Pois bem. Vamos começar com o básico. Essa é a nossa antiga planta de gás. Não está mais em uso, mas vai servir para você experimentar um pouco de como são as coisas aqui antes de meter a mão na massa.
+
+Está vendo aquela barra em cima à esquerda? Ela representa a sua pontuação. Pense nisso como sua meta. Você só precisa consertar as máquinas e permite o fluxo de gás para aumentar sua pontuação. Entendeu?
+
+Ótimo! Agora, tá vendo aquele transmissor ali? É a máquina vermelha. Você precisa consertar ela.
+
+É só usar o joystick clicando no lado esquerdo da tela e andar até a frente dele. Depois só precisa clicar no botão verde para interagir. É assim que você vai lidar com a maioria dos equipamentos por aqui.
+
+[Após a interação com o transmissor]
+
+Beleza, esse é o painel das máquinas. Aqui você vê o status de como ela está, como o seu nome, a sua durabilidade e o seu fluxo de gás. Como essa máquina está quebrada, você vai ver aqui na direita a tela de conserto.
+
+Pelo visto deu um problema no circuito dessa máquina. Quando algo der esse problema — e vai dar de novo — você vai precisar reiniciar o sistema. Para isso, é só apertar e segurar o botão até o processo concluir. Vai lá, tenta agora.
+
+[Após o conserto do transmissor]
+
+Perfeito! Agora fecha o painel para continuar. Toque na estrela ali em cima na direita. Fácil, né?
+
+[Após fecahr a HUD]
+
+Está vendo que subiu sua pontuação? Agora, vai até aquela válvula. A gente precisa dar uma olhada nela.
+
+[Após a interação com a válvula]
+
+Isso aí. Válvulas controlam o fluxo de gás. Se o fluxo estiver desregulado, pode causar vazamentos. Quando encontrar um vazamento, você vai precisar clicar várias vezes rápido para fechar. Faz o teste agora.
+
+[Após o conserto da primeira válvula]
+
+Mandou bem! Agora, sem o vazamento, o gás está passando suave. Mas não acabou. O gás só vai contar para a sua pontuação quando chegar no fim da linha, e tem outra válvula ali antes da saída. Vá até ela.
+
+[Após a interação com a segunda válvula]
+
+Essa é um pouco mais complicada. O fluxo de gás aqui depende da válvula anterior. Se ela tivesse quebrada, não estaria chegando aqui. Por isso consertamos a outra antes.
+
+Pelo visto o problema dessa é que está desregulada. Às vezes, você vai precisar ajustar a pressão para tudo funcionar direito. Para isso, é só girar a manivela na tela. Experimenta.
+
+[Após o ajuste de pressão]
+
+Excelente, James! Agora dá para ver a sua pontuação subindo com o fluxo de gás. Só está faltando consertar a bomba hidráulica. Vai até ela.
+
+[Após a interação com a bomba hidráulica]
+
+Nem tudo aqui funciona com gás. Algumas máquinas, como essa, afetam sua pontuação quando estão fora do ar. Esse aqui tá enferrujado. Pra resolver, é só esfregar a tela, como se estivesse limpando mesmo. Bora ver como você se sai.
+
+Aliás, às vezes, quando as máquinas estão bem quebradas, elas podem exigir mais de um conserto consecutivo. Essa é uma delas. Vamos ver se você lembra como conserta.
+
+[Após o conserto da bomba]
+
+Show de bola! Agora que você já pegou o jeito, vem até a minha sala. É só andar para a esquerda. A câmera vai te acompanhar, então não tem como se perder. Estarei te esperando.
+
+[Após o jogador chegar na sala de Mariana]
+
+Parabéns, James! Você sobreviveu ao treinamento sem causar um desastre. Já é um bom começo. Agora é só manter esse ritmo… e torcer pra nada explodir. Brincadeira... ou não.
+
+---
+
+[Interações erradas]
+
+Opa, espera um pouco! Agora ainda não é hora de interagir com as máquinas.
+
+Você já consertou essa máquina aí. Só falta consertar a bomba hidráulica agora.
+
+Veremos essa máquina depois. Você precisa consertar o transmissor antes.
+
+Não, não. Não é essa máquina. Você precisa consertar aquela válvula.
