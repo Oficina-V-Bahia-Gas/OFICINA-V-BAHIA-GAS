@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Main/Scenes/Menu.unity
     guid: 4d8b97047c877084b981905ee15477df
   - enabled: 1
-    path: Assets/Main/Scenes/MapaDefinitivo.unity
+    path: Assets/Main/Scenes/Tutorial.unity
+    guid: c9ada7dce3217c646a92c262c43648eb
+  - enabled: 1
+    path: Assets/Main/Scenes/Fase1.unity
     guid: 6463a26c3cd7a094396a5bb4c22d8539
   m_configObjects: {}
