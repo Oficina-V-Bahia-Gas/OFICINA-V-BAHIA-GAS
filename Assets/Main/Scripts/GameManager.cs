@@ -31,15 +31,24 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        if (fadeCanvasGroup == null)
+        if (fadeCanvasGroup == null && fadeImage != null)
         {
             fadeCanvasGroup = fadeImage.GetComponent<CanvasGroup>();
         }
 
-        fadeCanvasGroup.alpha = 0;
-        fadeCanvasGroup.gameObject.SetActive(false);
+        if (fadeCanvasGroup != null)
+        {
+            fadeCanvasGroup.alpha = 0;
+            fadeCanvasGroup.gameObject.SetActive(false);
+        }
 
         ResetManager();
+    }
+
+    void OnDestroy()
+    {
+        Debug.LogError("⚠ GameManager foi DESTRUÍDO na cena: " + SceneManager.GetActiveScene().name, this);
+        Debug.LogError(new System.Diagnostics.StackTrace());
     }
 
     void Update()
@@ -111,17 +120,25 @@ public class GameManager : MonoBehaviour
         currentScore = 0f;
         gameEnded = false;
 
-        scoreBar.maxValue = scoreGoal;
-        scoreBar.value = currentScore;
+        if (scoreBar != null)
+        {
+            scoreBar.maxValue = scoreGoal;
+            scoreBar.value = currentScore;
+        }
 
         ScoreVisualization();
     }
 
     IEnumerator FadeToResultScene()
     {
-        fadeCanvasGroup.gameObject.SetActive(true);
+        PlayerPrefs.SetString("LastScene", SceneManager.GetActiveScene().name);
+        PlayerPrefs.Save();
 
-        yield return fadeCanvasGroup.DOFade(1, fadeDuration).WaitForCompletion();
+        if (fadeCanvasGroup != null)
+        {
+            fadeCanvasGroup.gameObject.SetActive(true);
+            yield return fadeCanvasGroup.DOFade(1, fadeDuration).WaitForCompletion();
+        }
 
         yield return new WaitForSeconds(0.5f);
 

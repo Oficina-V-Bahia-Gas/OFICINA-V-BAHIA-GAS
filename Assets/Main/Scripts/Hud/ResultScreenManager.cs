@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
@@ -24,15 +24,15 @@ public class ResultScreenManager : MonoBehaviour
     [SerializeField] CanvasGroup fadeCanvasGroup;
     [SerializeField] float fadeDuration = 1.5f;
 
-    private float finalScore;
-    private const float firstStarThreshold = 100;
-    private const float secondStarThreshold = 200;
-    private const float thirdStarThreshold = 300;
+    float finalScore;
+    const float firstStarThreshold = 100;
+    const float secondStarThreshold = 200;
+    const float thirdStarThreshold = 300;
 
-    private string tutorialScene = "Tutorial";
-    private string fase1Scene = "Fase1";
-    private string fase2Scene = "Fase2";
-    private string menuScene = "MainMenu";
+    string tutorialScene = "Tutorial";
+    string fase1Scene = "Fase1";
+    string fase2Scene = "Fase2";
+    string menuScene = "Menu";
 
     void Start()
     {
@@ -57,23 +57,22 @@ public class ResultScreenManager : MonoBehaviour
         }
         else
         {
+            resultText.text = won ? "Vitória!" : "Derrota!";
+            continueButton.gameObject.SetActive(won);
+            retryButton.gameObject.SetActive(!won);
+
             if (won)
             {
-                resultText.text = "Vitória!";
-                continueButton.gameObject.SetActive(true);
-                retryButton.gameObject.SetActive(false);
                 continueButton.onClick.AddListener(ContinueToNextLevel);
             }
             else
             {
-                resultText.text = "Derrota!";
-                continueButton.gameObject.SetActive(false);
-                retryButton.gameObject.SetActive(true);
                 retryButton.onClick.AddListener(RetryLevel);
             }
         }
 
         menuButton.onClick.AddListener(() => StartCoroutine(FadeToScene(menuScene)));
+
         SetStars(finalScore);
     }
 
