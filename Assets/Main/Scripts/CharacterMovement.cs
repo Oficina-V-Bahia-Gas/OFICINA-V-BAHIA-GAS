@@ -63,9 +63,12 @@ public class CharacterMovement : MonoBehaviour
             rb.velocity = moveVector;
 
             //Debug.Log(rb.position);
+            if(!AudioManager.instance.IsPlaying("Footsteps"))
+            AudioManager.instance.Play("Footsteps");
         }
         else
         {
+            AudioManager.instance.Stop("Footsteps");
             new Vector3(0f, rb.velocity.y, 0f);
         }
     }

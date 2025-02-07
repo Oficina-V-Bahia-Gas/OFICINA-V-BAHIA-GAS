@@ -61,6 +61,7 @@ public class RepairTap : Repairs
 
             tapCount++;
             Debug.Log($"Tap registrado: {tapCount}/{totalTapsRequired}");
+            AudioManager.instance.Play("Hammer");
 
             if (tapCount >= totalTapsRequired)
             {

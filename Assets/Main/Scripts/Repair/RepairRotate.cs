@@ -75,6 +75,7 @@ public class RepairRotate : Repairs
 
     void StartRotation(Vector2 touchPosition)
     {
+        AudioManager.instance.Play("Squeak");
         rotationCenter = touchPosition;
         lastTouchDirection = Vector2.right;
         isRotating = true;
@@ -102,12 +103,15 @@ public class RepairRotate : Repairs
 
     void StopRotation()
     {
+        AudioManager.instance.Stop("Squeak");
         isRotating = false;
     }
 
     public override void FinishRepair()
     {
         base.FinishRepair();
+
+        AudioManager.instance.Stop("Squeak");
         rotationProgress = 0f;
         rotationAngle = 0f;
 

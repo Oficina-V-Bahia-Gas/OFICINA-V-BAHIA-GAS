@@ -75,12 +75,19 @@ public class RepairHold : Repairs
     {
         if (!repairInProgress) return;
 
+        AudioManager.instance.Play("Press");
+        AudioManager.instance.Play("Electric Hum");
         isHolding = true;
         holdProgress = 0f;
     }
 
     public void StopHolding()
     {
+        if (isHolding)
+        {
+            AudioManager.instance.Play("Release");
+            AudioManager.instance.Stop("Electric Hum");
+        }
         isHolding = false;
     }
 
@@ -89,6 +96,8 @@ public class RepairHold : Repairs
         base.FinishRepair();
         holdProgress = 0f;
         isHolding = false;
+        AudioManager.instance.Play("Release");
+        AudioManager.instance.Stop("Electric Hum");
 
         UpdateUI(1f);
 

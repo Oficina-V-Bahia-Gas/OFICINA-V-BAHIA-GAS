@@ -69,8 +69,18 @@ public class RepairSwipe : Repairs
                 if (swipeProgress >= swipesRequired)
                 {
                     FinishRepair();
+                    AudioManager.instance.Stop("Brush");
+                }
+                else
+                {
+                    if(!AudioManager.instance.IsPlaying("Brush"))
+                    AudioManager.instance.Play("Brush");
                 }
             }
+        }
+        else
+        {
+            AudioManager.instance.Stop("Brush");
         }
     }
 

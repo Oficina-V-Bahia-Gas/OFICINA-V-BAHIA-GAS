@@ -158,6 +158,8 @@ public class HudInteraction : MonoBehaviour
     {
         if (hudCanvasGroup != null && !isHudOpen)
         {
+            AudioManager.instance.Stop("Close");
+            AudioManager.instance.Play("Open");
             PauseMenuButton.gameObject.SetActive(false);
             hudCanvasGroup.alpha = 1;
             hudCanvasGroup.interactable = true;
@@ -170,6 +172,12 @@ public class HudInteraction : MonoBehaviour
     {
         if (hudCanvasGroup != null && isHudOpen)
         {
+            AudioManager.instance.Stop("Electric Hum");
+            AudioManager.instance.Stop("Squeak");
+            AudioManager.instance.Stop("Brush");
+
+            AudioManager.instance.Stop("Open");
+            AudioManager.instance.Play("Close");
             hudCanvasGroup.alpha = 0;
             hudCanvasGroup.interactable = false;
             hudCanvasGroup.blocksRaycasts = false;
