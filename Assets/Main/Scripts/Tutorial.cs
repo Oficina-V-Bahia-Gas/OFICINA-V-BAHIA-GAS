@@ -77,6 +77,9 @@ public class Tutorial : MonoBehaviour
 
         if (step >= steps.Length)
         {
+            PlayerPrefs.SetInt("TutorialComplete", 1);
+            PlayerPrefs.Save();
+
             characterInfo.SetTutorial();
             dialogue.tutorial = null;
             this.enabled = false;

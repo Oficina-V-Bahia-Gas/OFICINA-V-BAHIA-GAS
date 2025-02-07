@@ -12103,7 +12103,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 209305759}
+      - m_Target: {fileID: 1734880791}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -13914,9 +13914,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e272387c4ab200745878742d4fe283d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  repairCameraManager: {fileID: 0}
-  totalRotationsRequired: 5
+  rotationSensitivity: 10
   handleTransform: {fileID: 1535262689}
+  repairCameraManager: {fileID: 0}
 --- !u!114 &1535262691
 MonoBehaviour:
   m_ObjectHideFlags: 0
