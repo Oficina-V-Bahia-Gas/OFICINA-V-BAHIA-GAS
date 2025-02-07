@@ -20,9 +20,9 @@ public class GameManager : MonoBehaviour
     [Header("Pontuação")]
     [SerializeField] Slider scoreBar;
     [SerializeField] float scoreGoal = 300;
-    [SerializeField] float firstStarThreshold = 100;
-    [SerializeField] float secondStarThreshold = 200;
-    [SerializeField] float thirdStarThreshold = 300;
+    public float firstStarThreshold = 100;
+    public float secondStarThreshold = 200;
+    public float thirdStarThreshold = 300;
     [SerializeField, Tooltip("Ganho máximo por segundo.")] float scoreGain = 3;
     [SerializeField] List<GasFlow> finalOutputs = new List<GasFlow>();
 
