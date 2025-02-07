@@ -5597,6 +5597,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Valvula Globo (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: coreRepairs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: randomRepairs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: coreRepairs.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: randomRepairs.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: randomRepairs.Array.data[1]
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -5853,6 +5873,22 @@ PrefabInstance:
     - target: {fileID: 3442019015678866616, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
       propertyPath: m_Name
       value: Valvula Globo (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: coreRepairs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: randomRepairs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: coreRepairs.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: randomRepairs.Array.data[1]
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9490,7 +9526,7 @@ Transform:
   m_GameObject: {fileID: 988097234}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -117.9, y: 0, z: 4.5999985}
+  m_LocalPosition: {x: -90, y: 0, z: 4.5999985}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9558,6 +9594,8 @@ MonoBehaviour:
   fadeImage: {fileID: 494104362}
   fadeCanvasGroup: {fileID: 494104364}
   fadeDuration: 1.5
+  music: Fase 1
+  tutorial: 0
   scoreBar: {fileID: 1791323578}
   scoreGoal: 300
   firstStarThreshold: 100
@@ -10050,6 +10088,18 @@ PrefabInstance:
     - target: {fileID: 3442019015678866616, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
       propertyPath: m_Name
       value: Valvula Globo (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: coreRepairs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: randomRepairs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: coreRepairs.Array.data[1]
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12103,149 +12153,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1290774629
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1290774632}
-  - component: {fileID: 1290774631}
-  - component: {fileID: 1290774630}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!82 &1290774630
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1290774629}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: e2998a91ee3629d45a46f1e52efe4b09, type: 2}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!114 &1290774631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1290774629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fe6a342d73d9444fa814ce947624031, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainMixer: {fileID: 24100000, guid: e2998a91ee3629d45a46f1e52efe4b09, type: 2}
-  sounds: []
---- !u!4 &1290774632
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1290774629}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1779146042}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1295437978
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12469,6 +12376,22 @@ PrefabInstance:
     - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
       propertyPath: repairAnimation
       value: Open
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: coreRepairs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: randomRepairs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: coreRepairs.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: randomRepairs.Array.data[1]
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18881,7 +18804,7 @@ Transform:
   - {fileID: 1767907281}
   - {fileID: 957197085}
   - {fileID: 1861872650}
-  - {fileID: 1290774632}
+  - {fileID: 2010752516}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1782622226
@@ -20668,6 +20591,254 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &2010752515
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2010752516}
+  - component: {fileID: 2010752518}
+  - component: {fileID: 2010752517}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2010752516
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010752515}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1779146042}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &2010752517
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010752515}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: e2998a91ee3629d45a46f1e52efe4b09, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &2010752518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010752515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe6a342d73d9444fa814ce947624031, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMixer: {fileID: 24100000, guid: e2998a91ee3629d45a46f1e52efe4b09, type: 2}
+  sounds:
+  - name: Footsteps
+    clip: {fileID: 8300000, guid: 48941e949a251c04f8c609a7e1d6058c, type: 3}
+    mixerGroup: {fileID: 4358066373823703299, guid: e2998a91ee3629d45a46f1e52efe4b09, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Open
+    clip: {fileID: 8300000, guid: fa99522d531663243b8c573d2ad9a407, type: 3}
+    mixerGroup: {fileID: 4358066373823703299, guid: e2998a91ee3629d45a46f1e52efe4b09, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Close
+    clip: {fileID: 8300000, guid: d63a771adf9d17744bed1a9c1f7eef89, type: 3}
+    mixerGroup: {fileID: 4358066373823703299, guid: e2998a91ee3629d45a46f1e52efe4b09, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Press
+    clip: {fileID: 8300000, guid: 5f120682efaeb5140b053f8240197a84, type: 3}
+    mixerGroup: {fileID: 4358066373823703299, guid: e2998a91ee3629d45a46f1e52efe4b09, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Release
+    clip: {fileID: 8300000, guid: 0611042cde24e8241882028a12fd2984, type: 3}
+    mixerGroup: {fileID: 4358066373823703299, guid: e2998a91ee3629d45a46f1e52efe4b09, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Electric Hum
+    clip: {fileID: 8300000, guid: 10c58bec7aad17d4f9b833b2fe88a867, type: 3}
+    mixerGroup: {fileID: 4358066373823703299, guid: e2998a91ee3629d45a46f1e52efe4b09, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Hammer
+    clip: {fileID: 8300000, guid: 46c956a71c8be234b953f9ac0274cb48, type: 3}
+    mixerGroup: {fileID: 4358066373823703299, guid: e2998a91ee3629d45a46f1e52efe4b09, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Squeak
+    clip: {fileID: 8300000, guid: 0eb3263db36194644a5ed7eba29344df, type: 3}
+    mixerGroup: {fileID: 4358066373823703299, guid: e2998a91ee3629d45a46f1e52efe4b09, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Brush
+    clip: {fileID: 8300000, guid: aeef758daa4f0784aa8027f3f523eae8, type: 3}
+    mixerGroup: {fileID: 4358066373823703299, guid: e2998a91ee3629d45a46f1e52efe4b09, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Whoosh
+    clip: {fileID: 8300000, guid: 246fb68b55ab391418d2092249c8213d, type: 3}
+    mixerGroup: {fileID: 4358066373823703299, guid: e2998a91ee3629d45a46f1e52efe4b09, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Final
+    clip: {fileID: 8300000, guid: ed9c013c95723b845bf4d1809d59d632, type: 3}
+    mixerGroup: {fileID: 4358066373823703299, guid: e2998a91ee3629d45a46f1e52efe4b09, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Menu
+    clip: {fileID: 8300000, guid: fca9e68b75754084d9b957d5dff27289, type: 3}
+    mixerGroup: {fileID: -5282690443293775179, guid: e2998a91ee3629d45a46f1e52efe4b09, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Tutorial
+    clip: {fileID: 8300000, guid: 9bde3bc5e988f044ca3a3c8815caa466, type: 3}
+    mixerGroup: {fileID: -5282690443293775179, guid: e2998a91ee3629d45a46f1e52efe4b09, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Fase 1
+    clip: {fileID: 8300000, guid: b6d47f33ea6cb904da30ec0702a0ed38, type: 3}
+    mixerGroup: {fileID: -5282690443293775179, guid: e2998a91ee3629d45a46f1e52efe4b09, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Fase 2
+    clip: {fileID: 8300000, guid: 587b11add5046504f8f32de7bd1c3b18, type: 3}
+    mixerGroup: {fileID: -5282690443293775179, guid: e2998a91ee3629d45a46f1e52efe4b09, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
 --- !u!1001 &2013666167
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20929,8 +21100,28 @@ PrefabInstance:
       value: Valvula Globo (3)
       objectReference: {fileID: 0}
     - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: coreRepairs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: randomRepairs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
       propertyPath: coreRepairs.Array.data[0]
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: coreRepairs.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: randomRepairs.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: randomRepairs.Array.data[1]
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1120429871267275939, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
@@ -21785,17 +21976,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   machineType: 0
-  coreRepairs: 0000000001000000
+  coreRepairs: 00000000
   coreRepairsStart: 0.65
   coreRepairsAmount: 1
   coreRepairsScore: 65
   coreGasFlow: 0.9
-  randomRepairs: 000000000100000003000000
+  randomRepairs: 0100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
   randomRepairsScore: 50
   randomGasFlow: 0.5
-  fullRepairs: 03000000
+  fullRepairs: 00000000
   fullRepairsStart: 0
   fullRepairsAmount: 1
   fullRepairsScore: 45
@@ -21916,12 +22107,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   machineType: 2
-  coreRepairs: 02000000
+  coreRepairs: 0200000003000000
   coreRepairsStart: 0.65
   coreRepairsAmount: 1
   coreRepairsScore: 25
   coreGasFlow: 0.9
-  randomRepairs: 000000000100000003000000
+  randomRepairs: 0000000001000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
   randomRepairsScore: 28

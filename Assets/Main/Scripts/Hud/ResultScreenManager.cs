@@ -36,6 +36,8 @@ public class ResultScreenManager : MonoBehaviour
 
     void Start()
     {
+        //AudioManager.instance.Play("Final");
+
         if (fadeCanvasGroup == null)
         {
             fadeCanvasGroup = fadeImage.GetComponent<CanvasGroup>();

@@ -10,6 +10,7 @@ public class Tutorial : MonoBehaviour
     public CharacterInfo characterInfo;
     public Dialogue dialogue;
     public AudioSource audioSource;
+    public GameManager gameManager;
 
     [Header("Passos tutorial")]
     [SerializeField] private StepType[] steps;
@@ -56,10 +57,10 @@ public class Tutorial : MonoBehaviour
 
         Step(true);
 
-        foreach (var _machine in machines)
+        /*foreach (var _machine in machines)
         {
             _machine.currentDurability = 0;
-        }
+        }*/
     }
 
     private void Step(bool _restart = false)
@@ -83,6 +84,7 @@ public class Tutorial : MonoBehaviour
             characterInfo.SetTutorial();
             dialogue.tutorial = null;
             this.enabled = false;
+            gameManager.ForceEnd();
             return;
         }
 

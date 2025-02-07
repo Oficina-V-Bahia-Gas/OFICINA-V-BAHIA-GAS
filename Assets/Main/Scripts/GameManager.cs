@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] CanvasGroup fadeCanvasGroup;
     [SerializeField] float fadeDuration = 1.5f;
 
+    [SerializeField] string music;
+    [SerializeField] bool tutorial = false;
+
     float remainingTime;
 
     [Header("Pontuação")]
@@ -31,6 +34,15 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        AudioManager.instance.Stop("Squeak");
+        AudioManager.instance.Stop("Brush");
+        AudioManager.instance.Stop("Electric Hum");
+        AudioManager.instance.Stop("Menu");
+        AudioManager.instance.Stop("Tutorial");
+        AudioManager.instance.Stop("Fase 1");
+        AudioManager.instance.Stop("Fase 2");
+        AudioManager.instance.Play(music);
+
         if (fadeCanvasGroup == null && fadeImage != null)
         {
             fadeCanvasGroup = fadeImage.GetComponent<CanvasGroup>();
@@ -53,17 +65,20 @@ public class GameManager : MonoBehaviour
             TimerVisualization();
             UpdateScore();
 
-            if (remainingTime <= 0 && !gameEnded)
+            if (remainingTime <= 0 && !gameEnded && !tutorial)
             {
                 gameEnded = true;
                 StartCoroutine(FadeToResultScene());
+            } else if (tutorial)
+            {
+                remainingTime = 0;
             }
         }
     }
 
     void TimerDecrease()
     {
-        if (remainingTime > 0)
+        if (remainingTime > 0 && !tutorial)
         {
             remainingTime -= Time.deltaTime;
             if (remainingTime < 0) remainingTime = 0;
@@ -95,7 +110,7 @@ public class GameManager : MonoBehaviour
 
     public void ScoreGain(float _gain)
     {
-        if (remainingTime > 0)
+        if (remainingTime > 0 || tutorial)
         {
             currentScore += _gain;
         }
@@ -149,5 +164,10 @@ public class GameManager : MonoBehaviour
     public void ForceSetTime(float time)
     {
         remainingTime = Mathf.Max(0, time);
+    }
+
+    public void ForceEnd()
+    {
+        StartCoroutine(FadeToResultScene());
     }
 }

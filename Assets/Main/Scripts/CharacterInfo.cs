@@ -38,8 +38,8 @@ public class CharacterInfo : MonoBehaviour
         {
             if ((currentMachine == allowedMachine || allowedMachine == null) && currentMachine.onCooldown)
             {
-                Debug.LogError(allowedMachine);
-                Debug.LogError(currentMachine);
+                //Debug.LogError(allowedMachine);
+                //Debug.LogError(currentMachine);
                 tutorialScript.FixReturn();
                 checkFixTutorial = false;
             }
@@ -125,8 +125,8 @@ public class CharacterInfo : MonoBehaviour
 
         if (tutorial && currentMachine != allowedMachine && currentMachine != null)
         {
-            Debug.LogError(allowedMachine);
-            Debug.LogError(currentMachine);
+            //Debug.LogError(allowedMachine);
+            //Debug.LogError(currentMachine);
             tutorialScript.MachineInteractError(allowedMachine);
             return;
         }
@@ -172,7 +172,7 @@ public class CharacterInfo : MonoBehaviour
 
     public void SetAllowedMachine(Machines m = null)
     {
-        Debug.LogError(m);
+        //Debug.LogError(m);
         allowedMachine = m;
     }
 }

@@ -689,7 +689,7 @@ MonoBehaviour:
   coreRepairsAmount: 1
   coreRepairsScore: 40
   coreGasFlow: 0.9
-  randomRepairs: 000000000100000003000000
+  randomRepairs: 0100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
   randomRepairsScore: 30
@@ -2135,8 +2135,36 @@ PrefabInstance:
       value: Valvula Globo (1)
       objectReference: {fileID: 0}
     - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: coreRepairs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: fullRepairs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: randomRepairs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
       propertyPath: coreRepairs.Array.data[0]
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: coreRepairs.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: fullRepairs.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: randomRepairs.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: randomRepairs.Array.data[1]
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1120429871267275939, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
@@ -3107,7 +3135,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
       propertyPath: coreRepairs.Array.data[0]
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1120429871267275939, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
@@ -3406,12 +3434,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   machineType: 1
-  coreRepairs: 00000000
+  coreRepairs: 01000000
   coreRepairsStart: 0.8
   coreRepairsAmount: 1
   coreRepairsScore: 40
   coreGasFlow: 0.9
-  randomRepairs: 000000000100000003000000
+  randomRepairs: 03000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
   randomRepairsScore: 30
@@ -5521,7 +5549,7 @@ MonoBehaviour:
   coreRepairsAmount: 1
   coreRepairsScore: 40
   coreGasFlow: 0.9
-  randomRepairs: 000000000100000003000000
+  randomRepairs: 0100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
   randomRepairsScore: 30
@@ -7309,7 +7337,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
       propertyPath: coreRepairs.Array.data[0]
-      value: 0
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: fullRepairs.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: randomRepairs.Array.data[2]
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1120429871267275939, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
@@ -12035,12 +12071,47 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    mixerGroup: {fileID: 0}
-    volume: 0
-    pitch: 0
+  - name: Whoosh
+    clip: {fileID: 8300000, guid: 246fb68b55ab391418d2092249c8213d, type: 3}
+    mixerGroup: {fileID: 4358066373823703299, guid: e2998a91ee3629d45a46f1e52efe4b09, type: 2}
+    volume: 1
+    pitch: 1
     loop: 0
+    source: {fileID: 0}
+  - name: Final
+    clip: {fileID: 8300000, guid: ed9c013c95723b845bf4d1809d59d632, type: 3}
+    mixerGroup: {fileID: 4358066373823703299, guid: e2998a91ee3629d45a46f1e52efe4b09, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Menu
+    clip: {fileID: 8300000, guid: fca9e68b75754084d9b957d5dff27289, type: 3}
+    mixerGroup: {fileID: -5282690443293775179, guid: e2998a91ee3629d45a46f1e52efe4b09, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Tutorial
+    clip: {fileID: 8300000, guid: 9bde3bc5e988f044ca3a3c8815caa466, type: 3}
+    mixerGroup: {fileID: -5282690443293775179, guid: e2998a91ee3629d45a46f1e52efe4b09, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Fase 1
+    clip: {fileID: 8300000, guid: b6d47f33ea6cb904da30ec0702a0ed38, type: 3}
+    mixerGroup: {fileID: -5282690443293775179, guid: e2998a91ee3629d45a46f1e52efe4b09, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Fase 2
+    clip: {fileID: 8300000, guid: 587b11add5046504f8f32de7bd1c3b18, type: 3}
+    mixerGroup: {fileID: -5282690443293775179, guid: e2998a91ee3629d45a46f1e52efe4b09, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 1
     source: {fileID: 0}
 --- !u!1 &974289984
 GameObject:
@@ -12192,17 +12263,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   machineType: 1
-  coreRepairs: 00000000
+  coreRepairs: 03000000
   coreRepairsStart: 0.8
   coreRepairsAmount: 1
   coreRepairsScore: 40
   coreGasFlow: 0.9
-  randomRepairs: 000000000100000003000000
+  randomRepairs: 0000000001000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
   randomRepairsScore: 30
   randomGasFlow: 0.5
-  fullRepairs: 00000000
+  fullRepairs: 03000000
   fullRepairsStart: 0
   fullRepairsAmount: 1
   fullRepairsScore: 25
@@ -12570,6 +12641,8 @@ MonoBehaviour:
   fadeImage: {fileID: 1155916160}
   fadeCanvasGroup: {fileID: 1155916159}
   fadeDuration: 1.5
+  music: Fase 2
+  tutorial: 0
   scoreBar: {fileID: 1791323578}
   scoreGoal: 300
   firstStarThreshold: 100
@@ -12863,6 +12936,14 @@ PrefabInstance:
     - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
       propertyPath: coreRepairs.Array.data[0]
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: fullRepairs.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: randomRepairs.Array.data[0]
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1120429871267275939, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
@@ -14661,7 +14742,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1155916157}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -17843,6 +17924,14 @@ PrefabInstance:
       propertyPath: coreRepairs.Array.data[0]
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: fullRepairs.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: randomRepairs.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1120429871267275939, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
     m_RemovedGameObjects: []
@@ -18237,7 +18326,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
       propertyPath: coreRepairs.Array.data[0]
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1120429871267275939, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
@@ -18746,7 +18835,7 @@ MonoBehaviour:
   coreRepairsAmount: 1
   coreRepairsScore: 40
   coreGasFlow: 0.9
-  randomRepairs: 000000000100000003000000
+  randomRepairs: 0100000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
   randomRepairsScore: 30
@@ -20215,17 +20304,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   machineType: 1
-  coreRepairs: 00000000
+  coreRepairs: 01000000
   coreRepairsStart: 0.8
   coreRepairsAmount: 1
   coreRepairsScore: 40
   coreGasFlow: 0.9
-  randomRepairs: 000000000100000003000000
+  randomRepairs: 0000000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
   randomRepairsScore: 30
   randomGasFlow: 0.5
-  fullRepairs: 00000000
+  fullRepairs: 01000000
   fullRepairsStart: 0
   fullRepairsAmount: 1
   fullRepairsScore: 25
@@ -23064,8 +23153,24 @@ PrefabInstance:
       value: Valvula Globo (5)
       objectReference: {fileID: 0}
     - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: randomRepairs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
       propertyPath: coreRepairs.Array.data[0]
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: fullRepairs.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: randomRepairs.Array.data[1]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: randomRepairs.Array.data[2]
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1120429871267275939, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
@@ -23887,17 +23992,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   machineType: 0
-  coreRepairs: 0000000001000000
+  coreRepairs: 000000000100000002000000
   coreRepairsStart: 0.65
   coreRepairsAmount: 1
   coreRepairsScore: 65
   coreGasFlow: 0.9
-  randomRepairs: 000000000100000003000000
+  randomRepairs: 03000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
   randomRepairsScore: 50
   randomGasFlow: 0.5
-  fullRepairs: 03000000
+  fullRepairs: 0100000002000000
   fullRepairsStart: 0
   fullRepairsAmount: 1
   fullRepairsScore: 45
@@ -25633,17 +25738,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   machineType: 1
-  coreRepairs: 00000000
+  coreRepairs: 0000000001000000
   coreRepairsStart: 0.8
   coreRepairsAmount: 1
   coreRepairsScore: 40
   coreGasFlow: 0.9
-  randomRepairs: 000000000100000003000000
+  randomRepairs: 03000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
   randomRepairsScore: 30
   randomGasFlow: 0.5
-  fullRepairs: 00000000
+  fullRepairs: 0000000001000000
   fullRepairsStart: 0
   fullRepairsAmount: 1
   fullRepairsScore: 25
@@ -25765,8 +25870,40 @@ PrefabInstance:
       value: Valvula Globo (4)
       objectReference: {fileID: 0}
     - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: coreRepairs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: fullRepairs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: randomRepairs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
       propertyPath: coreRepairs.Array.data[0]
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: coreRepairs.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: fullRepairs.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: fullRepairs.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: randomRepairs.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: randomRepairs.Array.data[1]
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1120429871267275939, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
@@ -26433,17 +26570,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   machineType: 1
-  coreRepairs: 00000000
+  coreRepairs: 01000000
   coreRepairsStart: 0.8
   coreRepairsAmount: 1
   coreRepairsScore: 40
   coreGasFlow: 0.9
-  randomRepairs: 000000000100000003000000
+  randomRepairs: 0000000003000000
   randomRepairsStart: 0.3
   randomRepairsAmount: 1
   randomRepairsScore: 30
   randomGasFlow: 0.5
-  fullRepairs: 00000000
+  fullRepairs: 01000000
   fullRepairsStart: 0
   fullRepairsAmount: 1
   fullRepairsScore: 25

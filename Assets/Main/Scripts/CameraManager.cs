@@ -58,6 +58,8 @@ public class CameraManager : MonoBehaviour
 
             if(_tutorial != null)
             _tutorial.CameraReturn();
+
+            AudioManager.instance.Play("Whoosh");
         }
     }
     public CinemachineVirtualCamera GetCamera()
