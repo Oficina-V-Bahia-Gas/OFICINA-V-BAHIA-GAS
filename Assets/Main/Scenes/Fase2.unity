@@ -1225,6 +1225,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pedra2
       objectReference: {fileID: 0}
+    - target: {fileID: 4392042562839562719, guid: 64fc69f921262f747943112ee9661eef, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4150,6 +4154,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Valvula Globo
       objectReference: {fileID: 0}
+    - target: {fileID: 3442019015678866616, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
       propertyPath: coreRepairs.Array.data[0]
       value: 0
@@ -5614,6 +5622,10 @@ PrefabInstance:
     - target: {fileID: 7646242044358994673, guid: c2aa7f045485c3c4d92903892ee41169, type: 3}
       propertyPath: m_Name
       value: Cano Fino
+      objectReference: {fileID: 0}
+    - target: {fileID: 7646242044358994673, guid: c2aa7f045485c3c4d92903892ee41169, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8321,6 +8333,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bomba Hidraulica
       objectReference: {fileID: 0}
+    - target: {fileID: 4427671993393455992, guid: 389c8ec452b00a64e9005a1d55fde350, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -9243,6 +9259,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: arvore
       objectReference: {fileID: 0}
+    - target: {fileID: 4898101784273594132, guid: 8dbbf07a616fb4c4caf658fcbb1c570b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5238351792490020270, guid: 8dbbf07a616fb4c4caf658fcbb1c570b, type: 3}
       propertyPath: m_LocalScale.x
       value: 90
@@ -9664,6 +9684,10 @@ PrefabInstance:
     - target: {fileID: 7646242044358994673, guid: c2aa7f045485c3c4d92903892ee41169, type: 3}
       propertyPath: m_Name
       value: Cano Fino curto
+      objectReference: {fileID: 0}
+    - target: {fileID: 7646242044358994673, guid: c2aa7f045485c3c4d92903892ee41169, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10221,6 +10245,10 @@ PrefabInstance:
     - target: {fileID: 5442135836392315942, guid: 6261548a142981e43a8cd35cbd08bde2, type: 3}
       propertyPath: m_Name
       value: Cano curvado curto Tipo 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442135836392315942, guid: 6261548a142981e43a8cd35cbd08bde2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11101,6 +11129,10 @@ PrefabInstance:
     - target: {fileID: 5312213765678527802, guid: 8c75ec068a0f02046913ddd38865458d, type: 3}
       propertyPath: m_Name
       value: caixa
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312213765678527802, guid: 8c75ec068a0f02046913ddd38865458d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12373,6 +12405,10 @@ PrefabInstance:
     - target: {fileID: 7140474425267788852, guid: 8fa09c2b045eed3488828fb28cb2eced, type: 3}
       propertyPath: m_Name
       value: poste Modelagem Finalizada
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140474425267788852, guid: 8fa09c2b045eed3488828fb28cb2eced, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7517597415435224718, guid: 8fa09c2b045eed3488828fb28cb2eced, type: 3}
       propertyPath: m_LocalScale.x
@@ -15486,6 +15522,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pedra3
       objectReference: {fileID: 0}
+    - target: {fileID: 577372207152622322, guid: 92b4074a4ae05b24f81657c9dc963776, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15869,6 +15909,10 @@ PrefabInstance:
     - target: {fileID: 3143599019810180085, guid: 1f726f4d40ea6174093647b60c1d7a02, type: 3}
       propertyPath: m_Name
       value: pedra1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3143599019810180085, guid: 1f726f4d40ea6174093647b60c1d7a02, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16914,6 +16958,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cano curvado tipo 1
       objectReference: {fileID: 0}
+    - target: {fileID: 930403319857346498, guid: 3d9176acb91d06d40809fa0fffc6d049, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1846944990653681069, guid: 3d9176acb91d06d40809fa0fffc6d049, type: 3}
       propertyPath: m_LocalPosition.x
       value: 20
@@ -17677,7 +17725,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 209305759}
+      - m_Target: {fileID: 1734880791}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -17967,6 +18015,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cano Reto
       objectReference: {fileID: 0}
+    - target: {fileID: 4233816536313824097, guid: fb90261ea33f6a84f8efb0830bce832c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5179970054341879522, guid: fb90261ea33f6a84f8efb0830bce832c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -18076,6 +18128,10 @@ PrefabInstance:
     - target: {fileID: 6044564718430992265, guid: 175c3316460f5d742916800a0501ab40, type: 3}
       propertyPath: m_Name
       value: Cano T
+      objectReference: {fileID: 0}
+    - target: {fileID: 6044564718430992265, guid: 175c3316460f5d742916800a0501ab40, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6078155357009693297, guid: 175c3316460f5d742916800a0501ab40, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20463,9 +20519,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e272387c4ab200745878742d4fe283d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  repairCameraManager: {fileID: 0}
-  totalRotationsRequired: 5
+  rotationSensitivity: 10
   handleTransform: {fileID: 1535262689}
+  repairCameraManager: {fileID: 0}
 --- !u!114 &1535262691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22337,7 +22393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6875248715001325667, guid: c2e9d8341ee12b94aab47b6ad6cdd37c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -24070,6 +24126,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cano Reto curto
       objectReference: {fileID: 0}
+    - target: {fileID: 2557436913922893312, guid: 17dad7c090bb0e24d862657dc18f351e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9192914524403051370, guid: 17dad7c090bb0e24d862657dc18f351e, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.6
@@ -25000,6 +25060,10 @@ PrefabInstance:
     - target: {fileID: 8082904801972285601, guid: 66c6278a91b194a498504052e903a4b6, type: 3}
       propertyPath: m_Name
       value: Cano 4 Lados
+      objectReference: {fileID: 0}
+    - target: {fileID: 8082904801972285601, guid: 66c6278a91b194a498504052e903a4b6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

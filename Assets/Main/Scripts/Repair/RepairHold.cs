@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Collections;
 using UnityEngine.EventSystems;
 
 public class RepairHold : Repairs
@@ -26,8 +25,18 @@ public class RepairHold : Repairs
 
         if (repairButton != null)
         {
-            AddEventTrigger(repairButton.gameObject, EventTriggerType.PointerDown, (data) => StartHolding());
-            AddEventTrigger(repairButton.gameObject, EventTriggerType.PointerUp, (data) => StopHolding());
+            EventTrigger trigger = repairButton.GetComponent<EventTrigger>();
+            if (trigger == null)
+            {
+                trigger = repairButton.gameObject.AddComponent<EventTrigger>();
+            }
+            else
+            {
+                trigger.triggers.Clear();
+            }
+
+            AddEventTrigger(trigger, EventTriggerType.PointerDown, (data) => StartHolding());
+            AddEventTrigger(trigger, EventTriggerType.PointerUp, (data) => StopHolding());
         }
 
         UpdateUI(0);
@@ -47,7 +56,7 @@ public class RepairHold : Repairs
         }
     }
 
-    Transform GetFirstChild(Machines machine)
+    private Transform GetFirstChild(Machines machine)
     {
         if (machine != null && machine.transform.childCount > 0)
         {
@@ -107,7 +116,7 @@ public class RepairHold : Repairs
         }
     }
 
-    void UpdateUI(float progress)
+    private void UpdateUI(float progress)
     {
         if (feedbackText != null)
         {
@@ -125,14 +134,7 @@ public class RepairHold : Repairs
 
             for (int i = 0; i < indicatorLights.Length; i++)
             {
-                if (i < lightState)
-                {
-                    indicatorLights[i].color = Color.yellow;
-                }
-                else
-                {
-                    indicatorLights[i].color = Color.red;
-                }
+                indicatorLights[i].color = (i < lightState) ? Color.yellow : Color.red;
             }
 
             if (progress >= 1)
@@ -145,9 +147,8 @@ public class RepairHold : Repairs
         }
     }
 
-    void AddEventTrigger(GameObject target, EventTriggerType eventType, System.Action<BaseEventData> callback)
+    private void AddEventTrigger(EventTrigger trigger, EventTriggerType eventType, System.Action<BaseEventData> callback)
     {
-        EventTrigger trigger = target.GetComponent<EventTrigger>() ?? target.AddComponent<EventTrigger>();
         EventTrigger.Entry entry = new EventTrigger.Entry { eventID = eventType };
         entry.callback.AddListener((data) => callback(data));
         trigger.triggers.Add(entry);

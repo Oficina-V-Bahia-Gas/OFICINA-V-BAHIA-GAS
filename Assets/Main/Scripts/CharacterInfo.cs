@@ -5,7 +5,7 @@ public class CharacterInfo : MonoBehaviour
     [SerializeField] float walkSpeed;
     [SerializeField] float interactionDistance = 8f;
     [SerializeField] LayerMask interactionLayer;
-    //[SerializeField] GameObject interactionButton;
+    // [SerializeField] GameObject interactionButton;
 
     public HudInteraction hudInteraction;
     private Machines currentMachine;
@@ -23,11 +23,6 @@ public class CharacterInfo : MonoBehaviour
     {
         instance = this;
         accessibility = FindObjectOfType<Accessibility>();
-
-        //if (interactionButton != null)
-        //{
-        //    interactionButton.SetActive(false);
-        //}
     }
 
     void Update()
@@ -41,7 +36,7 @@ public class CharacterInfo : MonoBehaviour
 
         if (checkFixTutorial)
         {
-            if((currentMachine == allowedMachine || allowedMachine == null) && currentMachine.onCooldown)
+            if ((currentMachine == allowedMachine || allowedMachine == null) && currentMachine.onCooldown)
             {
                 Debug.LogError(allowedMachine);
                 Debug.LogError(currentMachine);
@@ -74,12 +69,7 @@ public class CharacterInfo : MonoBehaviour
             if (machine != null)
             {
                 currentMachine = machine;
-                //if (interactionButton != null)
-                //{
-                //    interactionButton.SetActive(true);
-                //}
-
-                if (accessibility != null && accessibility.IsOutlineEnabled())
+                if (accessibility != null && accessibility.IsOutlineEnabled() && !machine.OnUse)
                 {
                     EnableOutline(machine.gameObject);
                 }
@@ -87,18 +77,13 @@ public class CharacterInfo : MonoBehaviour
                 {
                     DisableLastOutline();
                 }
+                return; 
             }
         }
-        else
-        {
-            currentMachine = null;
-            //if (interactionButton != null)
-            //{
-            //    interactionButton.SetActive(false);
-            //}
 
-            DisableLastOutline();
-        }
+
+        currentMachine = null;
+        DisableLastOutline();
     }
 
     void EnableOutline(GameObject obj)
@@ -125,8 +110,19 @@ public class CharacterInfo : MonoBehaviour
         }
     }
 
+    void DisableAllOutlines()
+    {
+        Outline[] outlines = FindObjectsOfType<Outline>();
+        foreach (Outline outline in outlines)
+        {
+            outline.enabled = false;
+        }
+    }
+
     public void OpenHud()
     {
+        DisableAllOutlines();
+
         if (tutorial && currentMachine != allowedMachine && currentMachine != null)
         {
             Debug.LogError(allowedMachine);
@@ -147,6 +143,7 @@ public class CharacterInfo : MonoBehaviour
             {
                 tutorialScript.MachineReturn();
             }
+
             hudInteraction.ConfigureHud(currentMachine);
             currentMachine.OnUse = true;
         }
@@ -156,10 +153,18 @@ public class CharacterInfo : MonoBehaviour
         }
     }
 
-    public void SetTutorial(bool b = false,Tutorial t = null)
+    public void EndInteractionOnCurrentMachine()
+    {
+        if (currentMachine != null)
+        {
+            currentMachine.OnUse = false;
+        }
+    }
+
+    public void SetTutorial(bool b = false, Tutorial t = null)
     {
         tutorial = b;
-        if(tutorialScript == null || t != null)
+        if (tutorialScript == null || t != null)
         {
             tutorialScript = t;
         }

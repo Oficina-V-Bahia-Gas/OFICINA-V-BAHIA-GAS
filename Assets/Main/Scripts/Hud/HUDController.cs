@@ -32,7 +32,12 @@ public class HUDController : MonoBehaviour
 
     public void ContinueGame()
     {
-        Debug.Log("Pular tutorial (implementação futura)");
+        if (continueButton != null)
+        {
+            continueButton.interactable = true;
+        }
+
+        SceneManager.LoadScene("Fase1");
     }
 
     public void QuitGame()

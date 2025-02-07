@@ -17,7 +17,6 @@ public class Accessibility : MonoBehaviour
     [SerializeField] Image dubButton;
     [SerializeField] Sprite dubDefault, dubSelected;
 
-    static bool settingsLoaded = false;
     int outlineEnabled, dubEnabled;
 
     const float minTextSize = 1.00f;
@@ -31,11 +30,7 @@ public class Accessibility : MonoBehaviour
 
     void Start()
     {
-        if (!settingsLoaded)
-        {
-            LoadAccessibilitySettings();
-            settingsLoaded = true;
-        }
+        LoadAccessibilitySettings();
 
         if (textSizeSlider != null)
         {
@@ -58,8 +53,11 @@ public class Accessibility : MonoBehaviour
 
     void LoadAccessibilitySettings()
     {
-        textSizeSlider.minValue = minTextSize;
-        textSizeSlider.maxValue = maxTextSize;
+        if (textSizeSlider != null)
+        {
+            textSizeSlider.minValue = minTextSize;
+            textSizeSlider.maxValue = maxTextSize;
+        }
 
         outlineEnabled = PlayerPrefs.GetInt("Outline", 0);
         UpdateOutlineVisual();
@@ -80,6 +78,7 @@ public class Accessibility : MonoBehaviour
     {
         outlineEnabled = outlineEnabled == 0 ? 1 : 0;
         PlayerPrefs.SetInt("Outline", outlineEnabled);
+        PlayerPrefs.Save();
         UpdateOutlineVisual();
     }
 
@@ -89,6 +88,7 @@ public class Accessibility : MonoBehaviour
         PlayerPrefs.SetInt("Dublagem", dubEnabled);
         PlayerPrefs.Save();
         UpdateDubVisual();
+        ApplyDubbingSetting();
     }
 
     void UpdateOutlineVisual()
@@ -120,7 +120,8 @@ public class Accessibility : MonoBehaviour
 
         if (exampleText != null)
         {
-            exampleText.fontSize = Mathf.Lerp(minExampleFontSize, maxExampleFontSize, Mathf.InverseLerp(minTextSize, maxTextSize, textSize));
+            exampleText.fontSize = Mathf.Lerp(minExampleFontSize, maxExampleFontSize,
+                Mathf.InverseLerp(minTextSize, maxTextSize, textSize));
         }
 
         Dialogue[] dialogues = FindObjectsOfType<Dialogue>(true);
@@ -128,7 +129,8 @@ public class Accessibility : MonoBehaviour
         {
             if (dialogue.text != null)
             {
-                dialogue.text.fontSize = Mathf.Lerp(minDialogueFontSize, maxDialogueFontSize, Mathf.InverseLerp(minTextSize, maxTextSize, textSize));
+                dialogue.text.fontSize = Mathf.Lerp(minDialogueFontSize, maxDialogueFontSize,
+                    Mathf.InverseLerp(minTextSize, maxTextSize, textSize));
             }
         }
     }
