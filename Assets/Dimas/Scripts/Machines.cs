@@ -136,11 +136,11 @@ public class Machines : MonoBehaviour
     {
         if (machineAnimator != null && !string.IsNullOrEmpty(repairAnimation))
         {
+            // Se houver outra máquina com animação ativa, para-a
             if (lastRepairedMachine != null && lastRepairedMachine != this)
             {
                 lastRepairedMachine.StopRepairAnimation();
             }
-
             machineAnimator.Play(repairAnimation);
             lastRepairedMachine = this;
         }
@@ -151,7 +151,6 @@ public class Machines : MonoBehaviour
         if (machineAnimator != null)
         {
             machineAnimator.Play("Idle");
-
             if (lastRepairedMachine == this)
             {
                 lastRepairedMachine = null;

@@ -10,7 +10,7 @@ public abstract class Repairs : MonoBehaviour
 
     public virtual void StartRepair(RepairManager _repairManager = null)
     {
-        if(_repairManager != null)
+        if (_repairManager != null)
         {
             repairManager = _repairManager;
         }
@@ -20,12 +20,9 @@ public abstract class Repairs : MonoBehaviour
         repairCompleted = false;
 
         CharacterInfo characterInfo = FindObjectOfType<CharacterInfo>();
-
         if (characterInfo != null)
         {
             Machines newMachine = characterInfo.GetLastInteractedMachine();
-            
-
             if (newMachine != null)
             {
                 if (currentMachine != null && currentMachine != newMachine)
@@ -35,8 +32,8 @@ public abstract class Repairs : MonoBehaviour
 
                 currentMachine = newMachine;
                 FaceMachine(characterInfo.gameObject, currentMachine.transform);
-                playerAnimator = characterInfo.GetComponent<Animator>();
 
+                playerAnimator = characterInfo.GetComponent<Animator>();
                 if (playerAnimator != null)
                 {
                     playerAnimator.SetBool("IsRepairing", true);
@@ -57,6 +54,8 @@ public abstract class Repairs : MonoBehaviour
         if (playerAnimator != null)
         {
             playerAnimator.SetBool("IsRepairing", false);
+
+            playerAnimator = null;
         }
 
         if (currentMachine != null)

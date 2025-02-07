@@ -45,12 +45,6 @@ public class GameManager : MonoBehaviour
         ResetManager();
     }
 
-    void OnDestroy()
-    {
-        Debug.LogError("⚠ GameManager foi DESTRUÍDO na cena: " + SceneManager.GetActiveScene().name, this);
-        Debug.LogError(new System.Diagnostics.StackTrace());
-    }
-
     void Update()
     {
         if (!gameEnded)

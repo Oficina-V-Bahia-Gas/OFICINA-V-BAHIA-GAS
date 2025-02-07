@@ -1669,9 +1669,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e272387c4ab200745878742d4fe283d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  repairCameraManager: {fileID: 762434224}
-  totalRotationsRequired: 5
+  rotationSensitivity: 10
   handleTransform: {fileID: 200475088}
+  repairCameraManager: {fileID: 762434224}
 --- !u!1001 &210626204
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3822,7 +3822,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &494104361
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8368,10 +8368,10 @@ MonoBehaviour:
   timerText: {fileID: 179091522}
   levelTimer: 120
   fadeImage: {fileID: 494104362}
-  fadeCanvasGroup: {fileID: 0}
+  fadeCanvasGroup: {fileID: 494104364}
   fadeDuration: 1.5
   scoreBar: {fileID: 1791323578}
-  scoreGoal: 500
+  scoreGoal: 300
   firstStarThreshold: 100
   secondStarThreshold: 200
   thirdStarThreshold: 300
@@ -18349,7 +18349,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8996347792878948014, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
       propertyPath: coreRepairs.Array.data[0]
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1120429871267275939, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
@@ -19463,6 +19463,10 @@ PrefabInstance:
       propertyPath: walkSpeed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 7511751845358706006, guid: c13e5e7fefc6d3a4682c484043e53ef2, type: 3}
+      propertyPath: pausePanel
+      value: 
+      objectReference: {fileID: 829560379}
     - target: {fileID: 7511751845358706006, guid: c13e5e7fefc6d3a4682c484043e53ef2, type: 3}
       propertyPath: hudInteraction
       value: 

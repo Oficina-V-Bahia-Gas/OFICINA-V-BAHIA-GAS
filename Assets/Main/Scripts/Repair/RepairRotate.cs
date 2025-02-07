@@ -1,14 +1,21 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class RepairRotate : Repairs
 {
-    public RepairsCameraManager repairCameraManager;
-    [SerializeField] int totalRotationsRequired = 5;
-    const float rotationsRequired = 360f;
+    [Header("Configurações de Reparação")]
+    int totalRotationsRequired = 2;
+    const float degreesPerRotation = 360f;
     float rotationProgress = 0f;
-
-    [SerializeField] RectTransform handleTransform;
     float rotationAngle = 0f;
+
+    [Header("Sensibilidade")]
+    [SerializeField, Tooltip("Multiplicador para aumentar a sensibilidade da rotação.")]
+    float rotationSensitivity = 10.0f;
+
+    [Header("Referências")]
+    [SerializeField] RectTransform handleTransform;
+    [SerializeField] RepairsCameraManager repairCameraManager;
 
     Vector2 rotationCenter;
     Vector2 lastTouchDirection;
@@ -19,6 +26,15 @@ public class RepairRotate : Repairs
         base.StartRepair(_repairManager);
         rotationProgress = 0f;
         rotationAngle = 0f;
+
+        if (handleTransform != null)
+        {
+            rotationCenter = handleTransform.position;
+        }
+        else
+        {
+            rotationCenter = Vector2.zero;
+        }
 
         CharacterInfo characterInfo = FindObjectOfType<CharacterInfo>();
         if (characterInfo != null)
@@ -35,72 +51,98 @@ public class RepairRotate : Repairs
         }
     }
 
-    Transform GetFirstChild(Machines machine)
+    private Transform GetFirstChild(Machines machine)
     {
         if (machine != null && machine.transform.childCount > 0)
         {
             return machine.transform.GetChild(0);
         }
-
         Debug.LogWarning("A máquina não possui filhos ou é nula.");
         return null;
     }
 
     private void Update()
     {
-        if (!repairInProgress) return;
+        if (!repairInProgress)
+            return;
+
+#if UNITY_EDITOR
+        if (Input.GetMouseButtonDown(0))
+        {
+            StartRotation(Input.mousePosition);
+        }
+        else if (Input.GetMouseButton(0))
+        {
+            UpdateRotation(Input.mousePosition);
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            StopRotation();
+        }
+#endif
 
         if (Input.touchCount > 0)
         {
-            Touch _touch = Input.GetTouch(0);
-            switch (_touch.phase)
+            Touch touch = Input.GetTouch(0);
+            switch (touch.phase)
             {
                 case TouchPhase.Began:
-                    StartRotation(_touch.position);
+                    StartRotation(touch.position);
                     break;
                 case TouchPhase.Moved:
-                    UpdateRotation(_touch.position);
+                    UpdateRotation(touch.position);
                     break;
                 case TouchPhase.Ended:
+                case TouchPhase.Canceled:
                     StopRotation();
                     break;
             }
         }
 
-        if (handleTransform != null && isRotating)
+        if (handleTransform != null)
         {
             handleTransform.localRotation = Quaternion.Euler(0, 0, -rotationAngle);
         }
     }
 
-    void StartRotation(Vector2 touchPosition)
+    private void StartRotation(Vector2 touchPosition)
     {
-        rotationCenter = touchPosition;
-        lastTouchDirection = Vector2.right;
         isRotating = true;
+        if (handleTransform != null)
+        {
+            rotationCenter = handleTransform.position;
+        }
+        else
+        {
+            rotationCenter = touchPosition;
+        }
+        lastTouchDirection = (touchPosition - rotationCenter).normalized;
     }
 
-    void UpdateRotation(Vector2 touchPosition)
+    private void UpdateRotation(Vector2 touchPosition)
     {
-        if (!isRotating) return;
+        if (!isRotating)
+            return;
 
-        Vector2 _currentTouchDirection = (touchPosition - rotationCenter).normalized;
-        float _angleDelta = Vector2.SignedAngle(lastTouchDirection, _currentTouchDirection);
+        Vector2 currentTouchDirection = (touchPosition - rotationCenter).normalized;
+        float angleDelta = Vector2.SignedAngle(lastTouchDirection, currentTouchDirection);
 
-        if (!float.IsNaN(_angleDelta))
+        if (angleDelta < 0)
         {
-            rotationProgress += Mathf.Abs(_angleDelta);
-            rotationAngle += _angleDelta;
-            lastTouchDirection = _currentTouchDirection;
+            float effectiveDelta = -angleDelta * rotationSensitivity;
+            rotationProgress += effectiveDelta;
+            rotationAngle += effectiveDelta;
         }
 
-        if (rotationProgress >= totalRotationsRequired * rotationsRequired)
+        lastTouchDirection = currentTouchDirection;
+
+        if (rotationProgress >= totalRotationsRequired * degreesPerRotation)
         {
             FinishRepair();
         }
     }
 
-    void StopRotation()
+    private void StopRotation()
     {
         isRotating = false;
     }
