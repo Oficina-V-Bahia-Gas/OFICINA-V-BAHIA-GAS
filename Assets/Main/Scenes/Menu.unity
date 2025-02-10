@@ -4626,7 +4626,7 @@ GameObject:
   - component: {fileID: 1136475826}
   - component: {fileID: 1136475825}
   m_Layer: 5
-  m_Name: lbl_Creditos
+  m_Name: txt_Creditos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4673,7 +4673,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Instituto Federal da Bahia - Campus Lauro de Freitas\nProjeto Integrador
     - Oficina V\nDocentes: Fabio e Jocelma\nDiscentes: Bruno Sim\xF5es, Gustavo Dimas,
-    Iuri Guerra, Luiz Felipe e Victor Souza"
+    Iuri Guerra, Luis Felipe e Victor Souza"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 44c75113be99fcc4faf58bfbe38842aa, type: 2}
   m_sharedMaterial: {fileID: 1296939363434934376, guid: 44c75113be99fcc4faf58bfbe38842aa, type: 2}
