@@ -4617,7 +4617,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 40.000008, y: 40.999886}
+  m_AnchoredPosition: {x: 40.000008, y: 40.999878}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &529331110
@@ -15736,7 +15736,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Atualiza o tamanho os textos exibidos no di\xE1logo"
+  m_text: "Atualiza o tamanho dos textos exibidos no di\xE1logo"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 44c75113be99fcc4faf58bfbe38842aa, type: 2}
   m_sharedMaterial: {fileID: 1296939363434934376, guid: 44c75113be99fcc4faf58bfbe38842aa, type: 2}

@@ -11297,7 +11297,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Atualiza o tamanho os textos exibidos no di\xE1logo"
+  m_text: "Atualiza o tamanho dos textos exibidos no di\xE1logo"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 44c75113be99fcc4faf58bfbe38842aa, type: 2}
   m_sharedMaterial: {fileID: 1296939363434934376, guid: 44c75113be99fcc4faf58bfbe38842aa, type: 2}

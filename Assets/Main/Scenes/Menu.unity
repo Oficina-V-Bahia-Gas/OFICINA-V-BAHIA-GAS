@@ -2460,7 +2460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5cc7c6733ae2bd40a936532d73ef58b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  continueButton: {fileID: 0}
+  continueButton: {fileID: 632230178}
   menuCanvasGroup: {fileID: 0}
   menuPanel: {fileID: 0}
 --- !u!1 &692668686
@@ -5748,7 +5748,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Atualiza o tamanho os textos exibidos no di\xE1logo"
+  m_text: "Atualiza o tamanho dos textos exibidos no di\xE1logo"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 44c75113be99fcc4faf58bfbe38842aa, type: 2}
   m_sharedMaterial: {fileID: 1296939363434934376, guid: 44c75113be99fcc4faf58bfbe38842aa, type: 2}
