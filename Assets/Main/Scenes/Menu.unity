@@ -521,6 +521,7 @@ RectTransform:
   - {fileID: 385585096}
   - {fileID: 1403530026}
   - {fileID: 800551830}
+  - {fileID: 809343985}
   m_Father: {fileID: 408972752}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1358,7 +1359,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -85, y: -53.29997}
+  m_AnchoredPosition: {x: -85, y: -31.29997}
   m_SizeDelta: {x: 350.5, y: 100.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &385585097
@@ -1506,7 +1507,6 @@ RectTransform:
   m_Children:
   - {fileID: 1059830031}
   - {fileID: 1334209907}
-  - {fileID: 809343985}
   - {fileID: 1344840827}
   m_Father: {fileID: 408972752}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2155,7 +2155,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -185.99997, y: -186.99998}
+  m_AnchoredPosition: {x: -185.99997, y: -164.99998}
   m_SizeDelta: {x: 746.79004, y: 100.43359}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &585390749
@@ -3089,7 +3089,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 809343984}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3097,11 +3097,11 @@ RectTransform:
   - {fileID: 1834921217}
   - {fileID: 880626782}
   - {fileID: 803754601}
-  m_Father: {fileID: 449348939}
+  m_Father: {fileID: 95609636}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -27.999994, y: -11}
+  m_AnchoredPosition: {x: -124, y: -182}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &880626781
@@ -4243,7 +4243,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -402, y: -62}
+  m_AnchoredPosition: {x: -402, y: -40}
   m_SizeDelta: {x: 311.76697, y: 99.600006}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1090942706
@@ -4648,7 +4648,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 9.299994, y: -192.64993}
+  m_AnchoredPosition: {x: 46, y: -188}
   m_SizeDelta: {x: 1321.5, y: 440.7}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1136475825
@@ -4672,8 +4672,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Instituto Federal da Bahia - Campus Lauro de Freitas\nProjeto Integrador
-    - Oficina V\nDocentes: Fabio e Jocelma\nDiscentes: Bruno Sim\xF5es, Gustavo Dimas,
-    Iuri Guerra, Luis Felipe e Victor Souza"
+    - Oficina V\nOrientadores: Fabio Xavier, Jocelma Rios e Luiz Machado.\nDiscentes:
+    Bruno Sim\xF5es, Gustavo Dimas, Iuri Guerra, Luis Felipe e Victor Souza."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 44c75113be99fcc4faf58bfbe38842aa, type: 2}
   m_sharedMaterial: {fileID: 1296939363434934376, guid: 44c75113be99fcc4faf58bfbe38842aa, type: 2}
@@ -4895,7 +4895,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -347.3, y: 62}
+  m_AnchoredPosition: {x: -347.3, y: 84}
   m_SizeDelta: {x: 421.2, y: 99.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1310510826
@@ -5242,7 +5242,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 249.20007, y: -172.99998}
+  m_AnchoredPosition: {x: 249.20007, y: -150.99998}
   m_SizeDelta: {x: 350.5, y: 100.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1403530027
@@ -6989,7 +6989,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 36, y: 74}
+  m_AnchoredPosition: {x: 36, y: 96}
   m_SizeDelta: {x: 350.5, y: 100.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1910252542
