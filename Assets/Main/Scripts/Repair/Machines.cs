@@ -57,6 +57,11 @@ public class Machines : MonoBehaviour
     [SerializeField] string repairAnimation;
     private static Machines lastRepairedMachine = null;
 
+    [Header("Others")]
+    [SerializeField] public Vector3 indicatorOffset;
+    [SerializeField] public bool offsetReplace = false;
+    [HideInInspector] public DamageIndicator damageIndicator;
+
     bool onUse = false;
 
     public bool OnUse { get { return onUse; }  set { onUse = value; } }
@@ -186,9 +191,19 @@ public class Machines : MonoBehaviour
     IEnumerator RepairCooldown()
     {
         onCooldown = true;
+
+        if (damageIndicator)
+        {
+            damageIndicator.ChangeVisible(0);
+            damageIndicator.Animation(0);
+        }
+
+
         yield return new WaitForSeconds(repairCooldown);
         repairCooldown = Random.Range(minCooldown, maxCooldown);
         onCooldown = false;
+        if (damageIndicator)
+            damageIndicator.Animation(1);
     }
 
     [System.Obsolete("Método repetido. Use CheckDurability() ao invés disso.", false)]
@@ -241,6 +256,12 @@ public class Machines : MonoBehaviour
                     currentRepairs.Add(coreRepairs[_index]);
                 }
 
+                if (damageIndicator)
+                {
+                    damageIndicator.ChangeVisible(1);
+                    damageIndicator.Animation(1);
+                }
+
                 coreRoll = true;
             }
 
@@ -263,6 +284,9 @@ public class Machines : MonoBehaviour
                     currentRepairs.Add(randomRepairs[_index]);
                 }
 
+                if (damageIndicator)
+                    damageIndicator.Animation(2);
+
                 randomRoll = true;
             }
 
@@ -283,6 +307,12 @@ public class Machines : MonoBehaviour
                     currentRepairs.Remove(currentRepairs[currentRepairs.Count - 1]);
                     _index = Random.Range(0, fullRepairs.Count);
                     currentRepairs.Add(fullRepairs[_index]);
+                }
+
+                if (damageIndicator)
+                {
+                    damageIndicator.ChangeVisible(2);
+                    damageIndicator.Animation(3);
                 }
 
                 fullRoll = true;
