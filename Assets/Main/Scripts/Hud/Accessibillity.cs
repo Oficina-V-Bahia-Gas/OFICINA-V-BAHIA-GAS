@@ -97,6 +97,11 @@ public class Accessibility : MonoBehaviour
         {
             outlineButton.sprite = outlineEnabled == 1 ? outlineSelected : outlineDefault;
         }
+        Outline[] outlines = FindObjectsOfType<Outline>();
+        foreach (Outline outline in outlines)
+        {
+            outline.enabled = (outlineEnabled == 1);
+        }
     }
 
     void UpdateDubVisual()
@@ -124,12 +129,12 @@ public class Accessibility : MonoBehaviour
                 Mathf.InverseLerp(minTextSize, maxTextSize, textSize));
         }
 
-        Dialogue[] dialogues = FindObjectsOfType<Dialogue>(true);
-        foreach (Dialogue dialogue in dialogues)
+        TextMeshProUGUI[] allTexts = FindObjectsOfType<TextMeshProUGUI>(true);
+        foreach (TextMeshProUGUI text in allTexts)
         {
-            if (dialogue.text != null)
+            if (text.CompareTag("DialogueText"))
             {
-                dialogue.text.fontSize = Mathf.Lerp(minDialogueFontSize, maxDialogueFontSize,
+                text.fontSize = Mathf.Lerp(minDialogueFontSize, maxDialogueFontSize,
                     Mathf.InverseLerp(minTextSize, maxTextSize, textSize));
             }
         }
