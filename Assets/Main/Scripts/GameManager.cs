@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 {
     [Header("Temporizador")]
     [SerializeField] TMP_Text timerText;
-    [SerializeField] float levelTimer = 120;
+    [SerializeField] float levelTimer = 180;
     [SerializeField] Image fadeImage;
     [SerializeField] CanvasGroup fadeCanvasGroup;
     [SerializeField] float fadeDuration = 1.5f;

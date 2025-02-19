@@ -1,9 +1,10 @@
-using System.Collections;
 using UnityEngine;
+using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using System.Collections.Generic;
 
 public class ResultScreenManager : MonoBehaviour
 {
@@ -25,16 +26,16 @@ public class ResultScreenManager : MonoBehaviour
     [SerializeField] float fadeDuration = 1.5f;
 
     [Header("Animator de Resultado")]
-    [SerializeField] Animator resultAnimator;
+    [SerializeField] Animator JamesResultAnimator;
+    [SerializeField] Animator WomanResultAnimator;
     [SerializeField] string victoryAnimation = "Victory";
-    [SerializeField] string defeatAnimation = "Idle";
+    [SerializeField] string defeatAnimation = "Defeat";
 
     float finalScore;
     const float firstStarThreshold = 100;
     const float secondStarThreshold = 200;
     const float thirdStarThreshold = 300;
 
-    // Nomes das cenas
     string tutorialScene = "Tutorial";
     string fase1Scene = "Fase1";
     string fase2Scene = "Fase2";
@@ -42,36 +43,51 @@ public class ResultScreenManager : MonoBehaviour
 
     void Start()
     {
-        if (fadeCanvasGroup == null)
+        if (fadeCanvasGroup == null && fadeImage != null)
         {
             fadeCanvasGroup = fadeImage.GetComponent<CanvasGroup>();
         }
-
-        fadeCanvasGroup.alpha = 0;
-        fadeCanvasGroup.gameObject.SetActive(false);
+        if (fadeCanvasGroup != null)
+        {
+            fadeCanvasGroup.alpha = 0;
+            fadeCanvasGroup.gameObject.SetActive(false);
+        }
 
         finalScore = PlayerPrefs.GetFloat("FinalScore", 0);
         string lastScene = PlayerPrefs.GetString("LastScene", tutorialScene);
         bool won = finalScore >= firstStarThreshold;
 
-        if (resultAnimator != null)
+        if (JamesResultAnimator != null && WomanResultAnimator != null)
         {
             if (won)
             {
-                resultAnimator.Play(victoryAnimation);
+                JamesResultAnimator.Play(victoryAnimation);
+                WomanResultAnimator.Play(victoryAnimation);
             }
             else
             {
-                resultAnimator.Play(defeatAnimation);
+                JamesResultAnimator.Play(defeatAnimation);
+                WomanResultAnimator.Play(defeatAnimation);
             }
         }
 
         if (lastScene == fase2Scene)
         {
-            resultText.text = "Parabéns!";
-            continueButton.gameObject.SetActive(false);
-            retryButton.gameObject.SetActive(false);
-            menuButton.gameObject.SetActive(true);
+            if (won)
+            {
+                resultText.text = "Parabéns!";
+                continueButton.gameObject.SetActive(false);
+                retryButton.gameObject.SetActive(false);
+                menuButton.gameObject.SetActive(true);
+            }
+            else
+            {
+                resultText.text = "Derrota!";
+                continueButton.gameObject.SetActive(false);
+                retryButton.gameObject.SetActive(true);
+                menuButton.gameObject.SetActive(true);
+                retryButton.onClick.AddListener(() => StartCoroutine(FadeToScene(fase2Scene)));
+            }
         }
         else
         {
@@ -90,7 +106,6 @@ public class ResultScreenManager : MonoBehaviour
         }
 
         menuButton.onClick.AddListener(() => StartCoroutine(FadeToScene(menuScene)));
-
         SetStars(finalScore);
     }
 
