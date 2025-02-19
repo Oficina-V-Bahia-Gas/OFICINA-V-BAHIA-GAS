@@ -29,6 +29,10 @@ public class DamageIndicator : MonoBehaviour
 
     bool started = false;
     bool hold = false;
+    bool running = false;
+    bool reset = false;
+
+    Coroutine coroutine;
 
     void Start()
     {
@@ -53,9 +57,6 @@ public class DamageIndicator : MonoBehaviour
             started = true;
 
         ChangeVisible();
-
-        originalRotation = working.transform.rotation;
-        originalPosition = working.transform.position;
     }
 
     public DamageIndicator Setup(Transform _object, Vector3 _offset = new Vector3(), bool _replaceOffset = false)
@@ -132,23 +133,19 @@ public class DamageIndicator : MonoBehaviour
             switch (_i)
             {
                 case 0:
-                    StopAllCoroutines();
                     ResetPosition();
                     break;
                 case 1:
-                    StopAllCoroutines();
                     ResetPosition();
                     StartCoroutine(Shake());
                     break;
                 case 2:
-                    StopAllCoroutines();
                     ResetPosition();
-                    StartCoroutine(ConstantShake());
+                    coroutine = StartCoroutine(ConstantShake());
                     break;
                 case 3:
-                    StopAllCoroutines();
                     ResetPosition();
-                    StartCoroutine(Shake(true));
+                    coroutine = StartCoroutine(ConstantShake(true));
                     break;
                 default:
                     break;
@@ -158,10 +155,14 @@ public class DamageIndicator : MonoBehaviour
 
     private IEnumerator Shake(bool unstoppable = false)
     {
+        running = true;
+
+        Quaternion _originalRotation = working.transform.rotation;
+        Vector3 _originalPosition = working.transform.position;
 
         float _elapsed = 0.0f;
 
-        while (_elapsed < shakeDuration || unstoppable)
+        while ((_elapsed < shakeDuration || unstoppable) && !reset)
         {
 
             _elapsed += Time.deltaTime;
@@ -185,27 +186,40 @@ public class DamageIndicator : MonoBehaviour
             yield return null;
         }
 
-        ResetPosition();
+        working.transform.SetPositionAndRotation(_originalPosition, _originalRotation);
+        warning.transform.SetPositionAndRotation(_originalPosition, _originalRotation);
+        error.transform.SetPositionAndRotation(_originalPosition, _originalRotation);
+
+        if (reset)
+            reset = false;
+
+        running = false;
     }
 
     void ResetPosition()
     {
-        working.transform.rotation = originalRotation;
-        working.transform.position = originalPosition;
+        if (running && !reset)
+        {
+            reset = true;
+        }
 
-        warning.transform.rotation = originalRotation;
-        warning.transform.position = originalPosition;
-
-        error.transform.rotation = originalRotation;
-        error.transform.position = originalPosition;
+        if(coroutine != null)
+            StopCoroutine(coroutine);
     }
 
-    private IEnumerator ConstantShake()
+    private IEnumerator ConstantShake(bool fast = false)
     {
         while (true)
         {
             StartCoroutine(Shake());
-            yield return new WaitForSeconds(shakeInterval);
+            if (fast)
+            {
+                yield return new WaitForSeconds(shakeInterval/3);
+            }
+            else
+            {
+                yield return new WaitForSeconds(shakeInterval);
+            }
         }
     }
 
