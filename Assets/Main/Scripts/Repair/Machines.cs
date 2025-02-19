@@ -203,7 +203,10 @@ public class Machines : MonoBehaviour
         repairCooldown = Random.Range(minCooldown, maxCooldown);
         onCooldown = false;
         if (damageIndicator)
+        {
+            damageIndicator.ChangeVisible(0);
             damageIndicator.Animation(1);
+        }
     }
 
     [System.Obsolete("Método repetido. Use CheckDurability() ao invés disso.", false)]

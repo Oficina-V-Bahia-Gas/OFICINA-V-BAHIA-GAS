@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using DG.Tweening;
 
 public class DamageIndicator : MonoBehaviour
 {
@@ -106,6 +107,7 @@ public class DamageIndicator : MonoBehaviour
                     working.SetActive(true);
                     warning.SetActive(false);
                     error.SetActive(false);
+                    StartCoroutine(Fade());
                     break;
                 case 1:
                     working.SetActive(false);
@@ -228,5 +230,18 @@ public class DamageIndicator : MonoBehaviour
         hold = true;
         yield return new WaitForSeconds(_time);
         hold = false;
+    }
+
+    private IEnumerator Fade()
+    {
+        if (working != null)
+        {
+            working.GetComponent<CanvasGroup>().alpha = 1.0f;
+
+            yield return new WaitForSeconds(10f);
+
+            if(working.activeSelf)
+                yield return working.GetComponent<CanvasGroup>().DOFade(0f, 1.5f).WaitForCompletion();
+        }
     }
 }
