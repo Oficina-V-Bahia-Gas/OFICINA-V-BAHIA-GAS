@@ -215,6 +215,10 @@ MonoBehaviour:
   error: {fileID: 143959666516239922}
   lookObject: {fileID: 0}
   offset: {x: 0, y: 10, z: 0}
+  shakeDuration: 0.3
+  shakeStrenght: 20
+  shakeMovement: 0.2
+  shakeInterval: 1
 --- !u!1 &5987893189039197600
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,6 +230,7 @@ GameObject:
   - component: {fileID: 9026136449314826072}
   - component: {fileID: 3077326643764236348}
   - component: {fileID: 6122520999256541896}
+  - component: {fileID: 3420514963303773365}
   m_Layer: 5
   m_Name: Working
   m_TagString: Untagged
@@ -290,3 +295,15 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &3420514963303773365
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5987893189039197600}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
