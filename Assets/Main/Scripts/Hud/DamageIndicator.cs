@@ -34,6 +34,7 @@ public class DamageIndicator : MonoBehaviour
     bool reset = false;
 
     Coroutine coroutine;
+    Coroutine fade;
 
     void Start()
     {
@@ -107,7 +108,9 @@ public class DamageIndicator : MonoBehaviour
                     working.SetActive(true);
                     warning.SetActive(false);
                     error.SetActive(false);
-                    StartCoroutine(Fade());
+                    if(fade != null)
+                        StopCoroutine(fade);
+                    fade = StartCoroutine(Fade());
                     break;
                 case 1:
                     working.SetActive(false);
@@ -237,8 +240,9 @@ public class DamageIndicator : MonoBehaviour
         if (working != null)
         {
             working.GetComponent<CanvasGroup>().alpha = 1.0f;
+            working.GetComponent<CanvasGroup>().DOKill();
 
-            yield return new WaitForSeconds(7.5f);
+            yield return new WaitForSeconds(5f);
 
             if(working.activeSelf)
                 yield return working.GetComponent<CanvasGroup>().DOFade(0f, 1.5f).WaitForCompletion();
