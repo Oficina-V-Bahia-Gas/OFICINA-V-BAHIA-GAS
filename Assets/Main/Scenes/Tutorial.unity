@@ -9903,7 +9903,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineButton: {fileID: 1283820131}
-  outlineDefault: {fileID: -816381168, guid: 1b69b8a83530cea4f9253d47b69f1601, type: 3}
+  outlineDefault: {fileID: -487493710, guid: 081778759b2c6ef4ea189256ac00ac5b, type: 3}
   outlineSelected: {fileID: -1164079926, guid: 1b69b8a83530cea4f9253d47b69f1601, type: 3}
   textSizeSlider: {fileID: 714348519}
   exampleText: {fileID: 1119527504}

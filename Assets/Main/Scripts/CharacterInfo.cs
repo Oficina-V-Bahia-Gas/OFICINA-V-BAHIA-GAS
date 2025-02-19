@@ -8,7 +8,6 @@ public class CharacterInfo : MonoBehaviour
 
     public HudInteraction hudInteraction;
     Machines currentMachine;
-    Outline lastHighlightedObject;
 
     public static CharacterInfo instance;
     Accessibility accessibility;
@@ -27,11 +26,6 @@ public class CharacterInfo : MonoBehaviour
     void Update()
     {
         DetectInteractable();
-
-        if (accessibility != null && !accessibility.IsOutlineEnabled())
-        {
-            DisableLastOutline();
-        }
 
         if (checkFixTutorial)
         {
@@ -55,63 +49,24 @@ public class CharacterInfo : MonoBehaviour
 
     void DetectInteractable()
     {
-        Ray _ray = new Ray(transform.position, transform.forward);
-        RaycastHit _hit;
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
         Debug.DrawRay(transform.position, transform.forward * interactionDistance, Color.red);
 
-        if (Physics.Raycast(_ray, out _hit, interactionDistance, interactionLayer))
+        if (Physics.Raycast(ray, out hit, interactionDistance, interactionLayer))
         {
-            Machines _machine = _hit.collider.GetComponent<Machines>();
-
-            if (_machine != null)
+            Machines machine = hit.collider.GetComponent<Machines>();
+            if (machine != null)
             {
-                currentMachine = _machine;
-                if (accessibility != null && accessibility.IsOutlineEnabled() && !_machine.OnUse)
-                    EnableOutline(_machine.gameObject);
-                else
-                    DisableLastOutline();
-                return; 
+                currentMachine = machine;
+                return;
             }
         }
-
-
         currentMachine = null;
-        DisableLastOutline();
-    }
-
-    void EnableOutline(GameObject obj)
-    {
-        Outline _outline = obj.GetComponent<Outline>();
-        if (_outline != null)
-        {
-            if (lastHighlightedObject != null && lastHighlightedObject != _outline)
-                lastHighlightedObject.enabled = false;
-
-            _outline.enabled = true;
-            lastHighlightedObject = _outline;
-        }
-    }
-
-    void DisableLastOutline()
-    {
-        if (lastHighlightedObject != null)
-        {
-            lastHighlightedObject.enabled = false;
-            lastHighlightedObject = null;
-        }
-    }
-
-    void DisableAllOutlines()
-    {
-        Outline[] _outlines = FindObjectsOfType<Outline>();
-        foreach (Outline _outline in _outlines)
-            _outline.enabled = false;
     }
 
     public void OpenHud()
     {
-        DisableAllOutlines();
-
         if (tutorial && currentMachine != allowedMachine && currentMachine != null)
         {
             tutorialScript.MachineInteractError(allowedMachine);
@@ -133,7 +88,9 @@ public class CharacterInfo : MonoBehaviour
             currentMachine.OnUse = true;
         }
         else
+        {
             Debug.LogWarning("Nenhuma máquina detectada ou HudInteraction não configurado.");
+        }
     }
 
     public void EndInteractionOnCurrentMachine()
