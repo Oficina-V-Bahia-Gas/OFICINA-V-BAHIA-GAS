@@ -126,6 +126,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   hudInteraction: {fileID: 0}
+  checkFixTutorial: 0
 --- !u!114 &5081949394840643549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,6 +208,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 320eae5f57e060f4ca9b3e8616337083, type: 2}
+    - target: {fileID: -4431165747549580594, guid: 4337dc30bca9c2e40847545534f294b3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4e84b00c032377446b25a4fd038bfe36, type: 2}
     - target: {fileID: -579158407286508400, guid: 4337dc30bca9c2e40847545534f294b3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
