@@ -44,9 +44,8 @@ public class ResultScreenManager : MonoBehaviour
     void Start()
     {
         if (fadeCanvasGroup == null && fadeImage != null)
-        {
             fadeCanvasGroup = fadeImage.GetComponent<CanvasGroup>();
-        }
+
         if (fadeCanvasGroup != null)
         {
             fadeCanvasGroup.alpha = 0;
@@ -54,12 +53,12 @@ public class ResultScreenManager : MonoBehaviour
         }
 
         finalScore = PlayerPrefs.GetFloat("FinalScore", 0);
-        string lastScene = PlayerPrefs.GetString("LastScene", tutorialScene);
-        bool won = finalScore >= firstStarThreshold;
+        string _lastScene = PlayerPrefs.GetString("LastScene", tutorialScene);
+        bool _won = finalScore >= firstStarThreshold;
 
         if (JamesResultAnimator != null && WomanResultAnimator != null)
         {
-            if (won)
+            if (_won)
             {
                 JamesResultAnimator.Play(victoryAnimation);
                 WomanResultAnimator.Play(victoryAnimation);
@@ -71,9 +70,9 @@ public class ResultScreenManager : MonoBehaviour
             }
         }
 
-        if (lastScene == fase2Scene)
+        if (_lastScene == fase2Scene)
         {
-            if (won)
+            if (_won)
             {
                 resultText.text = "Parabéns!";
                 continueButton.gameObject.SetActive(false);
@@ -91,36 +90,32 @@ public class ResultScreenManager : MonoBehaviour
         }
         else
         {
-            resultText.text = won ? "Vitória!" : "Derrota!";
-            continueButton.gameObject.SetActive(won);
-            retryButton.gameObject.SetActive(!won);
+            resultText.text = _won ? "Vitória!" : "Derrota!";
+            continueButton.gameObject.SetActive(_won);
+            retryButton.gameObject.SetActive(!_won);
 
-            if (won)
-            {
+            if (_won)
                 continueButton.onClick.AddListener(ContinueToNextLevel);
-            }
             else
-            {
                 retryButton.onClick.AddListener(RetryLevel);
-            }
         }
 
         menuButton.onClick.AddListener(() => StartCoroutine(FadeToScene(menuScene)));
         SetStars(finalScore);
     }
 
-    void SetStars(float score)
+    void SetStars(float _score)
     {
-        int starsEarned = 0;
+        int _starsEarned = 0;
 
-        if (score >= firstStarThreshold) starsEarned = 1;
-        if (score >= secondStarThreshold) starsEarned = 2;
-        if (score >= thirdStarThreshold) starsEarned = 3;
+        if (_score >= firstStarThreshold) _starsEarned = 1;
+        if (_score >= secondStarThreshold) _starsEarned = 2;
+        if (_score >= thirdStarThreshold) _starsEarned = 3;
 
         for (int i = 0; i < starParents.Length; i++)
         {
-            starChildren[i].SetActive(i < starsEarned);
-            if (i < starsEarned)
+            starChildren[i].SetActive(i < _starsEarned);
+            if (i < _starsEarned)
             {
                 starChildren[i].transform.localScale = Vector3.zero;
                 starChildren[i].transform.DOScale(1, 0.5f).SetEase(Ease.OutBack);
@@ -130,23 +125,23 @@ public class ResultScreenManager : MonoBehaviour
 
     void ContinueToNextLevel()
     {
-        string nextScene = GetNextScene();
-        StartCoroutine(FadeToScene(nextScene));
+        string _nextScene = GetNextScene();
+        StartCoroutine(FadeToScene(_nextScene));
     }
 
     void RetryLevel()
     {
-        string retryScene = GetRetryScene();
-        StartCoroutine(FadeToScene(retryScene));
+        string _retryScene = GetRetryScene();
+        StartCoroutine(FadeToScene(_retryScene));
     }
 
     string GetNextScene()
     {
-        string lastScene = PlayerPrefs.GetString("LastScene", tutorialScene);
+        string _lastScene = PlayerPrefs.GetString("LastScene", tutorialScene);
 
-        if (lastScene == tutorialScene)
+        if (_lastScene == tutorialScene)
             return fase1Scene;
-        else if (lastScene == fase1Scene)
+        else if (_lastScene == fase1Scene)
             return fase2Scene;
         else
             return menuScene;
@@ -154,22 +149,22 @@ public class ResultScreenManager : MonoBehaviour
 
     string GetRetryScene()
     {
-        string lastScene = PlayerPrefs.GetString("LastScene", tutorialScene);
+        string _lastScene = PlayerPrefs.GetString("LastScene", tutorialScene);
 
-        if (lastScene == tutorialScene)
+        if (_lastScene == tutorialScene)
             return tutorialScene;
-        else if (lastScene == fase1Scene)
+        else if (_lastScene == fase1Scene)
             return fase1Scene;
         else
             return fase2Scene;
     }
 
-    IEnumerator FadeToScene(string sceneName)
+    IEnumerator FadeToScene(string _sceneName)
     {
         fadeCanvasGroup.gameObject.SetActive(true);
         yield return fadeCanvasGroup.DOFade(1, fadeDuration).WaitForCompletion();
         yield return new WaitForSeconds(0.5f);
         PlayerPrefs.DeleteKey("FinalScore");
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(_sceneName);
     }
 }

@@ -33,9 +33,7 @@ public class Accessibility : MonoBehaviour
         LoadAccessibilitySettings();
 
         if (textSizeSlider != null)
-        {
             textSizeSlider.onValueChanged.AddListener(UpdateTextSize);
-        }
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
@@ -45,7 +43,7 @@ public class Accessibility : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    void OnSceneLoaded(Scene _scene, LoadSceneMode _mode)
     {
         ApplyTextSizeToDialogues();
         ApplyDubbingSetting();
@@ -65,13 +63,11 @@ public class Accessibility : MonoBehaviour
         dubEnabled = PlayerPrefs.GetInt("Dublagem", 1);
         UpdateDubVisual();
 
-        float textSize = PlayerPrefs.GetFloat("TextSize", minTextSize);
+        float _textSize = PlayerPrefs.GetFloat("TextSize", minTextSize);
         if (textSizeSlider != null)
-        {
-            textSizeSlider.value = textSize;
-        }
+            textSizeSlider.value = _textSize;
 
-        UpdateTextSize(textSize);
+        UpdateTextSize(_textSize);
     }
 
     public void ToggleOutline()
@@ -94,64 +90,59 @@ public class Accessibility : MonoBehaviour
     void UpdateOutlineVisual()
     {
         if (outlineButton != null)
-        {
             outlineButton.sprite = outlineEnabled == 1 ? outlineSelected : outlineDefault;
-        }
-        Outline[] outlines = FindObjectsOfType<Outline>();
-        foreach (Outline outline in outlines)
-        {
-            outline.enabled = (outlineEnabled == 1);
-        }
+
+        Outline[] _outlines = FindObjectsOfType<Outline>();
+        foreach (Outline _outline in _outlines)
+            _outline.enabled = (outlineEnabled == 1);
     }
 
     void UpdateDubVisual()
     {
         if (dubButton != null)
-        {
             dubButton.sprite = dubEnabled == 1 ? dubSelected : dubDefault;
-        }
     }
 
-    public void UpdateTextSize(float value)
+    public void UpdateTextSize(float _value)
     {
-        PlayerPrefs.SetFloat("TextSize", value);
+        PlayerPrefs.SetFloat("TextSize", _value);
         PlayerPrefs.Save();
         ApplyTextSizeToDialogues();
     }
 
     void ApplyTextSizeToDialogues()
     {
-        float textSize = PlayerPrefs.GetFloat("TextSize", minTextSize);
+        float _textSize = PlayerPrefs.GetFloat("TextSize", minTextSize);
 
         if (exampleText != null)
         {
             exampleText.fontSize = Mathf.Lerp(minExampleFontSize, maxExampleFontSize,
-                Mathf.InverseLerp(minTextSize, maxTextSize, textSize));
+                Mathf.InverseLerp(minTextSize, maxTextSize, _textSize));
         }
 
-        TextMeshProUGUI[] allTexts = FindObjectsOfType<TextMeshProUGUI>(true);
-        foreach (TextMeshProUGUI text in allTexts)
+        Dialogue[] _dialogues = FindObjectsOfType<Dialogue>(true);
+        foreach (Dialogue _dialogue in _dialogues)
         {
-            if (text.CompareTag("DialogueText"))
+            if (_dialogue.text != null)
             {
-                text.fontSize = Mathf.Lerp(minDialogueFontSize, maxDialogueFontSize,
-                    Mathf.InverseLerp(minTextSize, maxTextSize, textSize));
+                _dialogue.text.fontSize = Mathf.Lerp(minDialogueFontSize, maxDialogueFontSize,
+                    Mathf.InverseLerp(minTextSize, maxTextSize, _textSize));
             }
         }
     }
 
     void ApplyDubbingSetting()
     {
-        SubtitleManager subtitleManager = FindObjectOfType<SubtitleManager>();
-        if (subtitleManager != null)
+        SubtitleManager _subtitleManager = FindObjectOfType<SubtitleManager>();
+        if (_subtitleManager != null)
         {
             if (IsDubEnabled())
             {
-                subtitleManager.StartSubtitles();
+                _subtitleManager.StartSubtitles();
             }
             else
             {
-                subtitleManager.StopSubtitles();
+                _subtitleManager.StopSubtitles();
             }
         }
     }

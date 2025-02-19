@@ -28,13 +28,9 @@ public class RepairRotate : Repairs
         rotationAngle = 0f;
 
         if (handleTransform != null)
-        {
             rotationCenter = handleTransform.position;
-        }
         else
-        {
             rotationCenter = Vector2.zero;
-        }
 
         CharacterInfo characterInfo = FindObjectOfType<CharacterInfo>();
         if (characterInfo != null)
@@ -44,9 +40,7 @@ public class RepairRotate : Repairs
             {
                 Transform targetTransform = GetFirstChild(currentMachine);
                 if (targetTransform != null && repairCameraManager != null)
-                {
                     repairCameraManager.SetTargetTransform(targetTransform);
-                }
             }
         }
     }
@@ -151,6 +145,7 @@ public class RepairRotate : Repairs
 
     public override void FinishRepair()
     {
+        StopRotation();
         base.FinishRepair();
 
         AudioManager.instance.Stop("Squeak");

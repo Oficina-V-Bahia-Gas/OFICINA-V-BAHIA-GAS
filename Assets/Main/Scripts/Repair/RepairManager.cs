@@ -18,13 +18,6 @@ public class RepairManager : MonoBehaviour
 
     public void RaffleRepair()
     {
-
-        if (repairInProgress)
-        {
-            //Debug.Log("Um conserto já está em andamento.");
-            //return;
-        }
-
         if (HudInteraction.instance.currentMachine == null)
         {
             Debug.LogError("Nenhuma máquina selecionada.");
@@ -66,22 +59,18 @@ public class RepairManager : MonoBehaviour
         repairInProgress = false;
 
         if (HudInteraction.instance.currentMachine != null)
-        {
             HudInteraction.instance.currentMachine.Repair();
-        }
     }
 
     public void StopRepair()
     {
-        if (currentRepairScript)
-        {
+        if (currentRepairScript) 
             currentRepairScript.ResetRepair();
-        }
     }
 
-    Repairs GetRepairScript(RepairType type)
+    Repairs GetRepairScript(RepairType _type)
     {
-        switch (type)
+        switch (_type)
         {
             case RepairType.Type1: return repairHold;
             case RepairType.Type2: return repairTap;
@@ -91,16 +80,16 @@ public class RepairManager : MonoBehaviour
         }
     }
 
-    void ActivateCanvas(int index)
+    void ActivateCanvas(int _index)
     {
         for (int i = 0; i < canvasGroupsRepairs.Length; i++)
         {
-            if (i == index)
+            if (i == _index)
             {
                 canvasGroupsRepairs[i].alpha = 1;
                 canvasGroupsRepairs[i].interactable = true;
                 canvasGroupsRepairs[i].blocksRaycasts = true;
-                Debug.Log($"Canvas ativado para o conserto: {index}");
+                Debug.Log($"Canvas ativado para o conserto: {_index}");
             }
             else
             {

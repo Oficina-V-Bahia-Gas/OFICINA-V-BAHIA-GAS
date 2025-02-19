@@ -7,7 +7,7 @@ public class PlayerCanvas : MonoBehaviour
 
     void Update()
     {
-        if (player != null)
-            transform.position = player.position + offset;
+        if (player != null) transform.position = player.position + offset;
+
     }
 }

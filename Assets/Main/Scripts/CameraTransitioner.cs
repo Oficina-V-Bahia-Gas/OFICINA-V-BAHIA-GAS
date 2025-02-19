@@ -5,15 +5,12 @@ using UnityEngine;
 
 public class CameraTransitioner : MonoBehaviour
 {
-    [SerializeField] private CameraManager cameraManager;
+    [SerializeField] CameraManager cameraManager;
     [SerializeField] [Tooltip("Alvo acima ou à direita")] private GameObject targetUR;
     [SerializeField] [Tooltip("Alvo abaixo ou à esquerda")] private GameObject targetDL;
-    [SerializeField] private bool horizontal;
+    [SerializeField] bool horizontal;
 
-    void Start()
-    {
-        Check();
-    }
+    void Start() => Check();
 
     private void OnTriggerExit(Collider _other)
     {
@@ -29,9 +26,7 @@ public class CameraTransitioner : MonoBehaviour
                     cameraManager.SetTarget(targetDL);
                 }
                 else
-                {
                     Debug.Log("Mudança de câmera prevenida por direção errada!");
-                }
             }
             else
             {
@@ -41,9 +36,7 @@ public class CameraTransitioner : MonoBehaviour
                     cameraManager.SetTarget(targetUR);
                 }
                 else
-                {
                     Debug.Log("Mudança de câmera prevenida por direção errada!");
-                }
             }
         }
     }

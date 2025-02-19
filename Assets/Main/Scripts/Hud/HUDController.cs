@@ -14,10 +14,7 @@ public class HUDController : MonoBehaviour
 
     bool isGamePaused = false;
 
-    private void Start()
-    {
-        LoadSettings();
-    }
+    private void Start() => LoadSettings();
 
     void LoadSettings()
     {
@@ -33,17 +30,12 @@ public class HUDController : MonoBehaviour
     public void ContinueGame()
     {
         if (continueButton != null)
-        {
             continueButton.interactable = true;
-        }
 
         SceneManager.LoadScene("Fase1");
     }
 
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
+    public void QuitGame() => Application.Quit();
 
     public void PauseGame()
     {
@@ -60,7 +52,7 @@ public class HUDController : MonoBehaviour
             .SetEase(Ease.OutQuint)
             .OnComplete(() =>
             {
-                //Time.timeScale = 0;
+                //Inserir aqui: Parar o timer
                 menuCanvasGroup.interactable = true;
                 menuCanvasGroup.blocksRaycasts = true;
             });

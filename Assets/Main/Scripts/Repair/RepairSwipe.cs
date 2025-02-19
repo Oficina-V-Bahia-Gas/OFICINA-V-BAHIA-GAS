@@ -17,35 +17,29 @@ public class RepairSwipe : Repairs
         swipeProgress = 0f;
 
         if (dirtOverlay != null)
-        {
             dirtOverlay.color = new Color(dirtOverlay.color.r, dirtOverlay.color.g, dirtOverlay.color.b, 1f);
-        }
 
-        if (foamParticles != null)
-        {
-            foamParticles.Stop();
-        }
+        if (foamParticles != null) foamParticles.Stop();
 
-        CharacterInfo characterInfo = FindObjectOfType<CharacterInfo>();
-        if (characterInfo != null)
+        CharacterInfo _characterInfo = FindObjectOfType<CharacterInfo>();
+        if (_characterInfo != null)
         {
-            currentMachine = characterInfo.GetLastInteractedMachine();
+            currentMachine = _characterInfo.GetLastInteractedMachine();
             if (currentMachine != null)
             {
-                Transform targetTransform = GetFirstChild(currentMachine);
-                if (targetTransform != null && repairCameraManager != null)
-                {
-                    repairCameraManager.SetTargetTransform(targetTransform);
-                }
+                Transform _targetTransform = GetFirstChild(currentMachine);
+
+                if (_targetTransform != null && repairCameraManager != null)
+                    repairCameraManager.SetTargetTransform(_targetTransform);
             }
         }
     }
 
-    Transform GetFirstChild(Machines machine)
+    Transform GetFirstChild(Machines _machine)
     {
-        if (machine != null && machine.transform.childCount > 0)
+        if (_machine != null && _machine.transform.childCount > 0)
         {
-            return machine.transform.GetChild(0);
+            return _machine.transform.GetChild(0);
         }
         return null;
     }
@@ -88,9 +82,9 @@ public class RepairSwipe : Repairs
     {
         if (dirtOverlay != null)
         {
-            float progress = swipeProgress / swipesRequired;
-            float newAlpha = Mathf.Lerp(1f, 0f, progress);
-            dirtOverlay.color = new Color(dirtOverlay.color.r, dirtOverlay.color.g, dirtOverlay.color.b, newAlpha);
+            float _progress = swipeProgress / swipesRequired;
+            float _newAlpha = Mathf.Lerp(1f, 0f, _progress);
+            dirtOverlay.color = new Color(dirtOverlay.color.r, dirtOverlay.color.g, dirtOverlay.color.b, _newAlpha);
         }
 
         if (foamParticles != null)

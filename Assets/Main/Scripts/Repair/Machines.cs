@@ -52,10 +52,10 @@ public class Machines : MonoBehaviour
     public float maxCooldown = 20f;
     float repairCooldown;
 
-    [Header("Animators")]
-    [SerializeField] Animator machineAnimator;
-    [SerializeField] string repairAnimation;
-    private static Machines lastRepairedMachine = null;
+    //[Header("Animators")]
+    //[SerializeField] Animator machineAnimator;
+    //[SerializeField] string repairAnimation;
+    //private static Machines lastRepairedMachine = null;
 
     [Header("Others")]
     [SerializeField] public Vector3 indicatorOffset;
@@ -137,30 +137,30 @@ public class Machines : MonoBehaviour
         }
     }
 
-    public void StartRepairAnimation()
-    {
-        if (machineAnimator != null && !string.IsNullOrEmpty(repairAnimation))
-        {
-            if (lastRepairedMachine != null && lastRepairedMachine != this)
-            {
-                lastRepairedMachine.StopRepairAnimation();
-            }
-            machineAnimator.Play(repairAnimation);
-            lastRepairedMachine = this;
-        }
-    }
+    //public void StartRepairAnimation()
+    //{
+    //    if (machineAnimator != null && !string.IsNullOrEmpty(repairAnimation))
+    //    {
+    //        if (lastRepairedMachine != null && lastRepairedMachine != this)
+    //        {
+    //            lastRepairedMachine.StopRepairAnimation();
+    //        }
+    //        machineAnimator.Play(repairAnimation);
+    //        lastRepairedMachine = this;
+    //    }
+    //}
 
-    public void StopRepairAnimation()
-    {
-        if (machineAnimator != null)
-        {
-            machineAnimator.Play("Idle");
-            if (lastRepairedMachine == this)
-            {
-                lastRepairedMachine = null;
-            }
-        }
-    }
+    //public void StopRepairAnimation()
+    //{
+    //    if (machineAnimator != null)
+    //    {
+    //        machineAnimator.Play("Idle");
+    //        if (lastRepairedMachine == this)
+    //        {
+    //            lastRepairedMachine = null;
+    //        }
+    //    }
+    //}
 
     public void Repair()
     {
@@ -210,7 +210,7 @@ public class Machines : MonoBehaviour
     }
 
     [System.Obsolete("Método repetido. Use CheckDurability() ao invés disso.", false)]
-    void CheckRepairStatus() // APAGAR
+    void CheckRepairStatus()
     {
         needsRepair = CheckDurability();
     }
@@ -224,13 +224,13 @@ public class Machines : MonoBehaviour
     public void ActivateRepair()
     {
         repairActive = true;
-        StartRepairAnimation();
+        //StartRepairAnimation();
     }
 
     public void DeactivateRepair()
     {
         repairActive = false;
-        StopRepairAnimation();
+        //StopRepairAnimation();
     }
 
     public bool IsCanvasActivated()
@@ -329,7 +329,6 @@ public class Machines : MonoBehaviour
             randomRoll = false;
             fullRoll = false;
         }
-        //Debug.Log(currentRepairs);
     }
 
     public bool CheckDurability(float _durability = -1f)

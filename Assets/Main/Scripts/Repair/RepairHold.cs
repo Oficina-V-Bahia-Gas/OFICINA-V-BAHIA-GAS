@@ -25,42 +25,42 @@ public class RepairHold : Repairs
 
         if (repairButton != null)
         {
-            EventTrigger trigger = repairButton.GetComponent<EventTrigger>();
-            if (trigger == null)
+            EventTrigger _trigger = repairButton.GetComponent<EventTrigger>();
+            if (_trigger == null)
             {
-                trigger = repairButton.gameObject.AddComponent<EventTrigger>();
+                _trigger = repairButton.gameObject.AddComponent<EventTrigger>();
             }
             else
             {
-                trigger.triggers.Clear();
+                _trigger.triggers.Clear();
             }
 
-            AddEventTrigger(trigger, EventTriggerType.PointerDown, (data) => StartHolding());
-            AddEventTrigger(trigger, EventTriggerType.PointerUp, (data) => StopHolding());
+            AddEventTrigger(_trigger, EventTriggerType.PointerDown, (data) => StartHolding());
+            AddEventTrigger(_trigger, EventTriggerType.PointerUp, (data) => StopHolding());
         }
 
         UpdateUI(0);
 
-        CharacterInfo characterInfo = FindObjectOfType<CharacterInfo>();
-        if (characterInfo != null)
+        CharacterInfo _characterInfo = FindObjectOfType<CharacterInfo>();
+        if (_characterInfo != null)
         {
-            currentMachine = characterInfo.GetLastInteractedMachine();
+            currentMachine = _characterInfo.GetLastInteractedMachine();
             if (currentMachine != null)
             {
-                Transform targetTransform = GetFirstChild(currentMachine);
-                if (targetTransform != null && repairCameraManager != null)
+                Transform _targetTransform = GetFirstChild(currentMachine);
+                if (_targetTransform != null && repairCameraManager != null)
                 {
-                    repairCameraManager.SetTargetTransform(targetTransform);
+                    repairCameraManager.SetTargetTransform(_targetTransform);
                 }
             }
         }
     }
 
-    private Transform GetFirstChild(Machines machine)
+    Transform GetFirstChild(Machines _machine)
     {
-        if (machine != null && machine.transform.childCount > 0)
+        if (_machine != null && _machine.transform.childCount > 0)
         {
-            return machine.transform.GetChild(0);
+            return _machine.transform.GetChild(0);
         }
         return null;
     }
@@ -111,18 +111,16 @@ public class RepairHold : Repairs
         UpdateUI(1f);
 
         if (repairCameraManager != null)
-        {
             repairCameraManager.ClearTarget();
-        }
     }
 
-    private void UpdateUI(float progress)
+    private void UpdateUI(float _progress)
     {
         if (feedbackText != null)
         {
-            if (progress == 0)
+            if (_progress == 0)
                 feedbackText.text = "Reinicialização necessária!";
-            else if (progress < 1)
+            else if (_progress < 1)
                 feedbackText.text = "Reinicializando...";
             else
                 feedbackText.text = "Reinicialização concluída!";
@@ -130,27 +128,25 @@ public class RepairHold : Repairs
 
         if (indicatorLights != null)
         {
-            int lightState = Mathf.Clamp(Mathf.FloorToInt(progress * 4), 0, 4);
+            int _lightState = Mathf.Clamp(Mathf.FloorToInt(_progress * 4), 0, 4);
 
             for (int i = 0; i < indicatorLights.Length; i++)
             {
-                indicatorLights[i].color = (i < lightState) ? Color.yellow : Color.red;
+                indicatorLights[i].color = (i < _lightState) ? Color.yellow : Color.red;
             }
 
-            if (progress >= 1)
+            if (_progress >= 1)
             {
-                foreach (var light in indicatorLights)
-                {
-                    light.color = Color.green;
-                }
+                foreach (var _light in indicatorLights)
+                    _light.color = Color.green;
             }
         }
     }
 
-    private void AddEventTrigger(EventTrigger trigger, EventTriggerType eventType, System.Action<BaseEventData> callback)
+    void AddEventTrigger(EventTrigger _trigger, EventTriggerType _eventType, System.Action<BaseEventData> _callback)
     {
-        EventTrigger.Entry entry = new EventTrigger.Entry { eventID = eventType };
-        entry.callback.AddListener((data) => callback(data));
-        trigger.triggers.Add(entry);
+        EventTrigger.Entry _entry = new EventTrigger.Entry { eventID = _eventType };
+        _entry.callback.AddListener((data) => _callback(data));
+        _trigger.triggers.Add(_entry);
     }
 }

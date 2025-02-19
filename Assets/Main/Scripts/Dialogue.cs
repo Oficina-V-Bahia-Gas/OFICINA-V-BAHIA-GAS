@@ -44,27 +44,23 @@ public class Dialogue : MonoBehaviour
         }
     }
 
-    public void StartDialogue(string[] texts = null)
+    public void StartDialogue(string[] _texts = null)
     {
         gameObject.SetActive(true);
         textIndex = 0;
         text.text = "";
 
-        if (texts != null)
+        if (_texts != null)
         {
-            textMessage = texts;
+            textMessage = _texts;
         }
 
         ApplyTextSize();
 
         if (!gameObject.activeInHierarchy)
-        {
             Tween(true, textMessage[textIndex]);
-        }
         else
-        {
             StartCoroutine(TypeLine(textMessage[textIndex]));
-        }
     }
 
     public void NextLine()
@@ -76,18 +72,12 @@ public class Dialogue : MonoBehaviour
             ApplyTextSize();
 
             if (!gameObject.activeInHierarchy)
-            {
                 Tween(true, textMessage[textIndex]);
-            }
             else
-            {
                 StartCoroutine(TypeLine(textMessage[textIndex]));
-            }
         }
         else
-        {
             Close();
-        }
     }
 
     public void SimpleLine(string line)
@@ -119,9 +109,7 @@ public class Dialogue : MonoBehaviour
     public void Close()
     {
         if (gameObject.activeInHierarchy)
-        {
             Tween(false);
-        }
     }
 
     void Tween(bool on = true, string line = "")
@@ -152,14 +140,14 @@ public class Dialogue : MonoBehaviour
         }
     }
 
-    private void ApplyTextSize()
+    void ApplyTextSize()
     {
         if (text == null) return;
 
-        float textSize = PlayerPrefs.GetFloat("TextSize", 1.00f);
-        float minFontSize = 30f;
-        float maxFontSize = 43f;
+        float _textSize = PlayerPrefs.GetFloat("TextSize", 1.00f);
+        float _minFontSize = 30f;
+        float _maxFontSize = 43f;
 
-        text.fontSize = Mathf.Lerp(minFontSize, maxFontSize, Mathf.InverseLerp(1.00f, 1.50f, textSize));
+        text.fontSize = Mathf.Lerp(_minFontSize, _maxFontSize, Mathf.InverseLerp(1.00f, 1.50f, _textSize));
     }
 }

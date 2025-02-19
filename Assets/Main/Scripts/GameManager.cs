@@ -44,9 +44,7 @@ public class GameManager : MonoBehaviour
         AudioManager.instance.Play(music);
 
         if (fadeCanvasGroup == null && fadeImage != null)
-        {
             fadeCanvasGroup = fadeImage.GetComponent<CanvasGroup>();
-        }
 
         if (fadeCanvasGroup != null)
         {
@@ -69,10 +67,9 @@ public class GameManager : MonoBehaviour
             {
                 gameEnded = true;
                 StartCoroutine(FadeToResultScene());
-            } else if (tutorial)
-            {
+            } 
+            else if (tutorial)
                 remainingTime = 0;
-            }
         }
     }
 
@@ -155,15 +152,15 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Vitoria&Derrota");
     }
 
-    public void ForceSetScore(float score)
+    public void ForceSetScore(float _score)
     {
-        currentScore = score;
+        currentScore = _score;
         ScoreVisualization();
     }
 
-    public void ForceSetTime(float time)
+    public void ForceSetTime(float _time)
     {
-        remainingTime = Mathf.Max(0, time);
+        remainingTime = Mathf.Max(0, _time);
     }
 
     public void ForceEnd()

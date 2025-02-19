@@ -15,29 +15,28 @@ public class RepairTap : Repairs
         base.StartRepair(_repairManager);
         tapCount = 0;
 
-        foreach (var screw in looseScrews) screw.gameObject.SetActive(true);
-        foreach (var hole in placedScrews) hole.gameObject.SetActive(false);
+        foreach (var _screw in looseScrews) _screw.gameObject.SetActive(true);
+        foreach (var _hole in placedScrews) _hole.gameObject.SetActive(false);
 
-        CharacterInfo characterInfo = FindObjectOfType<CharacterInfo>();
-        if (characterInfo != null)
+        CharacterInfo _characterInfo = FindObjectOfType<CharacterInfo>();
+        if (_characterInfo != null)
         {
-            currentMachine = characterInfo.GetLastInteractedMachine();
+            currentMachine = _characterInfo.GetLastInteractedMachine();
             if (currentMachine != null)
             {
-                Transform targetTransform = GetFirstChild(currentMachine);
-                if (targetTransform != null && repairCameraManager != null)
-                {
-                    repairCameraManager.SetTargetTransform(targetTransform);
-                }
+                Transform _targetTransform = GetFirstChild(currentMachine);
+
+                if (_targetTransform != null && repairCameraManager != null)
+                    repairCameraManager.SetTargetTransform(_targetTransform);
             }
         }
     }
 
-    Transform GetFirstChild(Machines machine)
+    Transform GetFirstChild(Machines _machine)
     {
-        if (machine != null && machine.transform.childCount > 0)
+        if (_machine != null && _machine.transform.childCount > 0)
         {
-            return machine.transform.GetChild(0);
+            return _machine.transform.GetChild(0);
         }
         return null;
     }
@@ -48,25 +47,18 @@ public class RepairTap : Repairs
 
         if (tapCount < totalTapsRequired)
         {
-            int screwIndex = tapCount / 2;
+            int _screwIndex = tapCount / 2;
 
             if (tapCount % 2 == 0)
-            {
-                looseScrews[screwIndex].gameObject.SetActive(false);
-            }
+                looseScrews[_screwIndex].gameObject.SetActive(false);
             else
-            {
-                placedScrews[screwIndex].gameObject.SetActive(true);
-            }
+                placedScrews[_screwIndex].gameObject.SetActive(true);
 
             tapCount++;
             Debug.Log($"Tap registrado: {tapCount}/{totalTapsRequired}");
             AudioManager.instance.Play("Hammer");
 
-            if (tapCount >= totalTapsRequired)
-            {
-                FinishRepair();
-            }
+            if (tapCount >= totalTapsRequired) FinishRepair();
         }
     }
 
@@ -76,8 +68,6 @@ public class RepairTap : Repairs
         tapCount = 0;
 
         if (repairCameraManager != null)
-        {
             repairCameraManager.ClearTarget();
-        }
     }
 }

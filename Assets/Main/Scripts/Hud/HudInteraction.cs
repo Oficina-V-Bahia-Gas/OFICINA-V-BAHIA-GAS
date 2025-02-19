@@ -25,9 +25,7 @@ public class HudInteraction : MonoBehaviour
 
         hudCanvasGroup = GetComponent<CanvasGroup>();
         if (hudCanvasGroup == null)
-        {
             Debug.LogError("CanvasGroup não encontrado no HudInteraction.");
-        }
     }
 
     private void Update()
@@ -44,21 +42,21 @@ public class HudInteraction : MonoBehaviour
         }
     }
 
-    public void ConfigureHud(Machines machine)
+    public void ConfigureHud(Machines _machine)
     {
-        if (machine == null)
+        if (_machine == null)
         {
             Debug.LogError("Máquina inválida passada para ConfigureHud.");
             return;
         }
 
-        if (machine == currentMachine && isHudOpen)
+        if (_machine == currentMachine && isHudOpen)
         {
             Debug.Log("HUD já está configurada para esta máquina.");
             return;
         }
 
-        currentMachine = machine;
+        currentMachine = _machine;
 
         UpdateMachineInfo();
 
@@ -66,8 +64,7 @@ public class HudInteraction : MonoBehaviour
         {
             if (!repairManager.IsRepairInProgress())
             {
-                //repairManager.RaffleRepair(); // Remover
-                currentMachine.ActivateRepair(); // Baseado na máquina
+                currentMachine.ActivateRepair();
                 Debug.Log("Novo conserto sorteado.");
             }
             else
@@ -104,14 +101,10 @@ public class HudInteraction : MonoBehaviour
             }
 
             if (currentMachine.onCooldown)
-            {
                 durabilitySlider.value = durabilitySlider.maxValue;
-            }
 
             if (currentMachine.needsRepair)
-            {
                 statusMessageText.text = "";
-            }
             else
             {
                 statusMessageText.text = "A máquina está em perfeito estado!";
@@ -139,9 +132,7 @@ public class HudInteraction : MonoBehaviour
         }
 
         if (currentMachine.needsRepair)
-        {
             statusMessageText.text = "";
-        }
         else
         {
             durabilitySlider.value = durabilitySlider.maxValue;
@@ -149,9 +140,7 @@ public class HudInteraction : MonoBehaviour
         }
 
         if (currentMachine.onCooldown)
-        {
             durabilitySlider.value = durabilitySlider.maxValue;
-        }
     }
 
     public void OpenHud()
@@ -193,8 +182,8 @@ public class HudInteraction : MonoBehaviour
         currentMachine = null;
     }
 
-    public bool IsHudConfiguredFor(Machines machine)
+    public bool IsHudConfiguredFor(Machines _machine)
     {
-        return currentMachine == machine && isHudOpen;
+        return currentMachine == _machine && isHudOpen;
     }
 }

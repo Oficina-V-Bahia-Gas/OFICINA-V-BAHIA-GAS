@@ -2,18 +2,18 @@ using UnityEngine;
 
 public class RepairsCameraManager : MonoBehaviour
 {
-    private Transform target;
+    Transform target;
     public float followSpeed = 5f;
     public float rotationSpeed = 5f;
 
     /// <summary>
     /// Define o Transform do novo alvo e ativa a câmera.
     /// </summary>
-    public void SetTargetTransform(Transform newTarget)
+    public void SetTargetTransform(Transform _newTarget)
     {
-        Debug.LogWarning($"SetTargetTransform chamado com o alvo: {(newTarget != null ? newTarget.name : "null")}");
+        Debug.LogWarning($"SetTargetTransform chamado com o alvo: {(_newTarget != null ? _newTarget.name : "null")}");
 
-        target = newTarget;
+        target = _newTarget;
 
         if (target != null)
         {

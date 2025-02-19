@@ -25,11 +25,6 @@ public abstract class Repairs : MonoBehaviour
             Machines newMachine = characterInfo.GetLastInteractedMachine();
             if (newMachine != null)
             {
-                if (currentMachine != null && currentMachine != newMachine)
-                {
-                    currentMachine.StopRepairAnimation();
-                }
-
                 currentMachine = newMachine;
                 FaceMachine(characterInfo.gameObject, currentMachine.transform);
 
@@ -38,8 +33,6 @@ public abstract class Repairs : MonoBehaviour
                 {
                     playerAnimator.SetBool("IsRepairing", true);
                 }
-
-                currentMachine.StartRepairAnimation();
             }
         }
     }
@@ -60,7 +53,6 @@ public abstract class Repairs : MonoBehaviour
 
         if (currentMachine != null)
         {
-            currentMachine.StopRepairAnimation();
             currentMachine = null;
         }
 
@@ -80,11 +72,6 @@ public abstract class Repairs : MonoBehaviour
         if (playerAnimator != null)
         {
             playerAnimator.SetBool("IsRepairing", false);
-        }
-
-        if (currentMachine != null)
-        {
-            currentMachine.StopRepairAnimation();
         }
     }
 
