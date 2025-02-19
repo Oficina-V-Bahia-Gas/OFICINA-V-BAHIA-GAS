@@ -9,19 +9,16 @@ public class CharacterInfo : MonoBehaviour
     public HudInteraction hudInteraction;
     Machines currentMachine;
 
-    public static CharacterInfo instance;
-    Accessibility accessibility;
+    [SerializeField] GameObject interactionButton;
 
-    private bool tutorial;
-    private Tutorial tutorialScript;
-    private Machines allowedMachine;
+    public static CharacterInfo instance;
+
+    bool tutorial;
+    Tutorial tutorialScript;
+    Machines allowedMachine;
     public bool checkFixTutorial;
 
-    void Start()
-    {
-        instance = this;
-        accessibility = FindObjectOfType<Accessibility>();
-    }
+    void Start() => instance = this;
 
     void Update()
     {
@@ -59,10 +56,14 @@ public class CharacterInfo : MonoBehaviour
             if (machine != null)
             {
                 currentMachine = machine;
+                if (interactionButton != null)
+                    interactionButton.SetActive(true);
                 return;
             }
         }
         currentMachine = null;
+        if (interactionButton != null)
+            interactionButton.SetActive(false);
     }
 
     public void OpenHud()
