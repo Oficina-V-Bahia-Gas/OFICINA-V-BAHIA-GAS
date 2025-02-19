@@ -238,7 +238,7 @@ public class DamageIndicator : MonoBehaviour
         {
             working.GetComponent<CanvasGroup>().alpha = 1.0f;
 
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(7.5f);
 
             if(working.activeSelf)
                 yield return working.GetComponent<CanvasGroup>().DOFade(0f, 1.5f).WaitForCompletion();
