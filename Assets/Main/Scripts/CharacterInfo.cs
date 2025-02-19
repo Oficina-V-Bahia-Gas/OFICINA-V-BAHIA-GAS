@@ -5,14 +5,13 @@ public class CharacterInfo : MonoBehaviour
     [SerializeField] float walkSpeed;
     [SerializeField] float interactionDistance = 8f;
     [SerializeField] LayerMask interactionLayer;
-    // [SerializeField] GameObject interactionButton;
 
     public HudInteraction hudInteraction;
-    private Machines currentMachine;
-    private Outline lastHighlightedObject;
+    Machines currentMachine;
+    Outline lastHighlightedObject;
 
     public static CharacterInfo instance;
-    private Accessibility accessibility;
+    Accessibility accessibility;
 
     private bool tutorial;
     private Tutorial tutorialScript;
@@ -38,8 +37,6 @@ public class CharacterInfo : MonoBehaviour
         {
             if ((currentMachine == allowedMachine || allowedMachine == null) && currentMachine.onCooldown)
             {
-                //Debug.LogError(allowedMachine);
-                //Debug.LogError(currentMachine);
                 tutorialScript.FixReturn();
                 checkFixTutorial = false;
             }
@@ -58,25 +55,21 @@ public class CharacterInfo : MonoBehaviour
 
     void DetectInteractable()
     {
-        Ray ray = new Ray(transform.position, transform.forward);
-        RaycastHit hit;
+        Ray _ray = new Ray(transform.position, transform.forward);
+        RaycastHit _hit;
         Debug.DrawRay(transform.position, transform.forward * interactionDistance, Color.red);
 
-        if (Physics.Raycast(ray, out hit, interactionDistance, interactionLayer))
+        if (Physics.Raycast(_ray, out _hit, interactionDistance, interactionLayer))
         {
-            Machines machine = hit.collider.GetComponent<Machines>();
+            Machines _machine = _hit.collider.GetComponent<Machines>();
 
-            if (machine != null)
+            if (_machine != null)
             {
-                currentMachine = machine;
-                if (accessibility != null && accessibility.IsOutlineEnabled() && !machine.OnUse)
-                {
-                    EnableOutline(machine.gameObject);
-                }
+                currentMachine = _machine;
+                if (accessibility != null && accessibility.IsOutlineEnabled() && !_machine.OnUse)
+                    EnableOutline(_machine.gameObject);
                 else
-                {
                     DisableLastOutline();
-                }
                 return; 
             }
         }
@@ -88,16 +81,14 @@ public class CharacterInfo : MonoBehaviour
 
     void EnableOutline(GameObject obj)
     {
-        Outline outline = obj.GetComponent<Outline>();
-        if (outline != null)
+        Outline _outline = obj.GetComponent<Outline>();
+        if (_outline != null)
         {
-            if (lastHighlightedObject != null && lastHighlightedObject != outline)
-            {
+            if (lastHighlightedObject != null && lastHighlightedObject != _outline)
                 lastHighlightedObject.enabled = false;
-            }
 
-            outline.enabled = true;
-            lastHighlightedObject = outline;
+            _outline.enabled = true;
+            lastHighlightedObject = _outline;
         }
     }
 
@@ -112,11 +103,9 @@ public class CharacterInfo : MonoBehaviour
 
     void DisableAllOutlines()
     {
-        Outline[] outlines = FindObjectsOfType<Outline>();
-        foreach (Outline outline in outlines)
-        {
-            outline.enabled = false;
-        }
+        Outline[] _outlines = FindObjectsOfType<Outline>();
+        foreach (Outline _outline in _outlines)
+            _outline.enabled = false;
     }
 
     public void OpenHud()
@@ -125,8 +114,6 @@ public class CharacterInfo : MonoBehaviour
 
         if (tutorial && currentMachine != allowedMachine && currentMachine != null)
         {
-            //Debug.LogError(allowedMachine);
-            //Debug.LogError(currentMachine);
             tutorialScript.MachineInteractError(allowedMachine);
             return;
         }
@@ -140,39 +127,27 @@ public class CharacterInfo : MonoBehaviour
             }
 
             if (tutorial)
-            {
                 tutorialScript.MachineReturn();
-            }
 
             hudInteraction.ConfigureHud(currentMachine);
             currentMachine.OnUse = true;
         }
         else
-        {
             Debug.LogWarning("Nenhuma máquina detectada ou HudInteraction não configurado.");
-        }
     }
 
     public void EndInteractionOnCurrentMachine()
     {
         if (currentMachine != null)
-        {
             currentMachine.OnUse = false;
-        }
     }
 
     public void SetTutorial(bool b = false, Tutorial t = null)
     {
         tutorial = b;
         if (tutorialScript == null || t != null)
-        {
             tutorialScript = t;
-        }
     }
 
-    public void SetAllowedMachine(Machines m = null)
-    {
-        //Debug.LogError(m);
-        allowedMachine = m;
-    }
+    public void SetAllowedMachine(Machines m = null) => allowedMachine = m;
 }

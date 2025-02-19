@@ -7,28 +7,34 @@ using DG.Tweening;
 
 public class ResultScreenManager : MonoBehaviour
 {
-    [Header("Configuração da Tela")]
+    [Header("Tela de Resultado")]
     [SerializeField] TMP_Text resultText;
 
-    [Header("Configuração das Estrelas")]
+    [Header("Estrelas")]
     [SerializeField] GameObject[] starParents;
     [SerializeField] GameObject[] starChildren;
 
-    [Header("Configuração dos Botões")]
+    [Header("Botões")]
     [SerializeField] Button continueButton;
     [SerializeField] Button retryButton;
     [SerializeField] Button menuButton;
 
-    [Header("Configuração do Fade")]
+    [Header("Fade")]
     [SerializeField] Image fadeImage;
     [SerializeField] CanvasGroup fadeCanvasGroup;
     [SerializeField] float fadeDuration = 1.5f;
+
+    [Header("Animator de Resultado")]
+    [SerializeField] Animator resultAnimator;
+    [SerializeField] string victoryAnimation = "Victory";
+    [SerializeField] string defeatAnimation = "Idle";
 
     float finalScore;
     const float firstStarThreshold = 100;
     const float secondStarThreshold = 200;
     const float thirdStarThreshold = 300;
 
+    // Nomes das cenas
     string tutorialScene = "Tutorial";
     string fase1Scene = "Fase1";
     string fase2Scene = "Fase2";
@@ -47,6 +53,18 @@ public class ResultScreenManager : MonoBehaviour
         finalScore = PlayerPrefs.GetFloat("FinalScore", 0);
         string lastScene = PlayerPrefs.GetString("LastScene", tutorialScene);
         bool won = finalScore >= firstStarThreshold;
+
+        if (resultAnimator != null)
+        {
+            if (won)
+            {
+                resultAnimator.Play(victoryAnimation);
+            }
+            else
+            {
+                resultAnimator.Play(defeatAnimation);
+            }
+        }
 
         if (lastScene == fase2Scene)
         {
