@@ -515,8 +515,6 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 15
   maxCooldown: 40
-  machineAnimator: {fileID: 0}
-  repairAnimation: 
   indicatorOffset: {x: 0, y: -4, z: 0}
   offsetReplace: 0
   damageIndicator: {fileID: 0}
@@ -3378,8 +3376,6 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 15
   maxCooldown: 40
-  machineAnimator: {fileID: 0}
-  repairAnimation: 
   indicatorOffset: {x: 0, y: -4, z: 0}
   offsetReplace: 0
   damageIndicator: {fileID: 0}
@@ -5544,8 +5540,6 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 15
   maxCooldown: 40
-  machineAnimator: {fileID: 0}
-  repairAnimation: 
   indicatorOffset: {x: 0, y: -4, z: 0}
   offsetReplace: 0
   damageIndicator: {fileID: 0}
@@ -8421,8 +8415,6 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 5
   maxCooldown: 10
-  machineAnimator: {fileID: 0}
-  repairAnimation: 
   indicatorOffset: {x: 0, y: 0, z: 0}
   offsetReplace: 0
   damageIndicator: {fileID: 0}
@@ -12336,8 +12328,6 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 15
   maxCooldown: 40
-  machineAnimator: {fileID: 0}
-  repairAnimation: 
   indicatorOffset: {x: 0, y: -4, z: 0}
   offsetReplace: 0
   damageIndicator: {fileID: 0}
@@ -15987,8 +15977,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a0bf271f672d6c4e85e394a6d7ea10a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 2088357736}
-  _tutorial: {fileID: 0}
+  cam: {fileID: 2088357736}
+  tutorial: {fileID: 0}
 --- !u!4 &1248893840
 Transform:
   m_ObjectHideFlags: 0
@@ -19279,8 +19269,6 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 15
   maxCooldown: 40
-  machineAnimator: {fileID: 0}
-  repairAnimation: 
   indicatorOffset: {x: 0, y: -4, z: 0}
   offsetReplace: 0
   damageIndicator: {fileID: 0}
@@ -20636,8 +20624,6 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 15
   maxCooldown: 40
-  machineAnimator: {fileID: 0}
-  repairAnimation: 
   indicatorOffset: {x: 0, y: -4, z: 0}
   offsetReplace: 0
   damageIndicator: {fileID: 0}
@@ -23072,8 +23058,6 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 15
   maxCooldown: 40
-  machineAnimator: {fileID: 0}
-  repairAnimation: 
   indicatorOffset: {x: 0, y: 0, z: 0}
   offsetReplace: 0
   damageIndicator: {fileID: 0}
@@ -24641,8 +24625,6 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 5
   maxCooldown: 10
-  machineAnimator: {fileID: 0}
-  repairAnimation: 
   indicatorOffset: {x: 0, y: -3, z: 0}
   offsetReplace: 0
   damageIndicator: {fileID: 0}
@@ -26510,8 +26492,6 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 15
   maxCooldown: 40
-  machineAnimator: {fileID: 0}
-  repairAnimation: 
   indicatorOffset: {x: 0, y: -4, z: 0}
   offsetReplace: 0
   damageIndicator: {fileID: 0}
@@ -27356,8 +27336,6 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 15
   maxCooldown: 40
-  machineAnimator: {fileID: 0}
-  repairAnimation: 
   indicatorOffset: {x: 0, y: -4, z: 0}
   offsetReplace: 0
   damageIndicator: {fileID: 0}

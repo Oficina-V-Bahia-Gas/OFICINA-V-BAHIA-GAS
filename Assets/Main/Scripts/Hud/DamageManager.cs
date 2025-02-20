@@ -23,9 +23,9 @@ public class DamageManager : MonoBehaviour
 
             if (tutorial)
             {
-                _damageIndicator.ChangeVisible(2);
-                _damageIndicator.Animation(3);
-                StartCoroutine(_damageIndicator.Wait(1f));
+                //_damageIndicator.ChangeVisible(2);
+                //_damageIndicator.Animation(3);
+                //StartCoroutine(_damageIndicator.Wait(1f));
             }
         }
     }

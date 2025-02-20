@@ -1067,8 +1067,6 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 15
   maxCooldown: 40
-  machineAnimator: {fileID: 0}
-  repairAnimation: 
   indicatorOffset: {x: 0, y: 0, z: 0}
   offsetReplace: 0
   damageIndicator: {fileID: 0}
@@ -2158,11 +2156,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4824224823620480896, guid: 8c75ec068a0f02046913ddd38865458d, type: 3}
   m_PrefabInstance: {fileID: 234564494}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &238906337 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3404851517906073526, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
-  m_PrefabInstance: {fileID: 1081084197}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &244948902
 GameObject:
   m_ObjectHideFlags: 0
@@ -2726,8 +2719,6 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 15
   maxCooldown: 40
-  machineAnimator: {fileID: 0}
-  repairAnimation: 
   indicatorOffset: {x: 0, y: 0, z: 0}
   offsetReplace: 0
   damageIndicator: {fileID: 0}
@@ -3462,8 +3453,6 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 15
   maxCooldown: 40
-  machineAnimator: {fileID: 0}
-  repairAnimation: 
   indicatorOffset: {x: 0, y: 0, z: 0}
   offsetReplace: 0
   damageIndicator: {fileID: 0}
@@ -3948,8 +3937,6 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 15
   maxCooldown: 40
-  machineAnimator: {fileID: 0}
-  repairAnimation: 
   indicatorOffset: {x: 0, y: 0, z: 0}
   offsetReplace: 0
   damageIndicator: {fileID: 0}
@@ -10376,8 +10363,6 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 5
   maxCooldown: 10
-  machineAnimator: {fileID: 238906337}
-  repairAnimation: Open
   indicatorOffset: {x: 0, y: 0, z: 0}
   offsetReplace: 0
   damageIndicator: {fileID: 0}
@@ -13246,8 +13231,6 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 15
   maxCooldown: 40
-  machineAnimator: {fileID: 0}
-  repairAnimation: 
   indicatorOffset: {x: 0, y: 0, z: 0}
   offsetReplace: 0
   damageIndicator: {fileID: 0}
@@ -13371,11 +13354,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1374898271}
   m_CullTransparentMesh: 1
---- !u!95 &1380554263 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3404851517906073526, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
-  m_PrefabInstance: {fileID: 2345162579516082094}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1381922683
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13933,8 +13911,6 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 15
   maxCooldown: 40
-  machineAnimator: {fileID: 0}
-  repairAnimation: 
   indicatorOffset: {x: 0, y: 0, z: 0}
   offsetReplace: 0
   damageIndicator: {fileID: 0}
@@ -15791,8 +15767,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a0bf271f672d6c4e85e394a6d7ea10a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 967548351}
-  _tutorial: {fileID: 0}
+  cam: {fileID: 967548351}
+  tutorial: {fileID: 0}
 --- !u!1 &1593123403
 GameObject:
   m_ObjectHideFlags: 0
@@ -17369,8 +17345,6 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 15
   maxCooldown: 40
-  machineAnimator: {fileID: 0}
-  repairAnimation: 
   indicatorOffset: {x: 0, y: 0, z: 0}
   offsetReplace: 0
   damageIndicator: {fileID: 0}
@@ -20748,8 +20722,6 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 15
   maxCooldown: 40
-  machineAnimator: {fileID: 0}
-  repairAnimation: 
   indicatorOffset: {x: 0, y: 0, z: 0}
   offsetReplace: 0
   damageIndicator: {fileID: 0}
@@ -22315,8 +22287,6 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 5
   maxCooldown: 10
-  machineAnimator: {fileID: 0}
-  repairAnimation: 
   indicatorOffset: {x: 0, y: 0, z: 0}
   offsetReplace: 0
   damageIndicator: {fileID: 0}
@@ -22449,8 +22419,6 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 5
   maxCooldown: 10
-  machineAnimator: {fileID: 1380554263}
-  repairAnimation: Open
   indicatorOffset: {x: 0, y: 0, z: 0}
   offsetReplace: 0
   damageIndicator: {fileID: 0}
@@ -23054,8 +23022,6 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 15
   maxCooldown: 40
-  machineAnimator: {fileID: 0}
-  repairAnimation: 
   indicatorOffset: {x: 0, y: 0, z: 0}
   offsetReplace: 0
   damageIndicator: {fileID: 0}

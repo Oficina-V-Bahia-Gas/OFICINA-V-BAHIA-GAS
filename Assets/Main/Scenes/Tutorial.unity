@@ -2959,8 +2959,6 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 1e+9
   maxCooldown: 1e+9
-  machineAnimator: {fileID: 0}
-  repairAnimation: 
   indicatorOffset: {x: 0, y: -4, z: 0}
   offsetReplace: 0
   damageIndicator: {fileID: 0}
@@ -7764,11 +7762,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 755575035}
   m_CullTransparentMesh: 1
---- !u!95 &759152466 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3404851517906073526, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
-  m_PrefabInstance: {fileID: 1611047571}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &761362169
 GameObject:
   m_ObjectHideFlags: 0
@@ -9769,8 +9762,6 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 1e+9
   maxCooldown: 1e+9
-  machineAnimator: {fileID: 759152466}
-  repairAnimation: Open
   indicatorOffset: {x: 0, y: 0, z: 0}
   offsetReplace: 0
   damageIndicator: {fileID: 0}
@@ -12294,8 +12285,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a0bf271f672d6c4e85e394a6d7ea10a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 2088357736}
-  _tutorial: {fileID: 996028403}
+  cam: {fileID: 2088357736}
+  tutorial: {fileID: 996028403}
 --- !u!4 &1248893840
 Transform:
   m_ObjectHideFlags: 0
@@ -14227,11 +14218,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2372163401888371023, guid: 1f726f4d40ea6174093647b60c1d7a02, type: 3}
   m_PrefabInstance: {fileID: 1360368556}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1380554263 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3404851517906073526, guid: 06195fbcfbdd8664195032c8dd515634, type: 3}
-  m_PrefabInstance: {fileID: 2345162579516082094}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1393991759
 PrefabInstance:
@@ -21290,8 +21276,6 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 1e+9
   maxCooldown: 1e+9
-  machineAnimator: {fileID: 0}
-  repairAnimation: 
   indicatorOffset: {x: 0, y: -3, z: 0}
   offsetReplace: 0
   damageIndicator: {fileID: 0}
@@ -21424,8 +21408,6 @@ MonoBehaviour:
   onCooldown: 0
   minCooldown: 1e+9
   maxCooldown: 1e+9
-  machineAnimator: {fileID: 1380554263}
-  repairAnimation: Open
   indicatorOffset: {x: 0, y: 0, z: 0}
   offsetReplace: 0
   damageIndicator: {fileID: 0}

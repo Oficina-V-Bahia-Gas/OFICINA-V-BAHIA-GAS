@@ -320,6 +320,14 @@ public class Machines : MonoBehaviour
 
                 fullRoll = true;
             }
+            else if(CheckDurability(fullRepairsStart) && !fullRoll && fullRepairs.Count > 0)
+            {
+                if (damageIndicator)
+                {
+                    damageIndicator.ChangeVisible(2);
+                    damageIndicator.Animation(3);
+                }
+            }
         }
         else
         {

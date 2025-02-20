@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class DamageIndicator : MonoBehaviour
 {
@@ -83,7 +84,7 @@ public class DamageIndicator : MonoBehaviour
 
     void Update()
     {
-        if(started && !hold)
+        if(started)
             Move();
     }
 
@@ -105,27 +106,27 @@ public class DamageIndicator : MonoBehaviour
             switch (_i)
             {
                 case 0:
-                    working.SetActive(true);
-                    warning.SetActive(false);
-                    error.SetActive(false);
-                    if(fade != null)
+                    working.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                    warning.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                    error.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                    if (fade != null)
                         StopCoroutine(fade);
                     fade = StartCoroutine(Fade());
                     break;
                 case 1:
-                    working.SetActive(false);
-                    warning.SetActive(true);
-                    error.SetActive(false);
+                    working.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                    warning.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                    error.GetComponent<Image>().color = new Color(1, 1, 1, 0);
                     break;
                 case 2:
-                    working.SetActive(false);
-                    warning.SetActive(false);
-                    error.SetActive(true);
+                    working.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                    warning.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                    error.GetComponent<Image>().color = new Color(1, 1, 1, 1);
                     break;
                 default:
-                    working.SetActive(false);
-                    warning.SetActive(false);
-                    error.SetActive(false);
+                    working.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                    warning.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                    error.GetComponent<Image>().color = new Color(1, 1, 1, 0);
                     break;
             }
         }
