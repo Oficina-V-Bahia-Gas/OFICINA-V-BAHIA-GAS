@@ -1,8 +1,6 @@
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEngine.Audio;
 using DG.Tweening;
 
 public class HUDController : MonoBehaviour
@@ -14,26 +12,31 @@ public class HUDController : MonoBehaviour
 
     bool isGamePaused = false;
 
-    private void Start() => LoadSettings();
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        LoadSettings();
+    }
+
+    private void OnDisable() => SceneManager.sceneLoaded -= OnSceneLoaded;
+
+    void OnSceneLoaded(Scene _scene, LoadSceneMode mode)
+    {
+        if (_scene.name == "Menu") LoadSettings();
+    }
 
     void LoadSettings()
     {
         if (continueButton != null)
-            continueButton.interactable = PlayerPrefs.GetInt("TutorialComplete", 0) == 1;
+        {
+            int _tutorialComplete = PlayerPrefs.GetInt("TutorialComplete", 0);
+            continueButton.interactable = _tutorialComplete == 1;
+        }
     }
 
-    public void StartGame()
-    {
-        SceneManager.LoadScene("Tutorial");
-    }
+    public void StartGame() => SceneManager.LoadScene("Tutorial");
 
-    public void ContinueGame()
-    {
-        if (continueButton != null)
-            continueButton.interactable = true;
-
-        SceneManager.LoadScene("Fase1");
-    }
+    public void ContinueGame() => SceneManager.LoadScene("Fase1");
 
     public void QuitGame() => Application.Quit();
 
@@ -54,7 +57,7 @@ public class HUDController : MonoBehaviour
             .SetEase(Ease.OutQuint)
             .OnComplete(() =>
             {
-                //Inserir aqui: Parar o timer
+                // Inserir aqui: Parar o timer
                 menuCanvasGroup.interactable = true;
                 menuCanvasGroup.blocksRaycasts = true;
             });
