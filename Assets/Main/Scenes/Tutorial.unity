@@ -2955,7 +2955,7 @@ MonoBehaviour:
   currentDurability: 0
   maxDurability: 0
   minDurability: 0
-  maxDurabilityRange: 1
+  maxDurabilityRange: 0.001
   onCooldown: 0
   minCooldown: 1e+9
   maxCooldown: 1e+9
@@ -9758,7 +9758,7 @@ MonoBehaviour:
   currentDurability: 0
   maxDurability: 0
   minDurability: 0
-  maxDurabilityRange: 1
+  maxDurabilityRange: 0.001
   onCooldown: 0
   minCooldown: 1e+9
   maxCooldown: 1e+9
@@ -21272,7 +21272,7 @@ MonoBehaviour:
   currentDurability: 0
   maxDurability: 0
   minDurability: 0
-  maxDurabilityRange: 1
+  maxDurabilityRange: 0.001
   onCooldown: 0
   minCooldown: 1e+9
   maxCooldown: 1e+9
@@ -21404,7 +21404,7 @@ MonoBehaviour:
   currentDurability: 0
   maxDurability: 0
   minDurability: 0
-  maxDurabilityRange: 1
+  maxDurabilityRange: 0.001
   onCooldown: 0
   minCooldown: 1e+9
   maxCooldown: 1e+9

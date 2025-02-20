@@ -320,9 +320,9 @@ public class Machines : MonoBehaviour
 
                 fullRoll = true;
             }
-            else if(CheckDurability(fullRepairsStart) && !fullRoll && fullRepairs.Count > 0)
+            else if(CheckDurability(fullRepairsStart))
             {
-                if (damageIndicator)
+                if (damageIndicator && damageIndicator.currentVisible != 2 && damageIndicator.currentAnimation != 3)
                 {
                     damageIndicator.ChangeVisible(2);
                     damageIndicator.Animation(3);

@@ -29,6 +29,9 @@ public class DamageIndicator : MonoBehaviour
     Quaternion originalRotation;
     Vector3 originalPosition;
 
+    [HideInInspector] public int currentVisible = 0;
+    [HideInInspector] public int currentAnimation = 0;
+
     bool started = false;
     bool hold = false;
     bool running = false;
@@ -103,6 +106,8 @@ public class DamageIndicator : MonoBehaviour
     {
         if (started && !hold)
         {
+            currentVisible = _i;
+
             switch (_i)
             {
                 case 0:
@@ -136,6 +141,8 @@ public class DamageIndicator : MonoBehaviour
     {
         if (started && !hold)
         {
+            currentAnimation = _i;
+
             switch (_i)
             {
                 case 0:
@@ -182,8 +189,8 @@ public class DamageIndicator : MonoBehaviour
             float w = (Random.value * shakeStrenght - (shakeStrenght / 2)) * _factor;
             float h = (Random.value * shakeStrenght - (shakeStrenght / 2)) * _factor;
 
-            Vector3 _rotation = new Vector3(originalRotation.x, originalRotation.y, originalRotation.z + z);
-            Vector3 _position = new Vector3(originalPosition.x + (z * shakeMovement), originalPosition.y + (w * shakeMovement), originalPosition.z + (h * shakeMovement));
+            Vector3 _rotation = new Vector3(_originalRotation.x, _originalRotation.y, _originalRotation.z + z);
+            Vector3 _position = new Vector3(_originalPosition.x + (z * shakeMovement), _originalPosition.y + (w * shakeMovement), _originalPosition.z + (h * shakeMovement));
 
             working.transform.eulerAngles = _rotation;
             warning.transform.eulerAngles = _rotation;
@@ -192,9 +199,9 @@ public class DamageIndicator : MonoBehaviour
             yield return null;
         }
 
-        working.transform.SetPositionAndRotation(_originalPosition, _originalRotation);
-        warning.transform.SetPositionAndRotation(_originalPosition, _originalRotation);
-        error.transform.SetPositionAndRotation(_originalPosition, _originalRotation);
+        working.GetComponent<RectTransform>().SetLocalPositionAndRotation(Vector3.zero, new Quaternion(0, 0, 0, 0));
+        warning.GetComponent<RectTransform>().SetLocalPositionAndRotation(Vector3.zero, new Quaternion(0, 0, 0, 0));
+        error.GetComponent<RectTransform>().SetLocalPositionAndRotation(Vector3.zero, new Quaternion(0, 0, 0, 0));
 
         if (reset)
             reset = false;
