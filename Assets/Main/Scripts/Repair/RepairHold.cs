@@ -10,7 +10,7 @@ public class RepairHold : Repairs
     [Header("Configurações de Tempo")]
     bool isHolding = false;
     float holdProgress = 0f;
-    public float holdDuration = 5f;
+    float holdDuration = 2.5f;
 
     [Header("UI do Conserto")]
     [SerializeField] Button repairButton;

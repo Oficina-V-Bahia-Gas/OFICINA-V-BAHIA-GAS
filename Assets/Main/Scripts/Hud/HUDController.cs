@@ -37,6 +37,8 @@ public class HUDController : MonoBehaviour
 
     public void QuitGame() => Application.Quit();
 
+    public void BackToMenu() => SceneManager.LoadScene("Menu");
+
     public void PauseGame()
     {
         if (isGamePaused) return;
